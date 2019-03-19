@@ -18,10 +18,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url_for('index') }}">MySQL</a>
+
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+                    <li>
+                        <a class="navbar-brand" href="{{ url_for('index') }}">
+                            <img src="https://labs.mysql.com/common/logos/mysql-logo.svg?v2" width="90" height="60">
+                        </a>
+                    </li>
                     <li><a href="{{ url_for('index') }}">MYSQL.COM</a></li>
                     <li><a href="{{ url_for('index') }}">DOWNLOADS</a></li>
                     <li><a href="{{ url_for('index') }}">DOCUMENTATION</a></li>
@@ -39,6 +44,7 @@
             </div>
         </div>
     </nav>
+
 {% endblock %}
 
 {% block content %}
