@@ -1,0 +1,110 @@
+2019-03-19 10:18:10,258 ERROR: Exception on / [GET] [in C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py:1761]
+Traceback (most recent call last):
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\EA_MySQL\app\routes.py", line 40, in index
+    prev_url=prev_url)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\templating.py", line 135, in render_template
+    context, ctx.app)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\templating.py", line 117, in _render
+    rv = template.render(context)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\jinja2\environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\jinja2\_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\EA_MySQL\app\templates\index.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\EA_MySQL\app\templates\base.html", line 4, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 21, in block "body"
+    {% block navbar %}
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\EA_MySQL\app\templates\base.html", line 26, in block "navbar"
+    <li><a href="{{ url_for('downloads') }}">DOWNLOADS</a></li>
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\helpers.py", line 345, in url_for
+    force_external=external)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\werkzeug\routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'downloads'. Did you mean 'follow' instead?
+2019-03-19 10:18:10,434 ERROR: Exception on / [GET] [in C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py:1761]
+Traceback (most recent call last):
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\EA_MySQL\app\routes.py", line 40, in index
+    prev_url=prev_url)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\templating.py", line 135, in render_template
+    context, ctx.app)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\templating.py", line 117, in _render
+    rv = template.render(context)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\jinja2\environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\jinja2\_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\EA_MySQL\app\templates\index.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\EA_MySQL\app\templates\base.html", line 4, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 21, in block "body"
+    {% block navbar %}
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\EA_MySQL\app\templates\base.html", line 26, in block "navbar"
+    <li><a href="{{ url_for('downloads') }}">DOWNLOADS</a></li>
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\helpers.py", line 345, in url_for
+    force_external=external)
+  File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\werkzeug\routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'downloads'. Did you mean 'follow' instead?
