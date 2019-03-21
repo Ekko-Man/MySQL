@@ -1,4 +1,4 @@
-2019-03-19 10:13:46,598 ERROR: Exception on / [GET] [in C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py:1761]
+2019-03-19 10:13:56,639 ERROR: Exception on / [GET] [in C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -53,7 +53,7 @@ Traceback (most recent call last):
   File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\werkzeug\routing.py", line 1776, in build
     raise BuildError(endpoint, values, method, self)
 werkzeug.routing.BuildError: Could not build url for endpoint ''. Did you mean 'reset_password_request' instead?
-2019-03-19 10:13:46,786 ERROR: Exception on / [GET] [in C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py:1761]
+2019-03-19 10:13:56,820 ERROR: Exception on / [GET] [in C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\KaiJor\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
