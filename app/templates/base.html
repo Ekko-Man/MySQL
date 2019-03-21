@@ -1,13 +1,17 @@
-{#/nagtive bar a href link change#}
-
-
 {% extends 'bootstrap/base.html' %}
 
+
+{% block head %}
+    {{ super() }}
+    <link rel="shortcut icon" href='https://labs.mysql.com/common/themes/sakila/favicon.ico'/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% endblock %}
 
 
 {% block title %}
     {% if title %}{{ title }} - MYSQL{% else %}Welcome to MySQL{% endif %}
 {% endblock %}
+
 
 {% block navbar %}
     <nav class="navbar navbar-default">
@@ -26,7 +30,7 @@
                 <ul class="nav navbar-nav">
                     <div>
                         <a href="{{ url_for('index') }}">
-                            <img src="https://labs.mysql.com/common/logos/mysql-logo.svg?v2" width="90" height="60">
+                            <img id='MySQLphoto' src="https://labs.mysql.com/common/logos/mysql-logo.svg?v2">
                         </a>
                     </div>
                     <li><a href="{{ url_for('index') }}">MYSQL.COM</a></li>
