@@ -184,3 +184,10 @@ def unfollow(username):
     db.session.commit()
     flash('You are not following {}.'.format(username))
     return redirect(url_for('user', username=username))
+
+@app.route('/documentation')
+def documentation():
+    return render_template('documentation.html')
+@app.route('/documentation/product')
+def product():
+    return render_template('product.html')
