@@ -1,2 +1,10 @@
-# MySQL
-Rework The Flask Mega-Tutorial with PyCharm
+# MySQL web structure
+MySQL
+
+--app
+----static
+-------css
+----templates
+-------email
+
+--migrations
