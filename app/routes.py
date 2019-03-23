@@ -190,4 +190,4 @@ def documentation():
     return render_template('documentation.html')
 @app.route('/documentation/product')
 def product():
-    return render_template('product.html')
+    return render_template('product 2.html')
