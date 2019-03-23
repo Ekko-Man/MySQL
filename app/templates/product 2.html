@@ -1,46 +1,78 @@
 {% extends 'base.html' %}
 
 {% block app_content %}
-    Browse MySQL Documentation by: <a href="{{ url_for('product') }}" ) class="btn btn-primary">Product </a>
-    <a href="https://dev.mysql.com/doc/#topic" class="btn btn-primary">Topic </a>
+    <p algin="left">Browse MySQL Documentation by: <a href="{{ url_for('product') }}" ) class="btn btn-primary">Product </a> <a href="{{ url_for('topic') }}" class="btn btn-primary">Topic </a></p>
 
-    <table width=1000,cellspacing="10">
+   <table align="left">
+  <thead>
     <tr>
-        <th>MySQL Server</th>
+      <th colspan="3">MySQL Server<</th>
     </tr>
     <tr>
-        <td><a href="https://dev.mysql.com/doc/refman/8.0/en/">MySQL 8.0 Reference Manual</a></td>
-        <td><a href="https://dev.mysql.com/doc/refman/5.7/en/">MySQL 5.7 Reference Manual</a></td>
-        <td><a href="https://dev.mysql.com/doc/refman/5.6/en/">MySQL 5.6 Reference Manual</a></td>
-        <td><a href="https://dev.mysql.com/doc/refman/5.6/ja/">MySQL 5.6 Reference Manual (Japanese)</a></td>
-        <td><a href="https://dev.mysql.com/doc/refman/5.5/en/">MySQL 5.5 Reference Manual</a></td>
+      <th>#</th>
+      <th colspan="2">Document</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><a href="https://dev.mysql.com/doc/refman/8.0/en/">MySQL 8.0 Reference Manual</a></td>
+
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><a href="https://dev.mysql.com/doc/refman/5.7/en/">MySQL 5.7 Reference Manual</a></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><a href="https://dev.mysql.com/doc/refman/5.7/en/">MySQL 5.7 Reference Manual</a></td>
+    </tr>
+     <tr>
+      <td>4</td>
+      <td><a href="https://dev.mysql.com/doc/refman/5.6/ja/">MySQL 5.6 Reference Manual (Japanese)</a></td>
+    </tr>
+     <tr>
+      <td>5</td>
+      <td><a href="https://dev.mysql.com/doc/refman/5.5/en/">MySQL 5.5 Reference Manual</a></td>
     </tr>
 
-     <tr>
-        <th>X DevAPI</th>
+  </tbody>
+</table>
+
+
+
+   <table align="right">
+  <thead>
+    <tr>
+      <th colspan="3">X DevAPI<</th>
     </tr>
+    <tr>
+      <th>#</th>
+      <th colspan="2">Document</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><a href=https://dev.mysql.com/doc/x-devapi-userguide/en/">X DevAPI User Guide</a></td>
 
-        <tr>
-            <td><a href=https://dev.mysql.com/doc/x-devapi-userguide/en/">X DevAPI User Guide</a></td>
-            <td><a href="https://dev.mysql.com/doc/dev/connector-cpp/8.0/">MySQL Connector/C++ X DevAPI Reference</a></td>
-            <td><a href="https://dev.mysql.com/doc/dev/connector-j/8.0/">MySQL Connector/J X DevAPI Reference</a></td>
-            <td><a href="https://dev.mysql.com/doc/dev/connector-nodejs/8.0/">MySQL Connector/NET X DevAPI Reference</a></td>
-            <td><a href="https://dev.mysql.com/doc/dev/connector-nodejs/8.0/">MySQL Connector/Node.js X DevAPI Reference</a></td>
-            <td><a href="https://dev.mysql.com/doc/dev/connector-python/8.0/">MySQL Connector/Python X DevAPI Reference</a></td>
-            <td><a href="https://dev.mysql.com/doc/dev/mysqlsh-api-javascript/8.0/">MySQL Shell 8.0 JavaScript API Reference</a></td>
-            <td><a href="https://dev.mysql.com/doc/dev/mysqlsh-api-python/8.0/">MySQL Shell 8.0 Python API Reference</a></td>
-        </tr>
-
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><a href="https://dev.mysql.com/doc/dev/connector-cpp/8.0/">MySQL Connector/C++ X DevAPI Reference</a></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><a href="https://dev.mysql.com/doc/dev/connector-j/8.0/">MySQL Connector/J X DevAPI Reference</a></td>
+    </tr>
      <tr>
-         <td>Connectors & APIs</td>
-     </tr>
-
-        <tr>
-            <td><a href="https://dev.mysql.com/doc/connectors/en/">Connectors and APIs</a></td>
-            <td><a href=https://dev.mysql.com/doc/connector-odbc/en/">Connector/ODBC</a></td>
-            <td><a href="https://dev.mysql.com/doc/connector-python/en/">Connector/Python</a></td>
-            <td><a href="https://dev.mysql.com/doc/apis-php/en/">PHP</a></td>
-            <td><a href="https://dev.mysql.com/doc/apis-php/en/">Connector/C</a></td>
-            <td><a href="/doc/mysql-for-excel/en/">MySQL for Excel</a></td>
-            <td><a href="https://dev.mysql.com/doc/visual-studio/en/">MySQL for Visual Studio</a></td>
-        </tr>
+      <td>4</td>
+      <td><a href="https://dev.mysql.com/doc/dev/connector-nodejs/8.0/">MySQL Connector/Node.js X DevAPI Reference</a></td>
+    </tr>
+     <tr>
+      <td>5</td>
+      <td><a href="https://dev.mysql.com/doc/dev/connector-python/8.0/">MySQL Connector/Python X DevAPI Reference</a></td>
+    </tr>
+  </tbody>
+</table>
+{% endblock app_content %}
