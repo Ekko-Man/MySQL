@@ -191,3 +191,7 @@ def documentation():
 @app.route('/documentation/product')
 def product():
     return render_template('product 2.html')
+
+@app.route('/documentation/topic')
+def topic():
+    return render_template('topic.html')
