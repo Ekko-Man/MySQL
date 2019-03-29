@@ -9,7 +9,6 @@ from app.models import User, Post
 from app.email import send_password_reset_email
 
 
-
 @app.before_request
 def before_request():
     if current_user.is_authenticated:
@@ -17,10 +16,15 @@ def before_request():
         db.session.commit()
 
 
-@app.route('/', methods=['GET', 'POST'])
-@app.route('/index', methods=['GET', 'POST'])
-@login_required
+@app.route('/', methods=['GET'])
+@app.route('/index', methods=['GET'])
 def index():
+    return render_template('index.html', title='Home')
+
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/dzoneforums', methods=['GET', 'POST'])
+@login_required
+def dzoneforums():
     form = PostForm()
     if form.validate_on_submit():
         post = Post(body=form.post.data, author=current_user)
@@ -31,13 +35,14 @@ def index():
     page = request.args.get('page', 1, type=int)
     posts = current_user.followed_posts().paginate(
         page, app.config['POSTS_PER_PAGE'], False)
-    next_url = url_for('index', page=posts.next_num) \
+    next_url = url_for('dzoneforums', page=posts.next_num) \
         if posts.has_next else None
-    prev_url = url_for('index', page=posts.prev_num) \
+    prev_url = url_for('dzoneforums', page=posts.prev_num) \
         if posts.has_prev else None
-    return render_template('index.html', title='Home', form=form,
+    return render_template('dzoneforums.html', title='dzoneforums', form=form,
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
+
 
 @app.route('/explore')
 @login_required
@@ -49,8 +54,9 @@ def explore():
         if posts.has_next else None
     prev_url = url_for('explore', page=posts.prev_num) \
         if posts.has_prev else None
-    return render_template("index.html", title='Explore', posts=posts.items,
-                          next_url=next_url, prev_url=prev_url)
+    return render_template("dzoneforums.html", title='Explore', posts=posts.items,
+                           next_url=next_url, prev_url=prev_url)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -185,12 +191,16 @@ def unfollow(username):
     flash('You are not following {}.'.format(username))
     return redirect(url_for('user', username=username))
 
+
 @app.route('/documentation')
 def documentation():
     return render_template('documentation.html')
+
+
 @app.route('/documentation/product')
 def product():
     return render_template('product 2.html')
+
 
 @app.route('/documentation/topic')
 def topic():
