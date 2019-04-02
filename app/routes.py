@@ -21,7 +21,7 @@ def before_request():
 def index():
     return render_template('index.html', title='Home')
 
-@app.route('/', methods=['GET', 'POST'])
+
 @app.route('/dzoneforums', methods=['GET', 'POST'])
 @login_required
 def dzoneforums():
