@@ -39,7 +39,7 @@ def dzoneforums():
         if posts.has_next else None
     prev_url = url_for('dzoneforums', page=posts.prev_num) \
         if posts.has_prev else None
-    return render_template('dzoneforums.html', title='dzoneforums', form=form,
+    return render_template('DeveloperZone/dzoneforums.html', title='dzoneforums', form=form,
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
 
@@ -54,7 +54,7 @@ def explore():
         if posts.has_next else None
     prev_url = url_for('explore', page=posts.prev_num) \
         if posts.has_prev else None
-    return render_template("dzoneforums.html", title='Explore', posts=posts.items,
+    return render_template("DeveloperZone/dzoneforums.html", title='Explore', posts=posts.items,
                            next_url=next_url, prev_url=prev_url)
 
 
@@ -73,7 +73,7 @@ def login():
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('index')
         return redirect(next_page)
-    return render_template('login.html', title='Sign In', form=form)
+    return render_template('Login/login.html', title='Sign In', form=form)
 
 
 @app.route('/logout')
@@ -94,7 +94,7 @@ def register():
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
-    return render_template('register.html', title='Register', form=form)
+    return render_template('Login/register.html', title='Register', form=form)
 
 
 @app.route('/reset_password_request', methods=['GET', 'POST'])
@@ -108,7 +108,7 @@ def reset_password_request():
             send_password_reset_email(user)
         flash('Check your email for the instructions to reset your password')
         return redirect(url_for('login'))
-    return render_template('reset_password_request.html',
+    return render_template('Login/reset_password_request.html',
                            title='Reset Password', form=form)
 
 
@@ -125,7 +125,7 @@ def reset_password(token):
         db.session.commit()
         flash('Your password has been reset.')
         return redirect(url_for('login'))
-    return render_template('reset_password.html', form=form)
+    return render_template('Login/reset_password.html', form=form)
 
 
 @app.route('/user/<username>')
@@ -194,14 +194,14 @@ def unfollow(username):
 
 @app.route('/documentation')
 def documentation():
-    return render_template('documentation.html')
+    return render_template('Documentation/documentation.html')
 
 
 @app.route('/documentation/product')
 def product():
-    return render_template('product 2.html')
+    return render_template('Documentation/product 2.html')
 
 
 @app.route('/documentation/topic')
 def topic():
-    return render_template('topic.html')
+    return render_template('Documentation/topic.html')

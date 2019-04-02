@@ -88,3 +88,14 @@ class Post(db.Model):
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
+
+class Mainbar(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    Name = db.Column(db.String(80))
+    url = db.Column(db.String(140))
+
+class Title(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    Name = db.Column(db.String(80))
+    url = db.Column(db.String(140))
+    MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
