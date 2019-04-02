@@ -55,18 +55,56 @@
 
 {% block content %}
     <div class="container">
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="alert alert-info" role="alert">{{ message }}</div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-info" role="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 
-        {# application content needs to be provided in the app_content block #}
-        {% block app_content %}{% endblock %}
+    {# application content needs to be provided in the app_content block #}
+    {% block app_content %}{% endblock %}
     {% block footer %}
-        <div class="test"><img src='https://labs.mysql.com/common/themes/sakila/favicon.ico'></div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                    <div class="d-sm-none">PRODUCTS</div>
+                    <div class="d-sm-none">Oracle MySQL Cloud Service</div>
+                    <div class="d-sm-none">MySQL Enterprise Edition</div>
+                    <div class="d-sm-none">MySQL Standard Edition</div>
+                    <div class="d-sm-none">Extra small 1</div>
+                </div>
+                <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                    <div class="d-sm-none">Service</div>
+                    <div class="d-sm-none">Large Device 2</div>
+                    <div class="d-sm-none">Medium Device 2</div>
+                    <div class="d-sm-none">Small Device 2</div>
+                    <div class="d-sm-none">Extra small 2</div>
+                </div>
+                <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                    <div class="d-none">Extra Large Device 3</div>
+                    <div class="d-none">Large Device 3</div>
+                    <div class="d-none">Medium Device 3</div>
+                    <div class="d-none">Small Device 3</div>
+                    <div class="d-none">Extra small 3</div>
+                </div>
+                <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                    <div class="d-none">Extra Large Device 4</div>
+                    <div class="d-none">Large Device 4</div>
+                    <div class="d-none">Medium Device 4</div>
+                    <div class="d-none">Small Device 4</div>
+                    <div class="d-none">Extra small 4</div>
+                </div>
+                <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                    <div class="d-none">Extra Large Device 4</div>
+                    <div class="d-none">div>Large Device 4</div>
+                    <div class="d-none">Medium Device 4</div>
+                    <div class="d-none">Small Device 4</div>
+                    <div class="d-none">Extra small 4</div>
+                </div>
+            </div>
+        </div>
+
     {% endblock %}
 {% endblock %}
-
