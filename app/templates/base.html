@@ -65,6 +65,8 @@
 
         {# application content needs to be provided in the app_content block #}
         {% block app_content %}{% endblock %}
-    </div>
+    {% block footer %}
+        <div class="test"><img src='https://labs.mysql.com/common/themes/sakila/favicon.ico'></div>
+    {% endblock %}
 {% endblock %}
 
