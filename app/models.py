@@ -88,3 +88,24 @@ class Post(db.Model):
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
+
+class Product(db.Model):
+    title_id=db.Column(db.Integer,primary_key=True)
+    title=db.String(db.String(200))
+
+
+class ProductMysqlServer(db.Model):
+   doc_id=db.Column(db.Integer,primary_key=True)
+
+   link=(db.String(200))
+   name=(db.String(100))
+
+class ProductXDevAPI(db.Model):
+    id=db.Column(db.Integer,primary_key=True)
+    link=(db.String(200))
+    name=(db.String(100))
+
+class ProductMySQLNDBCluster(db.Model):
+    id=db.Column(db.Integer,primary_key=True)
+    link=(db.String(200))
+    name=(db.String(100))
