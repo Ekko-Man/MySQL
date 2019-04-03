@@ -60,7 +60,6 @@ class User(UserMixin, db.Model):
         own = Post.query.filter_by(user_id=self.id)
         return followed.union(own).order_by(Post.timestamp.desc())
 
-
     def get_reset_password_token(self, expires_in=600):
         return jwt.encode(
             {'reset_password': self.id, 'exp': time() + expires_in},
@@ -74,6 +73,7 @@ class User(UserMixin, db.Model):
         except:
             return
         return User.query.get(id)
+
 
 @login.user_loader
 def load_user(id):
@@ -91,30 +91,34 @@ class Post(db.Model):
 
 
 class Product(db.Model):
-    title_id=db.Column(db.Integer,primary_key=True)
-    title=db.String(db.String(200))
+    title_id = db.Column(db.Integer, primary_key=True)
+    title = db.String(db.String(200))
 
 
 class ProductMysqlServer(db.Model):
-   doc_id=db.Column(db.Integer,primary_key=True)
+    doc_id = db.Column(db.Integer, primary_key=True)
 
-   link=(db.String(200))
-   name=(db.String(100))
+    link = (db.String(200))
+    name = (db.String(100))
+
 
 class ProductXDevAPI(db.Model):
-    id=db.Column(db.Integer,primary_key=True)
-    link=(db.String(200))
-    name=(db.String(100))
+    id = db.Column(db.Integer, primary_key=True)
+    link = (db.String(200))
+    name = (db.String(100))
+
 
 class ProductMySQLNDBCluster(db.Model):
-    id=db.Column(db.Integer,primary_key=True)
-    link=(db.String(200))
-    name=(db.String(100))
+    id = db.Column(db.Integer, primary_key=True)
+    link = (db.String(200))
+    name = (db.String(100))
+
 
 class Mainbar(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     Name = db.Column(db.String(80))
     url = db.Column(db.String(140))
+
 
 class Title(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -122,3 +126,21 @@ class Title(db.Model):
     url = db.Column(db.String(140))
     MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
 
+
+class Download(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50))
+    MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
+
+
+class MySQLCommunity(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50))
+    description = db.Column(db.String(200))
+    download = db.Column(db.String(100))
+    MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
+
+
+class Language(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50))
