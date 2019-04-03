@@ -77,3 +77,8 @@ td:last-child {
 .delete:hover {
   color: #dc2a2a;
 }
+
+.navbarcolor {
+    color: #FFFFFF;
+    background-color: #CC3333;
+}
