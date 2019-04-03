@@ -82,3 +82,7 @@ td:last-child {
     color: #FFFFFF;
     background-color: #CC3333;
 }
+
+.list-group-item {
+    padding: 3px 10px
+}
