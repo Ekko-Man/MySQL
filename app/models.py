@@ -136,6 +136,7 @@ class Download(db.Model):
 class MySQLCommunity(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
+    version = db.Column(db.String(100))
     description = db.Column(db.String(200))
     download = db.Column(db.String(100))
     MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
@@ -144,3 +145,5 @@ class MySQLCommunity(db.Model):
 class Language(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
+
+
