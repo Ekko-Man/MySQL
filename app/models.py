@@ -95,22 +95,39 @@ class Product(db.Model):
     title = db.Column(db.String(200))
 
 
+
 class ProductMysqlServer(db.Model):
     doc_id = db.Column(db.Integer, primary_key=True)
+<<<<<<< HEAD
     url = db.Column(db.String(140))
     name = db.Column(db.String(80))
+=======
+
+    link = (db.String(200))
+    name = (db.String(100))
+>>>>>>> 269921dd78c0b46ce58118db1c3ec23dbe2f4540
 
 
 class ProductXDevAPI(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+<<<<<<< HEAD
     url = db.Column(db.String(140))
     name = db.Column(db.String(80))
+=======
+    link = (db.String(200))
+    name = (db.String(100))
+>>>>>>> 269921dd78c0b46ce58118db1c3ec23dbe2f4540
 
 
 class ProductMySQLNDBCluster(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+<<<<<<< HEAD
     url = db.Column(db.String(140))
     name = db.Column(db.String(80))
+=======
+    link = (db.String(200))
+    name = (db.String(100))
+>>>>>>> 269921dd78c0b46ce58118db1c3ec23dbe2f4540
 
 
 class Mainbar(db.Model):
@@ -124,3 +141,28 @@ class Title(db.Model):
     Name = db.Column(db.String(80))
     url = db.Column(db.String(140))
     MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
+<<<<<<< HEAD
+=======
+
+
+class Download(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50))
+    MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
+
+
+class MySQLCommunity(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50))
+    version = db.Column(db.String(100))
+    description = db.Column(db.String(200))
+    download = db.Column(db.String(100))
+    MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
+
+
+class Language(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50))
+
+
+>>>>>>> 269921dd78c0b46ce58118db1c3ec23dbe2f4540

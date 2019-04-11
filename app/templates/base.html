@@ -29,14 +29,14 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="{{ url_for('index') }}"><img id='MySQLphoto'
                                                                            src="https://labs.mysql.com/common/logos/mysql-logo.svg?v2"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                <button class="navbar-toggler invisible"  type="button" data-toggle="collapse" data-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li><a href="{{ url_for('index') }}">MYSQL.COM</a></li>
-                        <li><a href="{{ url_for('index') }}">DOWNLOADS</a></li>
+                        <li><a href="{{ url_for('enterprise') }}">DOWNLOADS</a></li>
                         <li><a href="{{ url_for('documentation') }}">DOCUMENTATION</a></li>
                         <li><a href="{{ url_for('dzoneforums') }}">DEVELOPER ZONE</a></li>
                     </ul>

@@ -206,3 +206,20 @@ def product():
 @app.route('/documentation/topic')
 def topic():
     return render_template('Documentation/topic.html',title="Topic")
+
+
+
+@app.route('/Download')
+def enterprise():
+    return render_template('Download/enterprise.html')
+
+
+@app.route('/Download/enterprise')
+def community():
+    return render_template('Download/community.html')
+
+
+@app.route('/Download/windows')
+def windows():
+    return render_template('Download/windows.html')
+
