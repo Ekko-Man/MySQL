@@ -97,37 +97,27 @@ class Product(db.Model):
 
 
 class ProductMysqlServer(db.Model):
-    doc_id = db.Column(db.Integer, primary_key=True)
-<<<<<<< HEAD
+    product_id = db.Column(db.Integer, primary_key=True)
     url = db.Column(db.String(140))
     name = db.Column(db.String(80))
-=======
-
-    link = (db.String(200))
-    name = (db.String(100))
->>>>>>> 269921dd78c0b46ce58118db1c3ec23dbe2f4540
+    title_id=db.Column(db.Integer,db.ForeignKey('product.title_id'))
 
 
 class ProductXDevAPI(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-<<<<<<< HEAD
+    product_id = db.Column(db.Integer, primary_key=True)
     url = db.Column(db.String(140))
     name = db.Column(db.String(80))
-=======
-    link = (db.String(200))
-    name = (db.String(100))
->>>>>>> 269921dd78c0b46ce58118db1c3ec23dbe2f4540
+    title_id = db.Column(db.Integer, db.ForeignKey('product.title_id'))
+
+
 
 
 class ProductMySQLNDBCluster(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-<<<<<<< HEAD
+    product_id = db.Column(db.Integer, primary_key=True)
     url = db.Column(db.String(140))
     name = db.Column(db.String(80))
-=======
-    link = (db.String(200))
-    name = (db.String(100))
->>>>>>> 269921dd78c0b46ce58118db1c3ec23dbe2f4540
+    title_id = db.Column(db.Integer, db.ForeignKey('product.title_id'))
+
 
 
 class Mainbar(db.Model):
@@ -137,16 +127,15 @@ class Mainbar(db.Model):
 
 
 class Title(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    product_id = db.Column(db.Integer, primary_key=True)
     Name = db.Column(db.String(80))
     url = db.Column(db.String(140))
     MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
-<<<<<<< HEAD
-=======
+
 
 
 class Download(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    product_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
 
@@ -165,4 +154,3 @@ class Language(db.Model):
     name = db.Column(db.String(50))
 
 
->>>>>>> 269921dd78c0b46ce58118db1c3ec23dbe2f4540
