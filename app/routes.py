@@ -5,7 +5,7 @@ from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, \
     ResetPasswordRequestForm, ResetPasswordForm
-from app.models import User, Post
+from app.models import User, Post,ProductMysqlServer,ProductXDevAPI,ProductMySQLNDBCluster
 from app.email import send_password_reset_email
 
 
@@ -200,7 +200,11 @@ def documentation():
 @app.route('/documentation/product')
 def product():
 
-    return render_template('Documentation/product 2.html',title="Product")
+    server=ProductMysqlServer.query.all()
+    api=ProductXDevAPI.query.all()
+    pc=ProductMySQLNDBCluster.query.all()
+    return render_template('Documentation/product 2.html',title="Product",server=server,api=api,pc=pc)
+
 
 
 @app.route('/documentation/topic')
