@@ -136,6 +136,7 @@ class Title(db.Model):
 
 class Download(db.Model):
     product_id = db.Column(db.Integer, primary_key=True)
+    Type = db.Column(db.String(50))
     name = db.Column(db.String(50))
     MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
 

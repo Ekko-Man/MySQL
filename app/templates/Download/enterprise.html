@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% block app_content %}
+    <b><h2>MySQL Downloads</h2></b>
 
-</body>
-</html>
+    <h5>Oracle MySQL Cloud Service</h5>
+    Oracle MySQL Cloud Service is built on MySQL Enterprise Edition and powered by Oracle Cloud, providing an
+    enterprise-grade MySQL database service.
+    <hr>
+    <h5>MySQL Enterprise Edition</h5>
+    MySQL Enterprise Edition includes the most comprehensive set of advanced features and management tools for MySQL.
+    <ul class="list-group">
+        {% for downloads in download %}
+            <li class="list-group-item">{{ downloads.name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
