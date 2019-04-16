@@ -134,11 +134,15 @@ class Title(db.Model):
 
 
 
-class Download(db.Model):
+class EnterpriseDownload(db.Model):
     product_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
 
+class ClusterDownload(db.Model):
+    product_id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50))
+    MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
 
 class MySQLCommunity(db.Model):
     id = db.Column(db.Integer, primary_key=True)

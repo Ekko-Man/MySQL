@@ -1,5 +1,5 @@
 from app import db
-from app.models import User, Post,Product,ProductMysqlServer,ProductXDevAPI,ProductMySQLNDBCluster
+from app.models import User, Post,Product,ProductMysqlServer,ProductXDevAPI,ProductMySQLNDBCluster, EnterpriseDownload, ClusterDownload
 from datetime import datetime, timedelta
 import unittest
 
@@ -31,6 +31,20 @@ pc3=ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/ndbapi/en/ndbmemcache.
 pc4=ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/mysql-cluster-manager/1.4/en/",name="MySQL Cluster Manager 1.4",title_id="MySQLNDBCluster")
 pc5=ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/mysql-cluster-manager/1.3/en/",name="MySQL Cluster Manager 1.3",title_id="MySQLNDBCluster")
 
+down1 = EnterpriseDownload(name='MySQLDatabase', MainID=2)
+down2 = EnterpriseDownload(name='MySQL Storage Engines (InnoDB, MyISAM, etc.)', MainID=2)
+down3 = EnterpriseDownload(name='MySQL Connectors (JDBC, ODBC, .Net, etc.)', MainID=2)
+down4 = EnterpriseDownload(name='MySQL Replication', MainID=2)
+down5 = EnterpriseDownload(name='MySQL Partitioning', MainID=2)
+down6 = EnterpriseDownload(name='MySQL Utilities', MainID=2)
+down7 = EnterpriseDownload(name='MySQL Workbench', MainID=2)
+down8 = EnterpriseDownload(name='MySQL Enterprise Backup', MainID=2)
+down9 = EnterpriseDownload(name='MySQL Enterprise Monitor', MainID=2)
+
+down10 = ClusterDownload(name='MySQL Cluster', MainID=2)
+down11 = ClusterDownload(name='MySQL Cluster Manager', MainID=2)
+down12 = ClusterDownload(name='Plus, everything in MySQL Enterprise Edition', MainID=2)
+
 db.session.add(p1)
 db.session.add(p2)
 db.session.add(p3)
@@ -54,5 +68,19 @@ db.session.add(pc2)
 db.session.add(pc3)
 db.session.add(pc4)
 db.session.add(pc5)
+
+db.session.add(down1)
+db.session.add(down2)
+db.session.add(down3)
+db.session.add(down4)
+db.session.add(down5)
+db.session.add(down6)
+db.session.add(down7)
+db.session.add(down8)
+db.session.add(down9)
+
+db.session.add(down10)
+db.session.add(down11)
+db.session.add(down12)
 
 db.session.commit()

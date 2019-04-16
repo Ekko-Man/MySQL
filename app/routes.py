@@ -5,7 +5,7 @@ from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, \
     ResetPasswordRequestForm, ResetPasswordForm
-from app.models import User, Post,ProductMysqlServer,ProductXDevAPI,ProductMySQLNDBCluster
+from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, ClusterDownload
 from app.email import send_password_reset_email
 
 
@@ -194,31 +194,30 @@ def unfollow(username):
 
 @app.route('/documentation')
 def documentation():
-    return render_template('Documentation/documentation.html',title="documentation")
+    return render_template('Documentation/documentation.html', title="documentation")
 
 
 @app.route('/documentation/product')
 def product():
-
-    server=ProductMysqlServer.query.all()
-    api=ProductXDevAPI.query.all()
-    pc=ProductMySQLNDBCluster.query.all()
-    return render_template('Documentation/product 2.html',title="Product",server=server,api=api,pc=pc)
-
+    server = ProductMysqlServer.query.all()
+    api = ProductXDevAPI.query.all()
+    pc = ProductMySQLNDBCluster.query.all()
+    return render_template('Documentation/product 2.html', title="Product", server=server, api=api, pc=pc)
 
 
 @app.route('/documentation/topic')
 def topic():
-    return render_template('Documentation/topic.html',title="Topic")
-
+    return render_template('Documentation/topic.html', title="Topic")
 
 
 @app.route('/Download')
 def enterprise():
-    return render_template('Download/enterprise.html')
+    enterquery = EnterpriseDownload.query.all()
+    clusterquery = ClusterDownload.query.all()
+    return render_template('Download/enterprise.html', title="Enterprise", enterquery=enterquery, clusterquery=clusterquery)
 
 
-@app.route('/Download/enterprise')
+@app.route('/Download/community')
 def community():
     return render_template('Download/community.html')
 
@@ -226,4 +225,3 @@ def community():
 @app.route('/Download/windows')
 def windows():
     return render_template('Download/windows.html')
-
