@@ -96,6 +96,11 @@ class Product(db.Model):
 
 
 
+class Topic(db.Model):
+    title_id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(200))
+
+
 class ProductMysqlServer(db.Model):
     product_id = db.Column(db.Integer, primary_key=True)
     url = db.Column(db.String(140))
@@ -117,6 +122,25 @@ class ProductMySQLNDBCluster(db.Model):
     url = db.Column(db.String(140))
     name = db.Column(db.String(80))
     title_id = db.Column(db.Integer, db.ForeignKey('product.title_id'))
+
+
+class TopicGeneral(db.Model):
+    doc_id = db.Column(db.Integer, primary_key=True)
+    url = db.Column(db.String(140))
+    name = db.Column(db.String(80))
+    title_id = db.Column(db.Integer, db.ForeignKey('topic.title_id'))
+
+class TopicAdministrator_Guides(db.Model):
+    doc_id = db.Column(db.Integer, primary_key=True)
+    url = db.Column(db.String(140))
+    name = db.Column(db.String(80))
+    title_id = db.Column(db.Integer, db.ForeignKey('topic.title_id'))
+
+class TopicHA_Scalability(db.Model):
+    doc_id = db.Column(db.Integer, primary_key=True)
+    url = db.Column(db.String(140))
+    name = db.Column(db.String(80))
+    title_id = db.Column(db.Integer, db.ForeignKey('topic.title_id'))
 
 
 
