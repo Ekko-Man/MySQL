@@ -95,17 +95,17 @@ class Product(db.Model):
     title = db.Column(db.String(200))
 
 
-
 class Topic(db.Model):
     title_id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200))
 
 
+# ---------------------------DOCUMENTATION---------------------------
 class ProductMysqlServer(db.Model):
     product_id = db.Column(db.Integer, primary_key=True)
     url = db.Column(db.String(140))
     name = db.Column(db.String(80))
-    title_id=db.Column(db.Integer,db.ForeignKey('product.title_id'))
+    title_id = db.Column(db.Integer, db.ForeignKey('product.title_id'))
 
 
 class ProductXDevAPI(db.Model):
@@ -113,8 +113,6 @@ class ProductXDevAPI(db.Model):
     url = db.Column(db.String(140))
     name = db.Column(db.String(80))
     title_id = db.Column(db.Integer, db.ForeignKey('product.title_id'))
-
-
 
 
 class ProductMySQLNDBCluster(db.Model):
@@ -130,11 +128,13 @@ class TopicGeneral(db.Model):
     name = db.Column(db.String(80))
     title_id = db.Column(db.Integer, db.ForeignKey('topic.title_id'))
 
+
 class TopicAdministrator_Guides(db.Model):
     doc_id = db.Column(db.Integer, primary_key=True)
     url = db.Column(db.String(140))
     name = db.Column(db.String(80))
     title_id = db.Column(db.Integer, db.ForeignKey('topic.title_id'))
+
 
 class TopicHA_Scalability(db.Model):
     doc_id = db.Column(db.Integer, primary_key=True)
@@ -142,6 +142,9 @@ class TopicHA_Scalability(db.Model):
     name = db.Column(db.String(80))
     title_id = db.Column(db.Integer, db.ForeignKey('topic.title_id'))
 
+
+# ---------------------------DOCUMENTATION---------------------------
+# ---------------------------Bar---------------------------
 
 
 class Mainbar(db.Model):
@@ -156,6 +159,8 @@ class Title(db.Model):
     url = db.Column(db.String(140))
     MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
 
+# ---------------------------bar---------------------------
+# ---------------------------Download---------------------------
 
 
 class EnterpriseDownload(db.Model):
@@ -163,10 +168,12 @@ class EnterpriseDownload(db.Model):
     name = db.Column(db.String(50))
     MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
 
+
 class ClusterDownload(db.Model):
     product_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
+
 
 class MySQLCommunity(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -176,9 +183,8 @@ class MySQLCommunity(db.Model):
     com_link = db.Column(db.String(200))
     MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
 
+# ---------------------------Download---------------------------
 
 class Language(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
-
-
