@@ -1,5 +1,5 @@
 from app import db
-from app.models import User, Post,Product,ProductMysqlServer,ProductXDevAPI,ProductMySQLNDBCluster, EnterpriseDownload, ClusterDownload,Topic,TopicGeneral,TopicAdministrator_Guides,TopicHA_Scalability
+from app.models import User, Post,Product,ProductMysqlServer,ProductXDevAPI,ProductMySQLNDBCluster, EnterpriseDownload, ClusterDownload, MySQLCommunity, Topic, TopicGeneral, TopicAdministrator_Guides, TopicHA_Scalability
 from datetime import datetime, timedelta
 import unittest
 
@@ -7,29 +7,42 @@ db.session.remove()
 db.drop_all()
 db.create_all()
 
+p1 = Product(title="MysqlServer")
+p2 = Product(title="XDevAPI")
+p3 = Product(title="MySQLNDBCluster")
 
-p1=Product(title="MysqlServer")
-p2=Product(title="XDevAPI")
-p3=Product(title="MySQLNDBCluster")
+pm1 = ProductMysqlServer(url="https://dev.mysql.com/doc/refman/8.0/en/", name="MySQL8.0ReferenceManual",
+                         title_id="MysqlServer")
+pm2 = ProductMysqlServer(url="https://dev.mysql.com/doc/refman/5.7/en/", name="MySQL 5.7 Reference Manual",
+                         title_id="MysqlServer")
+pm3 = ProductMysqlServer(url="https://dev.mysql.com/doc/refman/5.6/en/", name="MySQL 5.6 Reference Manual",
+                         title_id="MysqlServer")
+pm4 = ProductMysqlServer(url="https://dev.mysql.com/doc/refman/5.6/ja/", name="MySQL 5.6 Reference Manual (Japanese)",
+                         title_id="MysqlServer")
+pm5 = ProductMysqlServer(url="https://dev.mysql.com/doc/refman/5.5/en/", name="MySQL 5.5 Reference Manual",
+                         title_id="MysqlServer")
 
+px1 = ProductXDevAPI(url="https://dev.mysql.com/doc/dev/connector-cpp/8.0/",
+                     name="MySQL Connector/C++ X DevAPI Reference", title_id="XDevAPI")
+px2 = ProductXDevAPI(url="https://dev.mysql.com/doc/dev/connector-j/8.0/", name="MySQL Connector/J X DevAPI Reference",
+                     title_id="XDevAPI")
+px3 = ProductXDevAPI(url="https://dev.mysql.com/doc/dev/connector-net/8.0/",
+                     name="MySQL Connector/NET X DevAPI Reference", title_id="XDevAPI")
+px4 = ProductXDevAPI(url="https://dev.mysql.com/doc/dev/connector-nodejs/8.0/",
+                     name="MySQL Connector/Node.js X DevAPI Reference", title_id="XDevAPI")
+px5 = ProductXDevAPI(url="https://dev.mysql.com/doc/dev/connector-python/8.0/",
+                     name="MySQL Connector/Python X DevAPI Reference", title_id="XDevAPI")
 
-pm1=ProductMysqlServer(url="https://dev.mysql.com/doc/refman/8.0/en/", name="MySQL8.0ReferenceManual", title_id="MysqlServer")
-pm2=ProductMysqlServer(url="https://dev.mysql.com/doc/refman/5.7/en/", name="MySQL 5.7 Reference Manual", title_id="MysqlServer")
-pm3=ProductMysqlServer(url="https://dev.mysql.com/doc/refman/5.6/en/",name="MySQL 5.6 Reference Manual",title_id="MysqlServer")
-pm4=ProductMysqlServer(url="https://dev.mysql.com/doc/refman/5.6/ja/",name="MySQL 5.6 Reference Manual (Japanese)",title_id="MysqlServer")
-pm5=ProductMysqlServer(url="https://dev.mysql.com/doc/refman/5.5/en/",name="MySQL 5.5 Reference Manual",title_id="MysqlServer")
-
-px1=ProductXDevAPI(url="https://dev.mysql.com/doc/dev/connector-cpp/8.0/",name="MySQL Connector/C++ X DevAPI Reference",title_id="XDevAPI")
-px2=ProductXDevAPI(url="https://dev.mysql.com/doc/dev/connector-j/8.0/",name="MySQL Connector/J X DevAPI Reference",title_id="XDevAPI")
-px3=ProductXDevAPI(url="https://dev.mysql.com/doc/dev/connector-net/8.0/",name="MySQL Connector/NET X DevAPI Reference",title_id="XDevAPI")
-px4=ProductXDevAPI(url="https://dev.mysql.com/doc/dev/connector-nodejs/8.0/",name="MySQL Connector/Node.js X DevAPI Reference",title_id="XDevAPI")
-px5=ProductXDevAPI(url="https://dev.mysql.com/doc/dev/connector-python/8.0/",name="MySQL Connector/Python X DevAPI Reference",title_id="XDevAPI")
-
-pc1=ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/ndbapi/en/",name="NDB Cluster API Developer Guide",title_id="MySQLNDBCluster")
-pc2=ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/ndb-internals/en/index.html",name="NDB Cluster Internals Manual",title_id="MySQLNDBCluster")
-pc3=ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/ndbapi/en/ndbmemcache.html",name="memcache and NDB Cluster",title_id="MySQLNDBCluster")
-pc4=ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/mysql-cluster-manager/1.4/en/",name="MySQL Cluster Manager 1.4",title_id="MySQLNDBCluster")
-pc5=ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/mysql-cluster-manager/1.3/en/",name="MySQL Cluster Manager 1.3",title_id="MySQLNDBCluster")
+pc1 = ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/ndbapi/en/", name="NDB Cluster API Developer Guide",
+                             title_id="MySQLNDBCluster")
+pc2 = ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/ndb-internals/en/index.html",
+                             name="NDB Cluster Internals Manual", title_id="MySQLNDBCluster")
+pc3 = ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/ndbapi/en/ndbmemcache.html",
+                             name="memcache and NDB Cluster", title_id="MySQLNDBCluster")
+pc4 = ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/mysql-cluster-manager/1.4/en/",
+                             name="MySQL Cluster Manager 1.4", title_id="MySQLNDBCluster")
+pc5 = ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/mysql-cluster-manager/1.3/en/",
+                             name="MySQL Cluster Manager 1.3", title_id="MySQLNDBCluster")
 
 down1 = EnterpriseDownload(name='MySQLDatabase', MainID=2)
 down2 = EnterpriseDownload(name='MySQL Storage Engines (InnoDB, MyISAM, etc.)', MainID=2)
@@ -45,8 +58,15 @@ down10 = ClusterDownload(name='MySQL Cluster', MainID=2)
 down11 = ClusterDownload(name='MySQL Cluster Manager', MainID=2)
 down12 = ClusterDownload(name='Plus, everything in MySQL Enterprise Edition', MainID=2)
 
-
-
+com1 = MySQLCommunity(name='MySQL Community Server', version='(Current Generally Available Release: 8.0.15)',
+                      description='MySQL Community Server is the world most popular open source database.',
+                      com_link='Community/CommunityServer', MainID=2)
+com2 = MySQLCommunity(name='MySQL Cluster', version='(Current Generally Available Release: 7.6.9)',
+                      description='MySQL Cluster is a real-time, open source transactional database.',
+                      com_link='Community/Cluster', MainID=2)
+com3 = MySQLCommunity(name='MySQL Router', version='(Current Generally Available Release: 8.0.15)',
+                      description='MySQL Router is lightweight middleware that provides transparent routing between your application and any backend MySQL Servers.',
+                      com_link='Community/Router', MainID=2)
 
 t1=Topic(title="General")
 t2=Topic(title="Administrator Guides")
@@ -67,13 +87,9 @@ ts2=TopicHA_Scalability(url="https://dev.mysql.com/doc/refman/en/ha-memcached.ht
 ts3=TopicHA_Scalability(url="https://dev.mysql.com/doc/ndbapi/en/ndbmemcache.html",name="memcached with NDB Cluster",title_id="HA/Scalability")
 ts4=TopicHA_Scalability(url="https://dev.mysql.com/doc/refman/en/innodb-memcached.html",name="memcached with InnoDB",title_id="HA/Scalability")
 
-
-
 db.session.add(p1)
 db.session.add(p2)
 db.session.add(p3)
-
-
 
 db.session.add(pm1)
 db.session.add(pm2)
@@ -107,6 +123,9 @@ db.session.add(down10)
 db.session.add(down11)
 db.session.add(down12)
 
+db.session.add(com1)
+db.session.add(com2)
+db.session.add(com3)
 
 db.session.add(t1)
 db.session.add(t2)
@@ -127,5 +146,5 @@ db.session.add(ts2)
 db.session.add(ts3)
 db.session.add(ts4)
 
-
 db.session.commit()
+
