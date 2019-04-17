@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% block app_content %}
     <h1>MySQL Community Downloads</h1>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+    {% for com in comquery %}
+        <div class="jumbotron col-lg-7 col-md-7 col-sm-7">
+            <h2 class="display-4">{{ com.name }}</h2>
+            <p class="lead">{{ com.version }}</p>
+            <hr class="my-4">
+            <p>{{ com.description }}</p>
+            <a class="btn btn-primary btn-lg" href="{{ com.com_link }}" role="button">Download</a>
         </div>
-    </div>
+    {% endfor %}
 {% endblock %}

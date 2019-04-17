@@ -61,13 +61,13 @@ down12 = ClusterDownload(name='Plus, everything in MySQL Enterprise Edition', Ma
 
 com1 = MySQLCommunity(name='MySQL Community Server', version='(Current Generally Available Release: 8.0.15)',
                       description='MySQL Community Server is the world most popular open source database.',
-                      comlink='Community/CommunityServer', MainID=2)
+                      com_link='Community/CommunityServer', MainID=2)
 com2 = MySQLCommunity(name='MySQL Cluster', version='(Current Generally Available Release: 7.6.9)',
                       description='MySQL Cluster is a real-time, open source transactional database.',
-                      comlink='Community/Cluster', MainID=2)
+                      com_link='Community/Cluster', MainID=2)
 com3 = MySQLCommunity(name='MySQL Router', version='(Current Generally Available Release: 8.0.15)',
                       description='MySQL Router is lightweight middleware that provides transparent routing between your application and any backend MySQL Servers.',
-                      comlink='Community/Router', MainID=2)
+                      com_link='Community/Router', MainID=2)
 
 db.session.add(p1)
 db.session.add(p2)
