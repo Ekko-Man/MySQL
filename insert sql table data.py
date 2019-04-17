@@ -1,5 +1,5 @@
 from app import db
-from app.models import User, Post,Product,ProductMysqlServer,ProductXDevAPI,ProductMySQLNDBCluster, EnterpriseDownload, ClusterDownload
+from app.models import User, Post,Product,ProductMysqlServer,ProductXDevAPI,ProductMySQLNDBCluster, EnterpriseDownload, ClusterDownload,TopicGeneral,TopicAdministrator_Guides,TopicHA_Scalability
 from datetime import datetime, timedelta
 import unittest
 
@@ -44,6 +44,8 @@ down9 = EnterpriseDownload(name='MySQL Enterprise Monitor', MainID=2)
 down10 = ClusterDownload(name='MySQL Cluster', MainID=2)
 down11 = ClusterDownload(name='MySQL Cluster Manager', MainID=2)
 down12 = ClusterDownload(name='Plus, everything in MySQL Enterprise Edition', MainID=2)
+
+
 
 db.session.add(p1)
 db.session.add(p2)

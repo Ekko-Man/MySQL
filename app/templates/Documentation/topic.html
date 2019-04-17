@@ -2,12 +2,13 @@
 
 
 {% block app_content %}
-    <ul class="list-group">
-  <li class="list-group-item">Cras justo odio</li>
-  <li class="list-group-item">Dapibus ac facilisis in</li>
-  <li class="list-group-item">Morbi leo risus</li>
-  <li class="list-group-item">Porta ac consectetur ac</li>
-  <li class="list-group-item">Vestibulum at eros</li>
-</ul>
+     <p algin="left">Browse MySQL Documentation by: <a href="{{ url_for('product') }}" ) class="btn btn-primary">Product </a> <a href="{{ url_for('topic') }}" class="btn btn-primary">Topic </a></p>
+
+  <ul class="list-group col-sm-5 col-lg-5 col-sm-offset-1">
+      <li class="list-group-item list-group-item-action active">MySQL Server</li>
+      {% for p in server %}
+        <li class="list-group-item list-group-item-action"><a href="{{p.url}}">{{ p.name }}</a></li>
+      {% endfor %}
+      </ul>
 
 {% endblock app_content %}
