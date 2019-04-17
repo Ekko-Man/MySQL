@@ -5,7 +5,7 @@ from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, \
     ResetPasswordRequestForm, ResetPasswordForm
-from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, ClusterDownload
+from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, ClusterDownload, TopicGeneral,TopicAdministrator_Guides,TopicHA_Scalability
 from app.email import send_password_reset_email
 
 
@@ -207,7 +207,10 @@ def product():
 
 @app.route('/documentation/topic')
 def topic():
-    return render_template('Documentation/topic.html', title="Topic")
+    general=TopicGeneral.query.all()
+    admin=TopicAdministrator_Guides.query.all()
+    ha=TopicHA_Scalability.query.all()
+    return render_template('Documentation/topic.html', title="Topic",general=general,admin=admin,ha=ha)
 
 
 @app.route('/Download')

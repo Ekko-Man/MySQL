@@ -94,7 +94,7 @@ class Product(db.Model):
     title_id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200))
 
-class Topic(db.model):
+class Topic(db.Model):
     title_id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200))
 

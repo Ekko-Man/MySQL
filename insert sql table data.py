@@ -1,5 +1,5 @@
 from app import db
-from app.models import User, Post,Product,ProductMysqlServer,ProductXDevAPI,ProductMySQLNDBCluster, EnterpriseDownload, ClusterDownload,TopicGeneral,TopicAdministrator_Guides,TopicHA_Scalability
+from app.models import User, Post,Product,ProductMysqlServer,ProductXDevAPI,ProductMySQLNDBCluster, EnterpriseDownload, ClusterDownload,Topic,TopicGeneral,TopicAdministrator_Guides,TopicHA_Scalability
 from datetime import datetime, timedelta
 import unittest
 
@@ -45,9 +45,27 @@ down10 = ClusterDownload(name='MySQL Cluster', MainID=2)
 down11 = ClusterDownload(name='MySQL Cluster Manager', MainID=2)
 down12 = ClusterDownload(name='Plus, everything in MySQL Enterprise Edition', MainID=2)
 
+t1=Topic(title="General")
+t2=Topic(title="Administrator Guides")
+t3=Topic(title="HA/Scalability")
+
+tg1=TopicGeneral(url="https://dev.mysql.com/doc/refman/8.0/en/server-administration.html",name="Server Administration",title_id="General")
+tg2 =TopicGeneral(url="https://dev.mysql.com/doc/refman/8.0/en/sql-syntax.html",name="SQL Syntax",title_id="General")
+tg3 =TopicGeneral(url="https://dev.mysql.com/doc/refman/8.0/en/innodb-storage-engine.html",name="InnoDB Storage Engine",title_id="General")
+tg4 =TopicGeneral(url="https://dev.mysql.com/doc/refman/8.0/en/storage-engines.html",name="Alternative Storage Engines",title_id="General")
+
+tag1=TopicAdministrator_Guides(url="https://dev.mysql.com/doc/mysql-security-excerpt/8.0/en/index.html",name="Security",title_id="Administrator Guides")
+tag2=TopicAdministrator_Guides(url="https://dev.mysql.com/doc/mysql-secure-deployment-guide/8.0/en/index.html",name="Secure Deployment Guide",title_id="Administrator Guides")
+tag3=TopicAdministrator_Guides(url="https://dev.mysql.com/doc/mysql-startstop-excerpt/8.0/en/index.html",name="Startup / Shutdown",title_id="Administrator Guides")
+tag4=TopicAdministrator_Guides(url="https://dev.mysql.com/doc/mysql-backup-excerpt/8.0/en/index.html",name="Backup and Recovery Overview",title_id="Administrator Guides")
+
+ts1=TopicHA_Scalability(url="https://dev.mysql.com/doc/refman/8.0/en/mysql-innodb-cluster-userguide.html", name="MySQL InnoDB cluster", title_id="HA/Scalability")
+ts2=TopicHA_Scalability(url="https://dev.mysql.com/doc/refman/en/ha-memcached.html", name="memcached", title_id="HA/Scalability")
+ts3=TopicHA_Scalability(url="https://dev.mysql.com/doc/ndbapi/en/ndbmemcache.html",name="memcached with NDB Cluster",title_id="HA/Scalability")
+ts4=TopicHA_Scalability(url="https://dev.mysql.com/doc/refman/en/innodb-memcached.html",name="memcached with InnoDB",title_id="HA/Scalability")
 
 
-db.session.add(p1)
+
 db.session.add(p2)
 db.session.add(p3)
 
@@ -84,5 +102,26 @@ db.session.add(down9)
 db.session.add(down10)
 db.session.add(down11)
 db.session.add(down12)
+
+
+db.session.add(t1)
+db.session.add(t2)
+db.session.add(t3)
+
+db.session.add(tag1)
+db.session.add(tag2)
+db.session.add(tag3)
+db.session.add(tag4)
+
+db.session.add(tg1)
+db.session.add(tg2)
+db.session.add(tg3)
+db.session.add(tg4)
+
+db.session.add(ts1)
+db.session.add(ts2)
+db.session.add(ts3)
+db.session.add(ts4)
+
 
 db.session.commit()
