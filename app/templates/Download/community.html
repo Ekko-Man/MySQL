@@ -1,3 +1,13 @@
-{% extends 'base.html' %}
+{% extends 'Download/Download_base.html' %}
 {% block app_content %}
+    <h1>MySQL Community Downloads</h1>
+    {% for com in comquery %}
+        <div class="jumbotron col-lg-7 col-md-7 col-sm-7">
+            <h2 class="display-4">{{ com.name }}</h2>
+            <p class="lead">{{ com.version }}</p>
+            <hr class="my-4">
+            <p>{{ com.description }}</p>
+            <a class="btn btn-primary btn-lg" href="{{ com.com_link }}" role="button">Download</a>
+        </div>
+    {% endfor %}
 {% endblock %}

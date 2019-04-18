@@ -5,7 +5,9 @@ from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, \
     ResetPasswordRequestForm, ResetPasswordForm
-from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, ClusterDownload, TopicGeneral,TopicAdministrator_Guides,TopicHA_Scalability
+from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, \
+    ClusterDownload, MySQLCommunity
+from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, ClusterDownload, MySQLCommunity, TopicGeneral, TopicAdministrator_Guides, TopicHA_Scalability
 from app.email import send_password_reset_email
 
 
@@ -19,7 +21,7 @@ def before_request():
 @app.route('/', methods=['GET'])
 @app.route('/index', methods=['GET'])
 def index():
-    return render_template('index.html', title='Home')
+    return render_template('MYSQLCOM/index.html', title='Home')
 
 
 @app.route('/dzoneforums', methods=['GET', 'POST'])
@@ -217,12 +219,14 @@ def topic():
 def enterprise():
     enterquery = EnterpriseDownload.query.all()
     clusterquery = ClusterDownload.query.all()
-    return render_template('Download/enterprise.html', title="Enterprise", enterquery=enterquery, clusterquery=clusterquery)
+    return render_template('Download/enterprise.html', title="Enterprise", enterquery=enterquery,
+                           clusterquery=clusterquery)
 
 
 @app.route('/Download/community')
 def community():
-    return render_template('Download/community.html')
+    comquery = MySQLCommunity.query.all()
+    return render_template('Download/community.html', title="Community", comquery=comquery)
 
 
 @app.route('/Download/windows')
