@@ -67,7 +67,6 @@ ts2=TopicHA_Scalability(url="https://dev.mysql.com/doc/refman/en/ha-memcached.ht
 ts3=TopicHA_Scalability(url="https://dev.mysql.com/doc/ndbapi/en/ndbmemcache.html",name="memcached with NDB Cluster",title_id="HA/Scalability")
 ts4=TopicHA_Scalability(url="https://dev.mysql.com/doc/refman/en/innodb-memcached.html",name="memcached with InnoDB",title_id="HA/Scalability")
 
-git
 db.session.add(p1)
 db.session.add(p2)
 db.session.add(p3)
