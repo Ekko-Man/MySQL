@@ -182,3 +182,17 @@ class Language(db.Model):
     name = db.Column(db.String(50))
 
 
+#class Downloads(db.Model):
+#    Dow_id = db.Column(db.Integer, primary_key=True)
+#    name = db.Column(db.String(50))
+#
+#
+#class Documentation(db.Model):
+#    Doc_id = db.Column(db.Integer, primary_key=True)
+#    name = db.column(db.String(50))
+#    pr_id = db.Column(db.Integer, db.ForeignKey("product.title_id"))
+#    top_id = db.Column(db.Integer, db.ForeignKey("topic.title_id"))
+#
+#class Developer_zone(db.Model):
+#    Dev_id=db.Column(db.Integer,primary_key=True)
+#    name=db.column(db.String(50))
