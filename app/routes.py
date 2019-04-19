@@ -7,7 +7,8 @@ from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, \
     ResetPasswordRequestForm, ResetPasswordForm
 from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, \
     ClusterDownload, MySQLCommunity
-from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, ClusterDownload, MySQLCommunity, TopicGeneral, TopicAdministrator_Guides, TopicHA_Scalability
+from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, \
+    ClusterDownload, MySQLCommunity, TopicGeneral, TopicAdministrator_Guides, TopicHA_Scalability, Windows
 from app.email import send_password_reset_email
 
 
@@ -209,10 +210,10 @@ def product():
 
 @app.route('/documentation/topic')
 def topic():
-    general=TopicGeneral.query.all()
-    admin=TopicAdministrator_Guides.query.all()
-    ha=TopicHA_Scalability.query.all()
-    return render_template('Documentation/topic.html', title="Topic",general=general,admin=admin,ha=ha)
+    general = TopicGeneral.query.all()
+    admin = TopicAdministrator_Guides.query.all()
+    ha = TopicHA_Scalability.query.all()
+    return render_template('Documentation/topic.html', title="Topic", general=general, admin=admin, ha=ha)
 
 
 @app.route('/Download')
@@ -231,4 +232,5 @@ def community():
 
 @app.route('/Download/windows')
 def windows():
-    return render_template('Download/windows.html')
+    winquery = Windows.query.all()
+    return render_template('Download/windows.html', title="Windows", winquery=winquery)
