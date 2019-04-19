@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, make_response
 from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.urls import url_parse
 from app import app, db
@@ -193,6 +193,31 @@ def unfollow(username):
     db.session.commit()
     flash('You are not following {}.'.format(username))
     return redirect(url_for('user', username=username))
+
+
+@app.route('/setcookie', methods=['POST', 'GET'])
+def setcookie():
+    if request.method == 'POST':
+        user = request.form['username']
+    resp = make_response(render_template('readcookie.html'))
+    expire = datetime.datetime.now()
+    expire = expire + datetime.timedelta(seconds=60000)
+    resp.set_cookie('userID', user, expires=expire)
+    resp.set_cookie('secureUserID', user, expires=expire, secure=True)
+    resp.set_cookie('httpOnlyUserID', user, expires=expire, httponly=True)
+    return resp
+
+
+@app.route('/getcookie')
+def getcookie():
+    userID = request.cookies.get('userID') or ''
+    secureUserID = request.cookies.get('secureUserID') or ''
+    httpOnlyUserID = request.cookies.get('httpOnlyUserID') or ''
+    return f"""
+<h1>userID: {userID} </h1>
+<h1>secureUserID: {secureUserID} </h1>
+<h1>httpOnlyUserID: {httpOnlyUserID} </h1>   
+"""
 
 
 @app.route('/documentation')
