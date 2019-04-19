@@ -1,5 +1,7 @@
 from app import db
-from app.models import User, Post,Product,ProductMysqlServer,ProductXDevAPI,ProductMySQLNDBCluster, EnterpriseDownload, ClusterDownload, MySQLCommunity, Topic, TopicGeneral, TopicAdministrator_Guides, TopicHA_Scalability
+from app.models import User, Post, Product, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, \
+    EnterpriseDownload, ClusterDownload, MySQLCommunity, Topic, TopicGeneral, TopicAdministrator_Guides, \
+    TopicHA_Scalability, Windows
 from datetime import datetime, timedelta
 import unittest
 
@@ -61,32 +63,62 @@ down12 = ClusterDownload(name='Plus, everything in MySQL Enterprise Edition', Ma
 
 com1 = MySQLCommunity(name='MySQL Community Server', version='(Current Generally Available Release: 8.0.15)',
                       description='MySQL Community Server is the world most popular open source database.',
-                      com_link='Community/CommunityServer', MainID=2)
+                      com_link='#', MainID=2)
 com2 = MySQLCommunity(name='MySQL Cluster', version='(Current Generally Available Release: 7.6.9)',
                       description='MySQL Cluster is a real-time, open source transactional database.',
-                      com_link='Community/Cluster', MainID=2)
+                      com_link='#', MainID=2)
 com3 = MySQLCommunity(name='MySQL Router', version='(Current Generally Available Release: 8.0.15)',
                       description='MySQL Router is lightweight middleware that provides transparent routing between your application and any backend MySQL Servers.',
-                      com_link='Community/Router', MainID=2)
+                      com_link='#', MainID=2)
 
-t1=Topic(title="General")
-t2=Topic(title="Administrator Guides")
-t3=Topic(title="HA/Scalability")
+win1 = Windows(name='MySQL Installer',
+               description='MySQL Installer provides an easy to use, wizard-based installation experience for all MySQL software on Windows.',
+               win_link='#')
+win2 = Windows(name='MySQL Connectors',
+               description='MySQL offers industry standard database driver connectivity for using MySQL with applications and tools.',
+               win_link='#')
+win3 = Windows(name='MySQL Workbench',
+               description='MySQL Workbench provides DBAs and developers an integrated tools environment for database design, administration, SQL development and database migration.',
+               win_link='#')
+win4 = Windows(name='MySQL for Excel',
+               description='MySQL for Excel enables users to import, export and edit MySQL data using Microsoft Excel. Available with MySQL Installer.',
+               win_link='#')
+win5 = Windows(name='MySQL Notifier',
+               description='MySQL Notifier enables developers and DBAs to easily monitor, start and stop MySQL database instances. Available with MySQL Installer.',
+               win_link='#')
+win6 = Windows(name='MySQL for Visual Studio',
+               description='MySQL for Visual Studio provides access to MySQL objects and data using Visual Studio. Available with MySQL Installer.',
+               win_link='#')
 
-tg1=TopicGeneral(url="https://dev.mysql.com/doc/refman/8.0/en/server-administration.html",name="Server Administration",title_id="General")
-tg2 =TopicGeneral(url="https://dev.mysql.com/doc/refman/8.0/en/sql-syntax.html",name="SQL Syntax",title_id="General")
-tg3 =TopicGeneral(url="https://dev.mysql.com/doc/refman/8.0/en/innodb-storage-engine.html",name="InnoDB Storage Engine",title_id="General")
-tg4 =TopicGeneral(url="https://dev.mysql.com/doc/refman/8.0/en/storage-engines.html",name="Alternative Storage Engines",title_id="General")
+t1 = Topic(title="General")
+t2 = Topic(title="Administrator Guides")
+t3 = Topic(title="HA/Scalability")
 
-tag1=TopicAdministrator_Guides(url="https://dev.mysql.com/doc/mysql-security-excerpt/8.0/en/index.html",name="Security",title_id="Administrator Guides")
-tag2=TopicAdministrator_Guides(url="https://dev.mysql.com/doc/mysql-secure-deployment-guide/8.0/en/index.html",name="Secure Deployment Guide",title_id="Administrator Guides")
-tag3=TopicAdministrator_Guides(url="https://dev.mysql.com/doc/mysql-startstop-excerpt/8.0/en/index.html",name="Startup / Shutdown",title_id="Administrator Guides")
-tag4=TopicAdministrator_Guides(url="https://dev.mysql.com/doc/mysql-backup-excerpt/8.0/en/index.html",name="Backup and Recovery Overview",title_id="Administrator Guides")
+tg1 = TopicGeneral(url="https://dev.mysql.com/doc/refman/8.0/en/server-administration.html",
+                   name="Server Administration", title_id="General")
+tg2 = TopicGeneral(url="https://dev.mysql.com/doc/refman/8.0/en/sql-syntax.html", name="SQL Syntax", title_id="General")
+tg3 = TopicGeneral(url="https://dev.mysql.com/doc/refman/8.0/en/innodb-storage-engine.html",
+                   name="InnoDB Storage Engine", title_id="General")
+tg4 = TopicGeneral(url="https://dev.mysql.com/doc/refman/8.0/en/storage-engines.html",
+                   name="Alternative Storage Engines", title_id="General")
 
-ts1=TopicHA_Scalability(url="https://dev.mysql.com/doc/refman/8.0/en/mysql-innodb-cluster-userguide.html", name="MySQL InnoDB cluster", title_id="HA/Scalability")
-ts2=TopicHA_Scalability(url="https://dev.mysql.com/doc/refman/en/ha-memcached.html", name="memcached", title_id="HA/Scalability")
-ts3=TopicHA_Scalability(url="https://dev.mysql.com/doc/ndbapi/en/ndbmemcache.html",name="memcached with NDB Cluster",title_id="HA/Scalability")
-ts4=TopicHA_Scalability(url="https://dev.mysql.com/doc/refman/en/innodb-memcached.html",name="memcached with InnoDB",title_id="HA/Scalability")
+tag1 = TopicAdministrator_Guides(url="https://dev.mysql.com/doc/mysql-security-excerpt/8.0/en/index.html",
+                                 name="Security", title_id="Administrator Guides")
+tag2 = TopicAdministrator_Guides(url="https://dev.mysql.com/doc/mysql-secure-deployment-guide/8.0/en/index.html",
+                                 name="Secure Deployment Guide", title_id="Administrator Guides")
+tag3 = TopicAdministrator_Guides(url="https://dev.mysql.com/doc/mysql-startstop-excerpt/8.0/en/index.html",
+                                 name="Startup / Shutdown", title_id="Administrator Guides")
+tag4 = TopicAdministrator_Guides(url="https://dev.mysql.com/doc/mysql-backup-excerpt/8.0/en/index.html",
+                                 name="Backup and Recovery Overview", title_id="Administrator Guides")
+
+ts1 = TopicHA_Scalability(url="https://dev.mysql.com/doc/refman/8.0/en/mysql-innodb-cluster-userguide.html",
+                          name="MySQL InnoDB cluster", title_id="HA/Scalability")
+ts2 = TopicHA_Scalability(url="https://dev.mysql.com/doc/refman/en/ha-memcached.html", name="memcached",
+                          title_id="HA/Scalability")
+ts3 = TopicHA_Scalability(url="https://dev.mysql.com/doc/ndbapi/en/ndbmemcache.html", name="memcached with NDB Cluster",
+                          title_id="HA/Scalability")
+ts4 = TopicHA_Scalability(url="https://dev.mysql.com/doc/refman/en/innodb-memcached.html", name="memcached with InnoDB",
+                          title_id="HA/Scalability")
 
 db.session.add(p1)
 db.session.add(p2)
@@ -128,6 +160,13 @@ db.session.add(com1)
 db.session.add(com2)
 db.session.add(com3)
 
+db.session.add(win1)
+db.session.add(win2)
+db.session.add(win3)
+db.session.add(win4)
+db.session.add(win5)
+db.session.add(win6)
+
 db.session.add(t1)
 db.session.add(t2)
 db.session.add(t3)
@@ -149,4 +188,3 @@ db.session.add(ts4)
 # ---------------------------DOCUMENTATION---------------------------
 
 db.session.commit()
-

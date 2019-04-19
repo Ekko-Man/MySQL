@@ -159,12 +159,12 @@ class Title(db.Model):
 
 
 class EnterpriseDownload(db.Model):
-    product_id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
 
 class ClusterDownload(db.Model):
-    product_id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
 
@@ -175,6 +175,14 @@ class MySQLCommunity(db.Model):
     description = db.Column(db.String(200))
     download = db.Column(db.String(100))
     MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
+
+class Windows(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50))
+    description = db.Column(db.String(200))
+    win_link = db.Column(db.String(200))
+    MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
+# ---------------------------Download---------------------------
 
 
 class Language(db.Model):
