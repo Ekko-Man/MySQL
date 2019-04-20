@@ -35,10 +35,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ url_for('index') }}">MYSQL.COM</a></li>
-                        <li><a href="{{ url_for('enterprise') }}">DOWNLOADS</a></li>
-                        <li><a href="{{ url_for('documentation') }}">DOCUMENTATION</a></li>
-                        <li><a href="{{ url_for('developerzone') }}">DEVELOPER ZONE</a></li>
+                        {% for mainq in mainbarquery %}
+                            <li><a href="{{ mainq.url }}">{{ mainq.Name }}</a></li>
+                        {% endfor %}
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         {% if current_user.is_anonymous %}

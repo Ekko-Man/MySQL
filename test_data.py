@@ -1,13 +1,54 @@
 from app import db
 from app.models import User, Post, Product, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, \
     EnterpriseDownload, ClusterDownload, MySQLCommunity, Topic, TopicGeneral, TopicAdministrator_Guides, \
-    TopicHA_Scalability, Windows, ForumsTopic, ForumsPost, ForumsPostContect
+    TopicHA_Scalability, Windows, ForumsTopic, ForumsPost, ForumsPostContect, Mainbar, MySQLBar, DownloadBar, DocumentBar, DZBar
 from datetime import datetime, timedelta
 import unittest
 
 db.session.remove()
 db.drop_all()
 db.create_all()
+
+# ---------------------------MainBar-------------------------------
+M1 = Mainbar(Name='MYSQL.COM', url='/index')
+M2 = Mainbar(Name='DOWNLOADS', url='/Download')
+M3 = Mainbar(Name='DOCUMENTATION', url='/documentation')
+M4 = Mainbar(Name='DEVELOPER ZONE', url='/dzoneforums')
+
+# ---------------------------SubBar---------------------------------
+My1 = MySQLBar(Name='Products', url='#', MainID=1)
+My2 = MySQLBar(Name='Cloud', url='#', MainID=1)
+My3 = MySQLBar(Name='Services', url='#', MainID=1)
+My4 = MySQLBar(Name='Partners', url='#', MainID=1)
+My5 = MySQLBar(Name='Customers', url='#', MainID=1)
+My6 = MySQLBar(Name='Why MySQL?', url='#', MainID=1)
+My7 = MySQLBar(Name='News & Events', url='#', MainID=1)
+My8 = MySQLBar(Name='How to Buy', url='#', MainID=1)
+
+Down1 = DownloadBar(Name='Enterprise', url='/Download', MainID=2)
+Down2 = DownloadBar(Name='Community', url='/Download/community', MainID=2)
+Down3 = DownloadBar(Name='Yum Repository', url='#', MainID=2)
+Down4 = DownloadBar(Name='APT Repository', url='#', MainID=2)
+Down5 = DownloadBar(Name='SUSE Repository', url='#', MainID=2)
+Down6 = DownloadBar(Name='Windows', url='Download/windows.html', MainID=2)
+Down7 = DownloadBar(Name='Archives', url='#', MainID=2)
+
+Doc1 = DocumentBar(Name='MySQL Server', url='#', MainID=3)
+Doc2 = DocumentBar(Name='MySQL Enterprise', url='#', MainID=3)
+Doc3 = DocumentBar(Name='Workbench', url='#', MainID=3)
+Doc4 = DocumentBar(Name='InnoDB Cluster', url='#', MainID=3)
+Doc5 = DocumentBar(Name='MySQL NDB Cluster', url='#', MainID=3)
+Doc6 = DocumentBar(Name='Connectors', url='#', MainID=3)
+Doc7 = DocumentBar(Name='More', url='#', MainID=3)
+
+DZ1 = DZBar(Name='Forums', url='forums', MainID=4)
+DZ2 = DZBar(Name='Bugs', url='https://bugs.mysql.com/', MainID=4)
+DZ3 = DZBar(Name='Worklog', url='https://dev.mysql.com/worklog/', MainID=4)
+DZ4 = DZBar(Name='Labs', url='https://labs.mysql.com/', MainID=4)
+DZ5 = DZBar(Name='Planet MySQL', url='https://planet.mysql.com/', MainID=4)
+DZ6 = DZBar(Name='News and Events', url='https://www.mysql.com/news-and-events/web-seminars/', MainID=4)
+DZ7 = DZBar(Name='Community', url='https://dev.mysql.com/community/', MainID=4)
+
 
 # ---------------------------DOCUMENTATION---------------------------
 p1 = Product(title="MysqlServer")
@@ -47,19 +88,21 @@ pc4 = ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/mysql-cluster-manage
 pc5 = ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/mysql-cluster-manager/1.3/en/",
                              name="MySQL Cluster Manager 1.3", title_id="MySQLNDBCluster")
 
-down1 = EnterpriseDownload(name='MySQLDatabase', MainID=2)
-down2 = EnterpriseDownload(name='MySQL Storage Engines (InnoDB, MyISAM, etc.)', MainID=2)
-down3 = EnterpriseDownload(name='MySQL Connectors (JDBC, ODBC, .Net, etc.)', MainID=2)
-down4 = EnterpriseDownload(name='MySQL Replication', MainID=2)
-down5 = EnterpriseDownload(name='MySQL Partitioning', MainID=2)
-down6 = EnterpriseDownload(name='MySQL Utilities', MainID=2)
-down7 = EnterpriseDownload(name='MySQL Workbench', MainID=2)
-down8 = EnterpriseDownload(name='MySQL Enterprise Backup', MainID=2)
-down9 = EnterpriseDownload(name='MySQL Enterprise Monitor', MainID=2)
+# ------------------------------Download----------------------------
 
-down10 = ClusterDownload(name='MySQL Cluster', MainID=2)
-down11 = ClusterDownload(name='MySQL Cluster Manager', MainID=2)
-down12 = ClusterDownload(name='Plus, everything in MySQL Enterprise Edition', MainID=2)
+down1 = EnterpriseDownload(name='MySQLDatabase', MainID=1)
+down2 = EnterpriseDownload(name='MySQL Storage Engines (InnoDB, MyISAM, etc.)', MainID=1)
+down3 = EnterpriseDownload(name='MySQL Connectors (JDBC, ODBC, .Net, etc.)', MainID=1)
+down4 = EnterpriseDownload(name='MySQL Replication', MainID=1)
+down5 = EnterpriseDownload(name='MySQL Partitioning', MainID=1)
+down6 = EnterpriseDownload(name='MySQL Utilities', MainID=1)
+down7 = EnterpriseDownload(name='MySQL Workbench', MainID=1)
+down8 = EnterpriseDownload(name='MySQL Enterprise Backup', MainID=1)
+down9 = EnterpriseDownload(name='MySQL Enterprise Monitor', MainID=1)
+
+down10 = ClusterDownload(name='MySQL Cluster', MainID=1)
+down11 = ClusterDownload(name='MySQL Cluster Manager', MainID=1)
+down12 = ClusterDownload(name='Plus, everything in MySQL Enterprise Edition', MainID=1)
 
 com1 = MySQLCommunity(name='MySQL Community Server', version='(Current Generally Available Release: 8.0.15)',
                       description='MySQL Community Server is the world most popular open source database.',
@@ -73,22 +116,24 @@ com3 = MySQLCommunity(name='MySQL Router', version='(Current Generally Available
 
 win1 = Windows(name='MySQL Installer',
                description='MySQL Installer provides an easy to use, wizard-based installation experience for all MySQL software on Windows.',
-               win_link='#')
+               win_link='#', MainID=6)
 win2 = Windows(name='MySQL Connectors',
                description='MySQL offers industry standard database driver connectivity for using MySQL with applications and tools.',
-               win_link='#')
+               win_link='#', MainID=6)
 win3 = Windows(name='MySQL Workbench',
                description='MySQL Workbench provides DBAs and developers an integrated tools environment for database design, administration, SQL development and database migration.',
-               win_link='#')
+               win_link='#', MainID=6)
 win4 = Windows(name='MySQL for Excel',
                description='MySQL for Excel enables users to import, export and edit MySQL data using Microsoft Excel. Available with MySQL Installer.',
-               win_link='#')
+               win_link='#', MainID=6)
 win5 = Windows(name='MySQL Notifier',
                description='MySQL Notifier enables developers and DBAs to easily monitor, start and stop MySQL database instances. Available with MySQL Installer.',
-               win_link='#')
+               win_link='#', MainID=6)
 win6 = Windows(name='MySQL for Visual Studio',
                description='MySQL for Visual Studio provides access to MySQL objects and data using Visual Studio. Available with MySQL Installer.',
-               win_link='#')
+               win_link='#', MainID=6)
+
+# ----------------------Download----------------------------------
 
 t1 = Topic(title="General")
 t2 = Topic(title="Administrator Guides")
@@ -119,6 +164,44 @@ ts3 = TopicHA_Scalability(url="https://dev.mysql.com/doc/ndbapi/en/ndbmemcache.h
                           title_id="HA/Scalability")
 ts4 = TopicHA_Scalability(url="https://dev.mysql.com/doc/refman/en/innodb-memcached.html", name="memcached with InnoDB",
                           title_id="HA/Scalability")
+
+db.session.add(M1)
+db.session.add(M2)
+db.session.add(M3)
+db.session.add(M4)
+
+db.session.add(My1)
+db.session.add(My2)
+db.session.add(My3)
+db.session.add(My4)
+db.session.add(My5)
+db.session.add(My6)
+db.session.add(My7)
+db.session.add(My8)
+
+db.session.add(Down1)
+db.session.add(Down2)
+db.session.add(Down3)
+db.session.add(Down4)
+db.session.add(Down5)
+db.session.add(Down6)
+db.session.add(Down7)
+
+db.session.add(Doc1)
+db.session.add(Doc2)
+db.session.add(Doc3)
+db.session.add(Doc4)
+db.session.add(Doc5)
+db.session.add(Doc6)
+db.session.add(Doc7)
+
+db.session.add(DZ1)
+db.session.add(DZ2)
+db.session.add(DZ3)
+db.session.add(DZ4)
+db.session.add(DZ5)
+db.session.add(DZ6)
+db.session.add(DZ7)
 
 db.session.add(p1)
 db.session.add(p2)

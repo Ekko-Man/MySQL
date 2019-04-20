@@ -5,13 +5,9 @@
         <nav class="navbar navbar-default fixed-top navbar-light bg-light navbar-custom"
              style="background-color: #4479a1;">
             <ul class="nav navbar-nav">
-                <li><a class="flex-sm-fill text-sm-center nav-link" href="{{ url_for('forums')}}">Forums</a></li>
-                <li><a class="flex-sm-fill text-sm-center nav-link" href="https://bugs.mysql.com/">Bugs</a></li>
-                <li><a class="flex-sm-fill text-sm-center nav-link" href="https://dev.mysql.com/worklog/">Worklog</a></li>
-                <li><a class="flex-sm-fill text-sm-center nav-link" href="https://labs.mysql.com/">Labs</a></li>
-                <li><a class="flex-sm-fill text-sm-center nav-link" href="https://planet.mysql.com/">Planet MySQL</a></li>
-                <li><a class="flex-sm-fill text-sm-center nav-link" href="https://www.mysql.com/news-and-events/web-seminars/">News and Events</a></li>
-                <li><a class="flex-sm-fill text-sm-center nav-link" href="https://dev.mysql.com/community/">Community</a></li>
+                {% for dzq in dzquery %}
+                <li><a class="flex-sm-fill text-sm-center nav-link" href="{{ dzq.url }}">{{ dzq.Name }}</a></li>
+                {% endfor %}
             </ul>
         </nav>
     </div>
