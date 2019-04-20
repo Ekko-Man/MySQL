@@ -307,6 +307,19 @@ def forums():
                            storages=typestorage, dzquery=dzquery, mainbarquery=mainbarquery)
 
 
+@app.route('/forumstopic/<topictype>')
+def forumstopic(topictype):
+    supertopic = ForumsTopic.query.filter_by(name=f'{topictype}').first()
+    if supertopic is None:
+        flash("What are u doing? We don't have this TOPIC!!!!!  GOOD BYE")
+        return redirect(url_for('index'))
+    idd = supertopic.id
+    data = ForumsPost.query.filter_by(topic_id=f'{str(idd)}').all()
+    dzquery = DZBar.query.all()
+    mainbarquery = Mainbar.query.all()
+    return render_template('DeveloperZone/supertopic.html', dzquery=dzquery, mainbarquery=mainbarquery, data=data)
+
+
 @app.route('/dzoneforums', methods=['GET', 'POST'])
 @login_required
 def dzoneforums():

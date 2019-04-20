@@ -366,13 +366,13 @@ db.session.add(CTR6)
 
 # ---------------------------DeveloperZone---------------------------
 ft1 = ForumsTopic(name="Announcements", description="MySQL related Product and Service announcements.",
-                  url="ForumsTopic/Announcements", type="Forums")
-ft2 = ForumsTopic(name="Perl", description="Forum for MySQL and Perl.", url="ForumsTopic/Perl", type="Languages")
-ft3 = ForumsTopic(name="PHP", description="Forum for MySQL and PHP.", url="ForumsTopic/PHP", type="Languages")
-ft4 = ForumsTopic(name="Ruby", description="Forum for MySQL and Ruby", url="ForumsTopic/Ruby", type="Languages")
-ft5 = ForumsTopic(name="InnoDB", description="Forum for InnoDB Storage Engine.", url="ForumsTopic/InnoDB",
+                  url="forumstopic/Announcements", type="Forums")
+ft2 = ForumsTopic(name="Perl", description="Forum for MySQL and Perl.", url="forumstopic/Perl", type="Languages")
+ft3 = ForumsTopic(name="PHP", description="Forum for MySQL and PHP.", url="forumstopic/PHP", type="Languages")
+ft4 = ForumsTopic(name="Ruby", description="Forum for MySQL and Ruby", url="forumstopic/Ruby", type="Languages")
+ft5 = ForumsTopic(name="InnoDB", description="Forum for InnoDB Storage Engine.", url="forumstopic/InnoDB",
                   type="Storage Engines")
-ft6 = ForumsTopic(name="MyISAM", description="Forum for MyISAM Storage Engine.", url="ForumsTopic/MyISAM",
+ft6 = ForumsTopic(name="MyISAM", description="Forum for MyISAM Storage Engine.", url="forumstopic/MyISAM",
                   type="Storage Engines")
 
 db.session.add(ft1)
@@ -382,29 +382,29 @@ db.session.add(ft4)
 db.session.add(ft5)
 db.session.add(ft6)
 
-fp11 = ForumsPost(subject="", url="", topic_id="1", writer_id="1")
-fp12 = ForumsPost(subject="", url="", topic_id="1", writer_id="2")
-fp13 = ForumsPost(subject="", url="", topic_id="1", writer_id="3")
+fp11 = ForumsPost(subject="MySQL Enterprise Backup 3.12.4 has been released", url="/forumspost/1", topic_id="1", writer_id="1")
+fp12 = ForumsPost(subject="MySQL Enterprise Backup 4.1.3 has been released", url="/forumspost/2", topic_id="1", writer_id="2")
+fp13 = ForumsPost(subject="MySQL Enterprise Backup 8.0.15 has been released", url="/forumspost/3", topic_id="1", writer_id="3")
 
-fp21 = ForumsPost(subject="", url="", topic_id="2", writer_id="4")
-fp22 = ForumsPost(subject="", url="", topic_id="2", writer_id="5")
-fp23 = ForumsPost(subject="", url="", topic_id="2", writer_id="6")
+fp21 = ForumsPost(subject="MySQL and Perl: Articles, Blogs, Docs", url="/forumspost/4", topic_id="2", writer_id="4")
+fp22 = ForumsPost(subject="DBIx::MyServer - Perl module that implements MySQL client/server protocol", url="/forumspost/5", topic_id="2", writer_id="5")
+fp23 = ForumsPost(subject="Can't connect to mysql from MAMP Perl", url="/forumspost/6", topic_id="2", writer_id="6")
 
-fp31 = ForumsPost(subject="", url="", topic_id="3", writer_id="3")
-fp32 = ForumsPost(subject="", url="", topic_id="3", writer_id="4")
-fp33 = ForumsPost(subject="", url="", topic_id="3", writer_id="5")
+fp31 = ForumsPost(subject="MySQL 8.0: X DevAPI PHP Extension", url="/forumspost/7", topic_id="3", writer_id="3")
+fp32 = ForumsPost(subject="MySQL Workbench: Plugins for PHP development", url="/forumspost/8", topic_id="3", writer_id="4")
+fp33 = ForumsPost(subject="Upgrading from MyISAM to InnoDB", url="/forumspost/9", topic_id="3", writer_id="5")
 
-fp41 = ForumsPost(subject="", url="", topic_id="4", writer_id="1")
-fp42 = ForumsPost(subject="", url="", topic_id="4", writer_id="2")
-fp43 = ForumsPost(subject="", url="", topic_id="4", writer_id="6")
+fp41 = ForumsPost(subject="Ruby and MySQL: Articles, Blogs, FAQs", url="/forumspost/11", topic_id="4", writer_id="1")
+fp42 = ForumsPost(subject="Permission denied", url="/forumspost/12", topic_id="4", writer_id="2")
+fp43 = ForumsPost(subject="MySQL Evolution - From 5.6 to 8.0 -- plus Ruby on Rails", url="/forumspost/13", topic_id="4", writer_id="6")
 
-fp51 = ForumsPost(subject="", url="", topic_id="5", writer_id="2")
-fp52 = ForumsPost(subject="", url="", topic_id="5", writer_id="3")
-fp53 = ForumsPost(subject="", url="", topic_id="5", writer_id="4")
+fp51 = ForumsPost(subject="MySQL 8.0: InnoDB New Lock free, scalable WAL design", url="/forumspost/14", topic_id="5", writer_id="2")
+fp52 = ForumsPost(subject="MySQL 8.0: Instant ADD COLUMN for InnoDB", url="/forumspost/15", topic_id="5", writer_id="3")
+fp53 = ForumsPost(subject="MySQL HA: InnoDB clusters", url="/forumspost/16", topic_id="5", writer_id="4")
 
-fp61 = ForumsPost(subject="", url="", topic_id="6", writer_id="5")
-fp62 = ForumsPost(subject="", url="", topic_id="6", writer_id="6")
-fp63 = ForumsPost(subject="", url="", topic_id="6", writer_id="1")
+fp61 = ForumsPost(subject="Meltdown Fix: 40% performance regression for MyISAM; recommend switch to InnoDB", url="/forumspost/17", topic_id="6", writer_id="5")
+fp62 = ForumsPost(subject="MySQL: InnoDB -vs- MyISAM", url="/forumspost/18", topic_id="6", writer_id="6")
+fp63 = ForumsPost(subject="MySQL 5.6: InnoDB Read-only Performance", url="/forumspost/19", topic_id="6", writer_id="1")
 
 db.session.add(fp11)
 db.session.add(fp12)
