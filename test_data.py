@@ -13,7 +13,7 @@ db.create_all()
 M1 = Mainbar(Name='MYSQL.COM', url='/index')
 M2 = Mainbar(Name='DOWNLOADS', url='/Download')
 M3 = Mainbar(Name='DOCUMENTATION', url='/documentation')
-M4 = Mainbar(Name='DEVELOPER ZONE', url='/dzoneforums')
+M4 = Mainbar(Name='DEVELOPER ZONE', url='/developerzone')
 
 # ---------------------------SubBar---------------------------------
 My1 = MySQLBar(Name='Products', url='#', MainID=1)

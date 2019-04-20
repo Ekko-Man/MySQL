@@ -263,7 +263,9 @@ def windows():
 
 @app.route('/developerzone')
 def developerzone():
-    return render_template("DeveloperZone/developerzone.html", title="developerzone")
+    dzquery = DZBar.query.all()
+    mainbarquery = Mainbar.query.all()
+    return render_template("DeveloperZone/developerzone.html", title="developerzone", dzquery=dzquery, mainbarquery=mainbarquery)
 
 
 @app.route('/forums')
@@ -271,8 +273,10 @@ def forums():
     typeforums = ForumsTopic.query.filter_by(type='Forums').all()
     typelanguages = ForumsTopic.query.filter_by(type='Languages').all()
     typestorage = ForumsTopic.query.filter_by(type='Storage Engines').all()
+    dzquery = DZBar.query.all()
+    mainbarquery = Mainbar.query.all()
     return render_template("DeveloperZone/forums.html", title="forums", forums=typeforums, languages=typelanguages,
-                           storages=typestorage)
+                           storages=typestorage, dzquery=dzquery, mainbarquery=mainbarquery)
 
 
 @app.route('/dzoneforums', methods=['GET', 'POST'])
@@ -292,9 +296,11 @@ def dzoneforums():
         if posts.has_next else None
     prev_url = url_for('dzoneforums', page=posts.prev_num) \
         if posts.has_prev else None
+    dzquery = DZBar.query.all()
+    mainbarquery = Mainbar.query.all()
     return render_template('DeveloperZone/dzoneforums.html', title='dzoneforums', form=form,
                            posts=posts.items, next_url=next_url,
-                           prev_url=prev_url)
+                           prev_url=prev_url, dzquery=dzquery, mainbarquery=mainbarquery)
 
 
 @app.route('/explore')
@@ -307,5 +313,7 @@ def explore():
         if posts.has_next else None
     prev_url = url_for('explore', page=posts.prev_num) \
         if posts.has_prev else None
+    dzquery = DZBar.query.all()
+    mainbarquery = Mainbar.query.all()
     return render_template("DeveloperZone/dzoneforums.html", title='Explore', posts=posts.items,
-                           next_url=next_url, prev_url=prev_url)
+                           next_url=next_url, prev_url=prev_url, dzquery=dzquery, mainbarquery=mainbarquery)
