@@ -1,13 +1,4 @@
-2019-04-20 20:08:40,621 ERROR: Exception on / [GET] [in C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py:1761]
-Traceback (most recent call last):
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1193, in _execute_context
-    context)
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\engine\default.py", line 508, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.OperationalError: no such table: customer_logo
-
-The above exception was the direct cause of the following exception:
-
+2019-04-20 22:37:19,064 ERROR: Exception on / [GET] [in C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -21,43 +12,48 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\hinhi\PycharmProjects\MySQL\app\routes.py", line 27, in index
-    customer = CustomerLogo.query.all()
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\orm\query.py", line 2783, in all
-    return list(self)
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\orm\query.py", line 2935, in __iter__
-    return self._execute_and_instances(context)
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\orm\query.py", line 2958, in _execute_and_instances
-    result = conn.execute(querycontext.statement, self._params)
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\engine\base.py", line 948, in execute
-    return meth(self, multiparams, params)
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 269, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1060, in _execute_clauseelement
-    compiled_sql, distilled_params
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1200, in _execute_context
-    context)
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1413, in _handle_dbapi_exception
-    exc_info
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\util\compat.py", line 203, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\util\compat.py", line 186, in reraise
+  File "C:\Users\hinhi\PycharmProjects\MySQL\app\routes.py", line 39, in index
+    customer5=customer5, customer6=customer6, mainbarquery=mainbarquery, mysqlquery=mysqlquery)
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask\templating.py", line 135, in render_template
+    context, ctx.app)
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask\templating.py", line 117, in _render
+    rv = template.render(context)
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\jinja2\environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\jinja2\_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1193, in _execute_context
-    context)
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\engine\default.py", line 508, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: customer_logo [SQL: 'SELECT customer_logo.id AS customer_logo_id, customer_logo.name AS customer_logo_name, customer_logo."urlForimage" AS "customer_logo_urlForimage", customer_logo.url AS customer_logo_url, customer_logo."indexID" AS "customer_logo_indexID" \nFROM customer_logo'] (Background on this error at: http://sqlalche.me/e/e3q8)
-2019-04-20 20:08:40,641 ERROR: Exception on / [GET] [in C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py:1761]
-Traceback (most recent call last):
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1193, in _execute_context
-    context)
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\engine\default.py", line 508, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.OperationalError: no such table: customer_logo
-
-The above exception was the direct cause of the following exception:
-
+  File "C:\Users\hinhi\PycharmProjects\MySQL\app\templates\MYSQLCOM\index.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "C:\Users\hinhi\PycharmProjects\MySQL\app\templates\MYSQLCOM\MYSQL_base.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\hinhi\PycharmProjects\MySQL\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 21, in block "body"
+    {% block navbar %}
+  File "C:\Users\hinhi\PycharmProjects\MySQL\app\templates\base.html", line 44, in block "navbar"
+    <li><a href="{{ url_for('login') }}">Login</a></li>
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask\helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask\helpers.py", line 345, in url_for
+    force_external=external)
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\werkzeug\routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'login'. Did you mean 'index' instead?
+2019-04-20 22:37:19,086 ERROR: Exception on / [GET] [in C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py:1761]
 Traceback (most recent call last):
   File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -71,30 +67,44 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py", line 1799, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\hinhi\PycharmProjects\MySQL\app\routes.py", line 27, in index
-    customer = CustomerLogo.query.all()
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\orm\query.py", line 2783, in all
-    return list(self)
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\orm\query.py", line 2935, in __iter__
-    return self._execute_and_instances(context)
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\orm\query.py", line 2958, in _execute_and_instances
-    result = conn.execute(querycontext.statement, self._params)
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\engine\base.py", line 948, in execute
-    return meth(self, multiparams, params)
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 269, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1060, in _execute_clauseelement
-    compiled_sql, distilled_params
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1200, in _execute_context
-    context)
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1413, in _handle_dbapi_exception
-    exc_info
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\util\compat.py", line 203, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\util\compat.py", line 186, in reraise
+  File "C:\Users\hinhi\PycharmProjects\MySQL\app\routes.py", line 39, in index
+    customer5=customer5, customer6=customer6, mainbarquery=mainbarquery, mysqlquery=mysqlquery)
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask\templating.py", line 135, in render_template
+    context, ctx.app)
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask\templating.py", line 117, in _render
+    rv = template.render(context)
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\jinja2\environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\jinja2\_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1193, in _execute_context
-    context)
-  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\sqlalchemy\engine\default.py", line 508, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: customer_logo [SQL: 'SELECT customer_logo.id AS customer_logo_id, customer_logo.name AS customer_logo_name, customer_logo."urlForimage" AS "customer_logo_urlForimage", customer_logo.url AS customer_logo_url, customer_logo."indexID" AS "customer_logo_indexID" \nFROM customer_logo'] (Background on this error at: http://sqlalche.me/e/e3q8)
+  File "C:\Users\hinhi\PycharmProjects\MySQL\app\templates\MYSQLCOM\index.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "C:\Users\hinhi\PycharmProjects\MySQL\app\templates\MYSQLCOM\MYSQL_base.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\hinhi\PycharmProjects\MySQL\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 21, in block "body"
+    {% block navbar %}
+  File "C:\Users\hinhi\PycharmProjects\MySQL\app\templates\base.html", line 44, in block "navbar"
+    <li><a href="{{ url_for('login') }}">Login</a></li>
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask\helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask\app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask\_compat.py", line 35, in reraise
+    raise value
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\flask\helpers.py", line 345, in url_for
+    force_external=external)
+  File "C:\Users\hinhi\PycharmProjects\MySQL\venv\lib\site-packages\werkzeug\routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'login'. Did you mean 'index' instead?

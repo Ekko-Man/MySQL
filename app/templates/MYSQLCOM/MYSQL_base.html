@@ -13,6 +13,10 @@
                 <li><a class="flex-sm-fill text-sm-center nav-link" href="#">Why MySQL?</a></li>
                 <li><a class="flex-sm-fill text-sm-center nav-link" href="#">News & Events</a></li>
                 <li><a class="flex-sm-fill text-sm-center nav-link" href="#">How to Buy</a></li>
+                 {% for myq in mysqlquery %}
+                <li><a class="flex-sm-fill text-sm-center nav-link" href="{{ myq.url }}">{{ myq.Name }}</a></li>
+                {% endfor %}
+
             </ul>
         </nav>
     </div>

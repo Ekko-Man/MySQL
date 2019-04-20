@@ -162,3 +162,7 @@ fabric.properties
 
 /app.db
 .idea/dataSources.xml
+
+logs/*
+.idea/dataSources.xml
+.idea/dataSources.xml

@@ -90,6 +90,38 @@ class Post(db.Model):
         return '<Post {}>'.format(self.body)
 
 
+
+
+# ---------------------------Forums---------------------------
+
+class ForumsTopic(db.Model):
+    __tablename__ = 'forums_topic'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80))
+    type = db.Column(db.String(50))
+    description = db.Column(db.String(150))
+    url = db.Column(db.String(140))
+
+
+class ForumsPost(db.Model):
+    __tablename__ = 'forums_post'
+    id = db.Column(db.Integer, primary_key=True)
+    subject = db.Column(db.String(180))
+    url = db.Column(db.String(140))
+    topic_id = db.Column(db.Integer, db.ForeignKey('forums_topic.id'))
+    writer_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+class ForumsPostContect(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    contect = db.Column(db.String(300))
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    post_id = db.Column(db.Integer, db.ForeignKey('forums_post.id'))
+
+
+# ---------------------------Forums---------------------------
+
+# ---------------------------DOCUMENTATION---------------------------
+
 class Product(db.Model):
     title_id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200))
@@ -142,29 +174,60 @@ class TopicHA_Scalability(db.Model):
     title_id = db.Column(db.Integer, db.ForeignKey('topic.title_id'))
 
 
+
+# ---------------------------DOCUMENTATION---------------------------
+
+# ---------------------------NavBar---------------------------
+
 class Mainbar(db.Model):
+    __tablename__ = 'Main_bar'
     id = db.Column(db.Integer, primary_key=True)
     Name = db.Column(db.String(80))
     url = db.Column(db.String(140))
 
 
-class Title(db.Model):
-    product_id = db.Column(db.Integer, primary_key=True)
+# -------------------------SubBar----------------------------
+class MySQLBar(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
     Name = db.Column(db.String(80))
     url = db.Column(db.String(140))
-    MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
+    MainID = db.Column(db.Integer, db.ForeignKey('Main_bar.id'))
+
+class DownloadBar(db.Model):
+    __tablename__ = 'Download_Bar'
+    id = db.Column(db.Integer, primary_key=True)
+    Name = db.Column(db.String(80))
+    url = db.Column(db.String(140))
+    MainID = db.Column(db.Integer, db.ForeignKey('Main_bar.id'))
+
+class DocumentBar(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    Name = db.Column(db.String(80))
+    url = db.Column(db.String(140))
+    MainID = db.Column(db.Integer, db.ForeignKey('Main_bar.id'))
+
+class DZBar(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    Name = db.Column(db.String(80))
+    url = db.Column(db.String(140))
+    MainID = db.Column(db.Integer, db.ForeignKey('Main_bar.id'))
+
+
+# ---------------------------Download---------------------------
 
 
 class EnterpriseDownload(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
-    MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
+    MainID = db.Column(db.Integer, db.ForeignKey('Download_Bar.id'))
+
 
 
 class ClusterDownload(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
-    MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
+    MainID = db.Column(db.Integer, db.ForeignKey('Download_Bar.id'))
+
 
 
 class MySQLCommunity(db.Model):
@@ -173,7 +236,8 @@ class MySQLCommunity(db.Model):
     version = db.Column(db.String(100))
     description = db.Column(db.String(200))
     com_link = db.Column(db.String(200))
-    MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
+    MainID = db.Column(db.Integer, db.ForeignKey('Download_Bar.id'))
+
 
 
 class Windows(db.Model):
@@ -190,6 +254,7 @@ class Windows(db.Model):
 class Language(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
+    MainID = db.Column(db.Integer, db.ForeignKey('Download_Bar.id'))
 
 
 # class Downloads(db.Model):
@@ -206,6 +271,7 @@ class Language(db.Model):
 # class Developer_zone(db.Model):
 #    Dev_id=db.Column(db.Integer,primary_key=True)
 #    name=db.column(db.String(50))
+
 
 # ---------------------------MySql---------------------------
 
@@ -254,4 +320,7 @@ class CustomerLogo(db.Model):
 
 
 
+
+
+# ---------------------------Download---------------------------
 

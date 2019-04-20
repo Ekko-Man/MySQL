@@ -40,15 +40,59 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title"> {% for o in MysqlOptions %}
+                <a href="{{ o.url }}">{{ o.producttitle }}</a></li>
+            {% endfor %}</h5>
+            <p class="card-text">The most comprehensive set of advanced features, management tools and technical support
+                to achieve the highest levels of MySQL scalability, security, reliability, and uptime. </p>
+            <a href="/MySQLCOM/Enterprise" class="card-link">Learn More »</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title"> {% for o in MysqlOptions2 %}
+                <a href="{{ o.url }}">{{ o.producttitle }}</a></li>
+            {% endfor %}</h5>
+            <p class="card-text">Built on MySQL Enterprise Edition and powered by the Oracle Cloud, Oracle MySQL Cloud
+                Service provides a simple, automated, integrated and enterprise ready MySQL cloud service, enabling
+                organizations to increase business agility and reduce costs </p>
+            <a href="/MySQLCOM/Cloud" class="card-link">Learn More »</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title"> {% for o in MysqlOptions3 %}
+                <a href="{{ o.url }}">{{ o.producttitle }}</a></li>
+            {% endfor %}</h5>
+            <p class="card-text">MySQL Cluster enables users to meet the database challenges of next generation web,
+                cloud, and communications services with uncompromising scalability, uptime and agility. </p>
+            <a href="https://www.mysql.com/products/cluster/" class="card-link">Learn More »</a>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title"> {% for o in MysqlOptions4 %}
+                <a href="{{ o.url }}">{{ o.producttitle }}</a></li>
+            {% endfor %}</h5>
+            <p class="card-text">Over 2000 ISVs, OEMs, and VARs rely on MySQL as their products' embedded database to
+                make their applications, hardware and appliances more competitive, bring them to market faster, and
+                lower their cost of goods sold. </p>
+            <a href="https://www.mysql.com/oem/" class="card-link">Learn More »</a>
+        </div>
+    </div>
 
-      <li class="list-group-item list-group-item-action active">MySQL Options:</li>
-      {% for o in MysqlOptions%}
-        <li class="list-group-item list-group-item-action"><a href="{{o.url}}">{{ o.producttitle }}</a></li>
-      {% endfor %}
+    <hr>
 
-    <ul class="list-group col-lg-1 col-md-1 col-sm-1">
-    <li class="list-group-item list-group-item-action active">Customer:</li>
-      {% for o in customer%}
-          <li class="list-group-item list-group-item-action"><img src="{{o.urlForimage}}"></li>
-{% endfor %}
+    <div class="container">
+    <h3>Some Of Our Customer:</h3>
+        <div class="row">
+            <div class="jumbotron col-lg-3 col-md-2 col-sm-3">
+                {% for o in customer %}
+                    <a href="{{ o.url }}"><img src="{{ o.urlForimage }}"></a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

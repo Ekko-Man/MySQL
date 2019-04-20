@@ -9,7 +9,9 @@ from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMy
     ClusterDownload, MySQLCommunity, index_product, Product_Enterprise, Product_Cluster, ProductForOME, \
     Product_SqlClound, CustomerLogo
 from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, \
-    ClusterDownload, MySQLCommunity, TopicGeneral, TopicAdministrator_Guides, TopicHA_Scalability, Windows
+    ClusterDownload, MySQLCommunity, TopicGeneral, TopicAdministrator_Guides, TopicHA_Scalability, Windows, ForumsTopic, \
+    ForumsPost, ForumsPostContect, Mainbar, MySQLBar, DownloadBar, DocumentBar, DZBar
+
 from app.email import send_password_reset_email
 
 
@@ -21,47 +23,24 @@ def before_request():
 
 
 @app.route('/', methods=['GET'])
-@app.route('/index', methods=['GET'])
 def index():
-    MysqlOptions = index_product.query.all()
+    MysqlOptions = index_product.query.filter_by(id=1)
+    MysqlOptions2 = index_product.query.filter_by(id=2)
+    MysqlOptions3 = index_product.query.filter_by(id=3)
+    MysqlOptions4 = index_product.query.filter_by(id=4)
     customer = CustomerLogo.query.all()
-    return render_template('MYSQLCOM/index.html', title='Home', MysqlOptions=MysqlOptions, customer=customer)
+    mainbarquery = Mainbar.query.all()
+    mysqlquery = MySQLBar.query.all()
+    return render_template('MYSQLCOM/index.html', title='Home', MysqlOptions=MysqlOptions, MysqlOptions2=MysqlOptions2,
+                           MysqlOptions3=MysqlOptions3, MysqlOptions4=MysqlOptions4, customer=customer,
+                           mainbarquery=mainbarquery, mysqlquery=mysqlquery)
 
 
-@app.route('/dzoneforums', methods=['GET', 'POST'])
-@login_required
-def dzoneforums():
-    form = PostForm()
-    if form.validate_on_submit():
-        post = Post(body=form.post.data, author=current_user)
-        db.session.add(post)
-        db.session.commit()
-        flash('Your post is now live!')
-        return redirect(url_for('index'))
-    page = request.args.get('page', 1, type=int)
-    posts = current_user.followed_posts().paginate(
-        page, app.config['POSTS_PER_PAGE'], False)
-    next_url = url_for('dzoneforums', page=posts.next_num) \
-        if posts.has_next else None
-    prev_url = url_for('dzoneforums', page=posts.prev_num) \
-        if posts.has_prev else None
-    return render_template('DeveloperZone/dzoneforums.html', title='dzoneforums', form=form,
-                           posts=posts.items, next_url=next_url,
-                           prev_url=prev_url)
-
-
-@app.route('/explore')
-@login_required
-def explore():
-    page = request.args.get('page', 1, type=int)
-    posts = Post.query.order_by(Post.timestamp.desc()).paginate(
-        page, app.config['POSTS_PER_PAGE'], False)
-    next_url = url_for('explore', page=posts.next_num) \
-        if posts.has_next else None
-    prev_url = url_for('explore', page=posts.prev_num) \
-        if posts.has_prev else None
-    return render_template("DeveloperZone/dzoneforums.html", title='Explore', posts=posts.items,
-                           next_url=next_url, prev_url=prev_url)
+@app.route('/index', methods=['GET'])
+def indexs():
+    mainbarquery = Mainbar.query.all()
+    mysqlquery = MySQLBar.query.all()
+    return render_template('MYSQLCOM/index.html', title='Home', mainbarquery=mainbarquery, mysqlquery=mysqlquery)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -79,7 +58,8 @@ def login():
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('index')
         return redirect(next_page)
-    return render_template('Login/login.html', title='Sign In', form=form)
+    mainbarquery = Mainbar.query.all()
+    return render_template('Login/login.html', title='Sign In', form=form, mainbarquery=mainbarquery)
 
 
 @app.route('/logout')
@@ -100,7 +80,8 @@ def register():
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
-    return render_template('Login/register.html', title='Register', form=form)
+    mainbarquery = Mainbar.query.all()
+    return render_template('Login/register.html', title='Register', form=form, mainbarquery=mainbarquery)
 
 
 @app.route('/reset_password_request', methods=['GET', 'POST'])
@@ -114,8 +95,9 @@ def reset_password_request():
             send_password_reset_email(user)
         flash('Check your email for the instructions to reset your password')
         return redirect(url_for('login'))
+    mainbarquery = Mainbar.query.all()
     return render_template('Login/reset_password_request.html',
-                           title='Reset Password', form=form)
+                           title='Reset Password', form=form, mainbarquery=mainbarquery)
 
 
 @app.route('/reset_password/<token>', methods=['GET', 'POST'])
@@ -131,7 +113,8 @@ def reset_password(token):
         db.session.commit()
         flash('Your password has been reset.')
         return redirect(url_for('login'))
-    return render_template('Login/reset_password.html', form=form)
+    mainbarquery = Mainbar.query.all()
+    return render_template('Login/reset_password.html', form=form, mainbarquery=mainbarquery)
 
 
 @app.route('/user/<username>')
@@ -145,8 +128,9 @@ def user(username):
         if posts.has_next else None
     prev_url = url_for('user', username=user.username, page=posts.prev_num) \
         if posts.has_prev else None
+    mainbarquery = Mainbar.query.all()
     return render_template('user.html', user=user, posts=posts.items,
-                           next_url=next_url, prev_url=prev_url)
+                           next_url=next_url, prev_url=prev_url, mainbarquery=mainbarquery)
 
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
@@ -162,8 +146,9 @@ def edit_profile():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
+    mainbarquery = Mainbar.query.all()
     return render_template('edit_profile.html', title='Edit Profile',
-                           form=form)
+                           form=form, mainbarquery=mainbarquery)
 
 
 @app.route('/follow/<username>')
@@ -179,7 +164,8 @@ def follow(username):
     current_user.follow(user)
     db.session.commit()
     flash('You are following {}!'.format(username))
-    return redirect(url_for('user', username=username))
+    mainbarquery = Mainbar.query.all()
+    return redirect(url_for('user', username=username), mainbarquery=mainbarquery)
 
 
 @app.route('/unfollow/<username>')
@@ -195,7 +181,8 @@ def unfollow(username):
     current_user.unfollow(user)
     db.session.commit()
     flash('You are not following {}.'.format(username))
-    return redirect(url_for('user', username=username))
+    mainbarquery = Mainbar.query.all()
+    return redirect(url_for('user', username=username), mainbarquery=mainbarquery)
 
 
 @app.route('/setcookie', methods=['POST', 'GET'])
@@ -225,7 +212,10 @@ def getcookie():
 
 @app.route('/documentation')
 def documentation():
-    return render_template('Documentation/documentation.html', title="documentation")
+    docquery = DocumentBar.query.all()
+    mainbarquery = Mainbar.query.all()
+    return render_template('Documentation/documentation.html', title="documentation", docquery=docquery,
+                           mainbarquery=mainbarquery)
 
 
 @app.route('/documentation/product')
@@ -233,7 +223,10 @@ def product():
     server = ProductMysqlServer.query.all()
     api = ProductXDevAPI.query.all()
     pc = ProductMySQLNDBCluster.query.all()
-    return render_template('Documentation/product 2.html', title="Product", server=server, api=api, pc=pc)
+    docquery = DocumentBar.query.all()
+    mainbarquery = Mainbar.query.all()
+    return render_template('Documentation/product 2.html', title="Product", server=server, api=api, pc=pc,
+                           docquery=docquery, mainbarquery=mainbarquery)
 
 
 @app.route('/documentation/topic')
@@ -241,21 +234,29 @@ def topic():
     general = TopicGeneral.query.all()
     admin = TopicAdministrator_Guides.query.all()
     ha = TopicHA_Scalability.query.all()
-    return render_template('Documentation/topic.html', title="Topic", general=general, admin=admin, ha=ha)
+    docquery = DocumentBar.query.all()
+    mainbarquery = Mainbar.query.all()
+    return render_template('Documentation/topic.html', title="Topic", general=general, admin=admin, ha=ha,
+                           docquery=docquery, mainbarquery=mainbarquery)
 
 
 @app.route('/Download')
 def enterprise():
     enterquery = EnterpriseDownload.query.all()
     clusterquery = ClusterDownload.query.all()
+    downquery = DownloadBar.query.all()
+    mainbarquery = Mainbar.query.all()
     return render_template('Download/enterprise.html', title="Enterprise", enterquery=enterquery,
-                           clusterquery=clusterquery)
+                           clusterquery=clusterquery, downquery=downquery, mainbarquery=mainbarquery)
 
 
 @app.route('/Download/community')
 def community():
     comquery = MySQLCommunity.query.all()
-    return render_template('Download/community.html', title="Community", comquery=comquery)
+    downquery = DownloadBar.query.all()
+    mainbarquery = Mainbar.query.all()
+    return render_template('Download/community.html', title="Community", comquery=comquery, downquery=downquery,
+                           mainbarquery=mainbarquery)
 
 
 @app.route('/Download/windows')
@@ -278,8 +279,69 @@ def MysqlCloud():
     EnterpriseDropDown = Product_Enterprise.query.all()
     ClusterDropDown = Product_Cluster.query.all()
     OEMDropDown = ProductForOME.query.all()
-    cloudbutton = Product_SqlClound.query.filter_by(id =2)
+    cloudbutton = Product_SqlClound.query.filter_by(id=2)
     cloudbutton2 = Product_SqlClound.query.filter_by(id=3)
-
+    downquery = DownloadBar.query.all()
+    mainbarquery = Mainbar.query.all()
     return render_template('MySQLCOM/MySQL_Cloud.html', title='Cloud', EnterpriseDropDown=EnterpriseDropDown,
-                           OEMDropDown=OEMDropDown, ClusterDropDown=ClusterDropDown, cloudbutton=cloudbutton, cloudbutton2=cloudbutton2)
+                           OEMDropDown=OEMDropDown, ClusterDropDown=ClusterDropDown, cloudbutton=cloudbutton,
+                           cloudbutton2=cloudbutton2, downquery=downquery, mainbarquery=mainbarquery)
+
+
+@app.route('/developerzone')
+def developerzone():
+    dzquery = DZBar.query.all()
+    mainbarquery = Mainbar.query.all()
+    return render_template("DeveloperZone/developerzone.html", title="developerzone", dzquery=dzquery,
+                           mainbarquery=mainbarquery)
+
+
+@app.route('/forums')
+def forums():
+    typeforums = ForumsTopic.query.filter_by(type='Forums').all()
+    typelanguages = ForumsTopic.query.filter_by(type='Languages').all()
+    typestorage = ForumsTopic.query.filter_by(type='Storage Engines').all()
+    dzquery = DZBar.query.all()
+    mainbarquery = Mainbar.query.all()
+    return render_template("DeveloperZone/forums.html", title="forums", forums=typeforums, languages=typelanguages,
+                           storages=typestorage, dzquery=dzquery, mainbarquery=mainbarquery)
+
+
+@app.route('/dzoneforums', methods=['GET', 'POST'])
+@login_required
+def dzoneforums():
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(body=form.post.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your post is now live!')
+        return redirect(url_for('index'))
+    page = request.args.get('page', 1, type=int)
+    posts = current_user.followed_posts().paginate(
+        page, app.config['POSTS_PER_PAGE'], False)
+    next_url = url_for('dzoneforums', page=posts.next_num) \
+        if posts.has_next else None
+    prev_url = url_for('dzoneforums', page=posts.prev_num) \
+        if posts.has_prev else None
+    dzquery = DZBar.query.all()
+    mainbarquery = Mainbar.query.all()
+    return render_template('DeveloperZone/dzoneforums.html', title='dzoneforums', form=form,
+                           posts=posts.items, next_url=next_url,
+                           prev_url=prev_url, dzquery=dzquery, mainbarquery=mainbarquery)
+
+
+@app.route('/explore')
+@login_required
+def explore():
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.timestamp.desc()).paginate(
+        page, app.config['POSTS_PER_PAGE'], False)
+    next_url = url_for('explore', page=posts.next_num) \
+        if posts.has_next else None
+    prev_url = url_for('explore', page=posts.prev_num) \
+        if posts.has_prev else None
+    dzquery = DZBar.query.all()
+    mainbarquery = Mainbar.query.all()
+    return render_template("DeveloperZone/dzoneforums.html", title='Explore', posts=posts.items,
+                           next_url=next_url, prev_url=prev_url, dzquery=dzquery, mainbarquery=mainbarquery)
