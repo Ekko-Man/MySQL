@@ -6,7 +6,8 @@ from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, \
     ResetPasswordRequestForm, ResetPasswordForm
 from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, \
-    ClusterDownload, MySQLCommunity
+    ClusterDownload, MySQLCommunity, index_product, Product_Enterprise, Product_Cluster, ProductForOME, \
+    Product_SqlClound, CustomerLogo
 from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, \
     ClusterDownload, MySQLCommunity, TopicGeneral, TopicAdministrator_Guides, TopicHA_Scalability, Windows
 from app.email import send_password_reset_email
@@ -22,7 +23,9 @@ def before_request():
 @app.route('/', methods=['GET'])
 @app.route('/index', methods=['GET'])
 def index():
-    return render_template('MYSQLCOM/index.html', title='Home')
+    MysqlOptions = index_product.query.all()
+    customer = CustomerLogo.query.all()
+    return render_template('MYSQLCOM/index.html', title='Home', MysqlOptions=MysqlOptions, customer=customer)
 
 
 @app.route('/dzoneforums', methods=['GET', 'POST'])
@@ -259,3 +262,24 @@ def community():
 def windows():
     winquery = Windows.query.all()
     return render_template('Download/windows.html', title="Windows", winquery=winquery)
+
+
+@app.route('/MySQLCOM/Enterprise')
+def MysqlProduct():
+    EnterpriseDropDown = Product_Enterprise.query.all()
+    ClusterDropDown = Product_Cluster.query.all()
+    OEMDropDown = ProductForOME.query.all()
+    return render_template('MySQLCOM/MySQL_Enterprise.html', title='Enterprise', EnterpriseDropDown=EnterpriseDropDown,
+                           OEMDropDown=OEMDropDown, ClusterDropDown=ClusterDropDown)
+
+
+@app.route('/MySQLCOM/Cloud')
+def MysqlCloud():
+    EnterpriseDropDown = Product_Enterprise.query.all()
+    ClusterDropDown = Product_Cluster.query.all()
+    OEMDropDown = ProductForOME.query.all()
+    cloudbutton = Product_SqlClound.query.filter_by(id =2)
+    cloudbutton2 = Product_SqlClound.query.filter_by(id=3)
+
+    return render_template('MySQLCOM/MySQL_Cloud.html', title='Cloud', EnterpriseDropDown=EnterpriseDropDown,
+                           OEMDropDown=OEMDropDown, ClusterDropDown=ClusterDropDown, cloudbutton=cloudbutton, cloudbutton2=cloudbutton2)
