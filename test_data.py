@@ -90,19 +90,19 @@ pc5 = ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/mysql-cluster-manage
 
 # ------------------------------Download----------------------------
 
-down1 = EnterpriseDownload(name='MySQLDatabase', MainID=2)
-down2 = EnterpriseDownload(name='MySQL Storage Engines (InnoDB, MyISAM, etc.)', MainID=2)
-down3 = EnterpriseDownload(name='MySQL Connectors (JDBC, ODBC, .Net, etc.)', MainID=2)
-down4 = EnterpriseDownload(name='MySQL Replication', MainID=2)
-down5 = EnterpriseDownload(name='MySQL Partitioning', MainID=2)
-down6 = EnterpriseDownload(name='MySQL Utilities', MainID=2)
-down7 = EnterpriseDownload(name='MySQL Workbench', MainID=2)
-down8 = EnterpriseDownload(name='MySQL Enterprise Backup', MainID=2)
-down9 = EnterpriseDownload(name='MySQL Enterprise Monitor', MainID=2)
+down1 = EnterpriseDownload(name='MySQLDatabase', MainID=1)
+down2 = EnterpriseDownload(name='MySQL Storage Engines (InnoDB, MyISAM, etc.)', MainID=1)
+down3 = EnterpriseDownload(name='MySQL Connectors (JDBC, ODBC, .Net, etc.)', MainID=1)
+down4 = EnterpriseDownload(name='MySQL Replication', MainID=1)
+down5 = EnterpriseDownload(name='MySQL Partitioning', MainID=1)
+down6 = EnterpriseDownload(name='MySQL Utilities', MainID=1)
+down7 = EnterpriseDownload(name='MySQL Workbench', MainID=1)
+down8 = EnterpriseDownload(name='MySQL Enterprise Backup', MainID=1)
+down9 = EnterpriseDownload(name='MySQL Enterprise Monitor', MainID=1)
 
-down10 = ClusterDownload(name='MySQL Cluster', MainID=2)
-down11 = ClusterDownload(name='MySQL Cluster Manager', MainID=2)
-down12 = ClusterDownload(name='Plus, everything in MySQL Enterprise Edition', MainID=2)
+down10 = ClusterDownload(name='MySQL Cluster', MainID=1)
+down11 = ClusterDownload(name='MySQL Cluster Manager', MainID=1)
+down12 = ClusterDownload(name='Plus, everything in MySQL Enterprise Edition', MainID=1)
 
 com1 = MySQLCommunity(name='MySQL Community Server', version='(Current Generally Available Release: 8.0.15)',
                       description='MySQL Community Server is the world most popular open source database.',
@@ -116,22 +116,22 @@ com3 = MySQLCommunity(name='MySQL Router', version='(Current Generally Available
 
 win1 = Windows(name='MySQL Installer',
                description='MySQL Installer provides an easy to use, wizard-based installation experience for all MySQL software on Windows.',
-               win_link='#')
+               win_link='#', MainID=6)
 win2 = Windows(name='MySQL Connectors',
                description='MySQL offers industry standard database driver connectivity for using MySQL with applications and tools.',
-               win_link='#')
+               win_link='#', MainID=6)
 win3 = Windows(name='MySQL Workbench',
                description='MySQL Workbench provides DBAs and developers an integrated tools environment for database design, administration, SQL development and database migration.',
-               win_link='#')
+               win_link='#', MainID=6)
 win4 = Windows(name='MySQL for Excel',
                description='MySQL for Excel enables users to import, export and edit MySQL data using Microsoft Excel. Available with MySQL Installer.',
-               win_link='#')
+               win_link='#', MainID=6)
 win5 = Windows(name='MySQL Notifier',
                description='MySQL Notifier enables developers and DBAs to easily monitor, start and stop MySQL database instances. Available with MySQL Installer.',
-               win_link='#')
+               win_link='#', MainID=6)
 win6 = Windows(name='MySQL for Visual Studio',
                description='MySQL for Visual Studio provides access to MySQL objects and data using Visual Studio. Available with MySQL Installer.',
-               win_link='#')
+               win_link='#', MainID=6)
 
 # ----------------------Download----------------------------------
 
