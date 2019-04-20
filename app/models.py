@@ -100,6 +100,7 @@ class Language(db.Model):
 class ForumsTopic(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
+    type = db.Column(db.String(50))
     description = db.Column(db.String(150))
     url = db.Column(db.String(140))
 
@@ -108,14 +109,14 @@ class ForumsPost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     subject = db.Column(db.String(180))
     url = db.Column(db.String(140))
-    topic_id = db.Column(db.Integer, db.ForeignKey('forumstopic.id'))
+    topic_id = db.Column(db.Integer, db.ForeignKey('forums_topic.id'))
     writer_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 class ForumsPostContect(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     contect = db.Column(db.String(300))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-    post_id = db.Column(db.Integer, db.ForeignKey('forumspost.id'))
+    post_id = db.Column(db.Integer, db.ForeignKey('forums_post.id'))
 
 
 # ---------------------------Forums---------------------------

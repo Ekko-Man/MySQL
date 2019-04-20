@@ -8,7 +8,8 @@ from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, \
 from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, \
     ClusterDownload, MySQLCommunity
 from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, \
-    ClusterDownload, MySQLCommunity, TopicGeneral, TopicAdministrator_Guides, TopicHA_Scalability, Windows, ForumsTopic, ForumsPost, ForumsPostContect
+    ClusterDownload, MySQLCommunity, TopicGeneral, TopicAdministrator_Guides, TopicHA_Scalability, Windows, ForumsTopic, \
+    ForumsPost, ForumsPostContect
 from app.email import send_password_reset_email
 
 
@@ -23,42 +24,6 @@ def before_request():
 @app.route('/index', methods=['GET'])
 def index():
     return render_template('MYSQLCOM/index.html', title='Home')
-
-
-@app.route('/dzoneforums', methods=['GET', 'POST'])
-@login_required
-def dzoneforums():
-    form = PostForm()
-    if form.validate_on_submit():
-        post = Post(body=form.post.data, author=current_user)
-        db.session.add(post)
-        db.session.commit()
-        flash('Your post is now live!')
-        return redirect(url_for('index'))
-    page = request.args.get('page', 1, type=int)
-    posts = current_user.followed_posts().paginate(
-        page, app.config['POSTS_PER_PAGE'], False)
-    next_url = url_for('dzoneforums', page=posts.next_num) \
-        if posts.has_next else None
-    prev_url = url_for('dzoneforums', page=posts.prev_num) \
-        if posts.has_prev else None
-    return render_template('DeveloperZone/dzoneforums.html', title='dzoneforums', form=form,
-                           posts=posts.items, next_url=next_url,
-                           prev_url=prev_url)
-
-
-@app.route('/explore')
-@login_required
-def explore():
-    page = request.args.get('page', 1, type=int)
-    posts = Post.query.order_by(Post.timestamp.desc()).paginate(
-        page, app.config['POSTS_PER_PAGE'], False)
-    next_url = url_for('explore', page=posts.next_num) \
-        if posts.has_next else None
-    prev_url = url_for('explore', page=posts.prev_num) \
-        if posts.has_prev else None
-    return render_template("DeveloperZone/dzoneforums.html", title='Explore', posts=posts.items,
-                           next_url=next_url, prev_url=prev_url)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -259,4 +224,52 @@ def community():
 def windows():
     winquery = Windows.query.all()
     return render_template('Download/windows.html', title="Windows", winquery=winquery)
+
+
+@app.route('/developerzone')
+def developerzone():
+    return render_template("DeveloperZone/developerzone.html", title="developerzone")
+
+@app.route('/forums')
+def forums():
+    typeforums = ForumsTopic.query.filter_by(type='Forums').all()
+    typelanguages = ForumsTopic.query.filter_by(type='Languages').all()
+    typestorage = ForumsTopic.query.filter_by(type='Storage Engines').all()
+    return render_template("DeveloperZone/forums.html", title="forums", forums=typeforums, languages=typelanguages, storages=typestorage)
+
+@app.route('/dzoneforums', methods=['GET', 'POST'])
+@login_required
+def dzoneforums():
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(body=form.post.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your post is now live!')
+        return redirect(url_for('index'))
+    page = request.args.get('page', 1, type=int)
+    posts = current_user.followed_posts().paginate(
+        page, app.config['POSTS_PER_PAGE'], False)
+    next_url = url_for('dzoneforums', page=posts.next_num) \
+        if posts.has_next else None
+    prev_url = url_for('dzoneforums', page=posts.prev_num) \
+        if posts.has_prev else None
+    return render_template('DeveloperZone/dzoneforums.html', title='dzoneforums', form=form,
+                           posts=posts.items, next_url=next_url,
+                           prev_url=prev_url)
+
+
+@app.route('/explore')
+@login_required
+def explore():
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.timestamp.desc()).paginate(
+        page, app.config['POSTS_PER_PAGE'], False)
+    next_url = url_for('explore', page=posts.next_num) \
+        if posts.has_next else None
+    prev_url = url_for('explore', page=posts.prev_num) \
+        if posts.has_prev else None
+    return render_template("DeveloperZone/dzoneforums.html", title='Explore', posts=posts.items,
+                           next_url=next_url, prev_url=prev_url)
+
 

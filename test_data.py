@@ -189,12 +189,15 @@ db.session.add(ts4)
 # ---------------------------DOCUMENTATION---------------------------
 
 # ---------------------------DeveloperZone---------------------------
-ft1 = ForumsTopic(name="Announcements", description="MySQL related Product and Service announcements.", url="ForumsTopic/Announcements")
-ft2 = ForumsTopic(name="Perl", description="Forum for MySQL and Perl.", url="ForumsTopic/Perl")
-ft3 = ForumsTopic(name="PHP", description="Forum for MySQL and PHP.", url="ForumsTopic/PHP")
-ft4 = ForumsTopic(name="Ruby", description="Forum for MySQL and Ruby", url="ForumsTopic/Ruby")
-ft5 = ForumsTopic(name="InnoDB", description="Forum for InnoDB Storage Engine.", url="ForumsTopic/InnoDB")
-ft6 = ForumsTopic(name="MyISAM", description="Forum for MyISAM Storage Engine.", url="ForumsTopic/MyISAM")
+ft1 = ForumsTopic(name="Announcements", description="MySQL related Product and Service announcements.",
+                  url="ForumsTopic/Announcements", type="Forums")
+ft2 = ForumsTopic(name="Perl", description="Forum for MySQL and Perl.", url="ForumsTopic/Perl", type="Languages")
+ft3 = ForumsTopic(name="PHP", description="Forum for MySQL and PHP.", url="ForumsTopic/PHP", type="Languages")
+ft4 = ForumsTopic(name="Ruby", description="Forum for MySQL and Ruby", url="ForumsTopic/Ruby", type="Languages")
+ft5 = ForumsTopic(name="InnoDB", description="Forum for InnoDB Storage Engine.", url="ForumsTopic/InnoDB",
+                  type="Storage Engines")
+ft6 = ForumsTopic(name="MyISAM", description="Forum for MyISAM Storage Engine.", url="ForumsTopic/MyISAM",
+                  type="Storage Engines")
 
 db.session.add(ft1)
 db.session.add(ft2)
