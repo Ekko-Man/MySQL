@@ -5,13 +5,9 @@
         <nav class="navbar navbar-default fixed-top navbar-light bg-light navbar-custom"
              style="background-color: #4479a1;">
             <ul class="nav navbar-nav">
-                <li><a class="flex-sm-fill text-sm-center nav-link" href="#">MySQL Server</a></li>
-                <li><a class="flex-sm-fill text-sm-center nav-link" href="#">MySQL Enterprise</a></li>
-                <li><a class="flex-sm-fill text-sm-center nav-link" href="#">Workbench</a></li>
-                <li><a class="flex-sm-fill text-sm-center nav-link" href="#">InnoDB Cluster</a></li>
-                <li><a class="flex-sm-fill text-sm-center nav-link" href="#">MySQL NDB Cluster</a></li>
-                <li><a class="flex-sm-fill text-sm-center nav-link" href="#">Connectors</a></li>
-                <li><a class="flex-sm-fill text-sm-center nav-link" href="#">More</a></li>
+                {% for docq in docquery %}
+                <li><a class="flex-sm-fill text-sm-center nav-link" href="{{ docq.url }}">{{ docq.Name }}</a></li>
+                {% endfor %}
             </ul>
         </nav>
     </div>
