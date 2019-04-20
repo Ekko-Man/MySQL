@@ -8,7 +8,8 @@ from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, \
 from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, \
     ClusterDownload, MySQLCommunity
 from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, \
-    ClusterDownload, MySQLCommunity, TopicGeneral, TopicAdministrator_Guides, TopicHA_Scalability, Windows
+    ClusterDownload, MySQLCommunity, TopicGeneral, TopicAdministrator_Guides, TopicHA_Scalability, Windows, Mainbar, \
+    MySQLBar, DownloadBar, DocumentBar, DZBar
 from app.email import send_password_reset_email
 
 
@@ -20,9 +21,23 @@ def before_request():
 
 
 @app.route('/', methods=['GET'])
-@app.route('/index', methods=['GET'])
 def index():
-    return render_template('MYSQLCOM/index.html', title='Home')
+    mainbarquery = Mainbar.query.all()
+    mysqlquery = MySQLBar.query.all()
+    downquery = DownloadBar.query.all()
+    docquery = DocumentBar.query.all()
+    dzquery = DZBar.query.all()
+    return mainbarquery == mainbarquery, mysqlquery == mysqlquery, downquery == downquery, docquery == docquery, dzquery == dzquery
+
+
+@app.route('/index', methods=['GET'])
+def indexs():
+    mainbarquery = Mainbar.query.all()
+    mysqlquery = MySQLBar.query.all()
+    downquery = DownloadBar.query.all()
+    docquery = DocumentBar.query.all()
+    dzquery = DZBar.query.all()
+    return render_template('MYSQLCOM/index.html', title='Home', mainbarquery=mainbarquery, mysqlquery=mysqlquery, downquery=downquery, docquery=docquery, dzquery=dzquery)
 
 
 @app.route('/dzoneforums', methods=['GET', 'POST'])
