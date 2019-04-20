@@ -101,11 +101,13 @@ class ForumsTopic(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
     description = db.Column(db.String(150))
+    url = db.Column(db.String(140))
 
 
 class ForumsPost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     subject = db.Column(db.String(180))
+    url = db.Column(db.String(140))
     topic_id = db.Column(db.Integer, db.ForeignKey('forumstopic.id'))
     writer_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
@@ -176,17 +178,17 @@ class TopicHA_Scalability(db.Model):
 
 # ---------------------------NavBar---------------------------
 
-# class Mainbar(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     Name = db.Column(db.String(80))
-#     url = db.Column(db.String(140))
-#
-#
-# class Title(db.Model):
-#     product_id = db.Column(db.Integer, primary_key=True)
-#     Name = db.Column(db.String(80))
-#     url = db.Column(db.String(140))
-#     MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
+class Mainbar(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    Name = db.Column(db.String(80))
+    url = db.Column(db.String(140))
+
+
+class Title(db.Model):
+    product_id = db.Column(db.Integer, primary_key=True)
+    Name = db.Column(db.String(80))
+    url = db.Column(db.String(140))
+    MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
 
 # ---------------------------NavBar---------------------------
 

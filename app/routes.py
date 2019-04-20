@@ -8,7 +8,7 @@ from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, \
 from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, \
     ClusterDownload, MySQLCommunity
 from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, \
-    ClusterDownload, MySQLCommunity, TopicGeneral, TopicAdministrator_Guides, TopicHA_Scalability, Windows
+    ClusterDownload, MySQLCommunity, TopicGeneral, TopicAdministrator_Guides, TopicHA_Scalability, Windows, ForumsTopic, ForumsPost, ForumsPostContect
 from app.email import send_password_reset_email
 
 
@@ -259,3 +259,4 @@ def community():
 def windows():
     winquery = Windows.query.all()
     return render_template('Download/windows.html', title="Windows", winquery=winquery)
+
