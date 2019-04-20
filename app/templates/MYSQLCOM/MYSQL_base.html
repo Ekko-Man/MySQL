@@ -5,14 +5,9 @@
         <nav class="navbar navbar-default fixed-top navbar-light bg-light navbar-custom"
              style="background-color: #4479a1;">
             <ul class="nav navbar-nav">
-                <li><a class="flex-sm-fill text-sm-center nav-link" href="#">Products</a></li>
-                <li><a class="flex-sm-fill text-sm-center nav-link" href="#">Cloud</a></li>
-                <li><a class="flex-sm-fill text-sm-center nav-link" href="#">Services</a></li>
-                <li><a class="flex-sm-fill text-sm-center nav-link" href="#">Partners</a></li>
-                <li><a class="flex-sm-fill text-sm-center nav-link" href="#">Customers</a></li>
-                <li><a class="flex-sm-fill text-sm-center nav-link" href="#">Why MySQL?</a></li>
-                <li><a class="flex-sm-fill text-sm-center nav-link" href="#">News & Events</a></li>
-                <li><a class="flex-sm-fill text-sm-center nav-link" href="#">How to Buy</a></li>
+                 {% for myq in mysqlquery %}
+                <li><a class="flex-sm-fill text-sm-center nav-link" href="{{ myq.url }}">{{ myq.Name }}</a></li>
+                {% endfor %}
             </ul>
         </nav>
     </div>

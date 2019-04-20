@@ -8,7 +8,7 @@ from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, \
 from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, \
     ClusterDownload, MySQLCommunity
 from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, \
-    ClusterDownload, MySQLCommunity, TopicGeneral, TopicAdministrator_Guides, TopicHA_Scalability, Windows, ForumsTopic, ForumsPost, ForumsPostContect
+    ClusterDownload, MySQLCommunity, TopicGeneral, TopicAdministrator_Guides, TopicHA_Scalability, Windows, ForumsTopic, ForumsPost, ForumsPostContect, Mainbar, MySQLBar, DownloadBar, DocumentBar, DZBar
 from app.email import send_password_reset_email
 
 
@@ -20,9 +20,17 @@ def before_request():
 
 
 @app.route('/', methods=['GET'])
-@app.route('/index', methods=['GET'])
 def index():
-    return render_template('MYSQLCOM/index.html', title='Home')
+    mainbarquery = Mainbar.query.all()
+    mysqlquery = MySQLBar.query.all()
+    return render_template('MYSQLCOM/index.html', mainbarquery=mainbarquery, mysqlquery=mysqlquery)
+
+
+@app.route('/index', methods=['GET'])
+def indexs():
+    mainbarquery = Mainbar.query.all()
+    mysqlquery = MySQLBar.query.all()
+    return render_template('MYSQLCOM/index.html', title='Home', mainbarquery=mainbarquery, mysqlquery=mysqlquery)
 
 
 @app.route('/dzoneforums', methods=['GET', 'POST'])
@@ -42,9 +50,11 @@ def dzoneforums():
         if posts.has_next else None
     prev_url = url_for('dzoneforums', page=posts.prev_num) \
         if posts.has_prev else None
+    dzquery = DZBar.query.all()
+    mainbarquery = Mainbar.query.all()
     return render_template('DeveloperZone/dzoneforums.html', title='dzoneforums', form=form,
                            posts=posts.items, next_url=next_url,
-                           prev_url=prev_url)
+                           prev_url=prev_url, dzquery=dzquery, mainbarquery=mainbarquery)
 
 
 @app.route('/explore')
@@ -57,8 +67,10 @@ def explore():
         if posts.has_next else None
     prev_url = url_for('explore', page=posts.prev_num) \
         if posts.has_prev else None
+    dzquery = DZBar.query.all()
+    mainbarquery = Mainbar.query.all()
     return render_template("DeveloperZone/dzoneforums.html", title='Explore', posts=posts.items,
-                           next_url=next_url, prev_url=prev_url)
+                           next_url=next_url, prev_url=prev_url, dzquery=dzquery, mainbarquery=mainbarquery)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -76,7 +88,8 @@ def login():
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('index')
         return redirect(next_page)
-    return render_template('Login/login.html', title='Sign In', form=form)
+    mainbarquery = Mainbar.query.all()
+    return render_template('Login/login.html', title='Sign In', form=form, mainbarquery=mainbarquery)
 
 
 @app.route('/logout')
@@ -97,7 +110,8 @@ def register():
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
-    return render_template('Login/register.html', title='Register', form=form)
+    mainbarquery = Mainbar.query.all()
+    return render_template('Login/register.html', title='Register', form=form, mainbarquery=mainbarquery)
 
 
 @app.route('/reset_password_request', methods=['GET', 'POST'])
@@ -111,8 +125,9 @@ def reset_password_request():
             send_password_reset_email(user)
         flash('Check your email for the instructions to reset your password')
         return redirect(url_for('login'))
+    mainbarquery = Mainbar.query.all()
     return render_template('Login/reset_password_request.html',
-                           title='Reset Password', form=form)
+                           title='Reset Password', form=form, mainbarquery=mainbarquery)
 
 
 @app.route('/reset_password/<token>', methods=['GET', 'POST'])
@@ -128,7 +143,8 @@ def reset_password(token):
         db.session.commit()
         flash('Your password has been reset.')
         return redirect(url_for('login'))
-    return render_template('Login/reset_password.html', form=form)
+    mainbarquery = Mainbar.query.all()
+    return render_template('Login/reset_password.html', form=form, mainbarquery=mainbarquery)
 
 
 @app.route('/user/<username>')
@@ -142,8 +158,9 @@ def user(username):
         if posts.has_next else None
     prev_url = url_for('user', username=user.username, page=posts.prev_num) \
         if posts.has_prev else None
+    mainbarquery = Mainbar.query.all()
     return render_template('user.html', user=user, posts=posts.items,
-                           next_url=next_url, prev_url=prev_url)
+                           next_url=next_url, prev_url=prev_url, mainbarquery=mainbarquery)
 
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
@@ -159,8 +176,9 @@ def edit_profile():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
+    mainbarquery = Mainbar.query.all()
     return render_template('edit_profile.html', title='Edit Profile',
-                           form=form)
+                           form=form, mainbarquery=mainbarquery)
 
 
 @app.route('/follow/<username>')
@@ -176,7 +194,8 @@ def follow(username):
     current_user.follow(user)
     db.session.commit()
     flash('You are following {}!'.format(username))
-    return redirect(url_for('user', username=username))
+    mainbarquery = Mainbar.query.all()
+    return redirect(url_for('user', username=username), mainbarquery=mainbarquery)
 
 
 @app.route('/unfollow/<username>')
@@ -192,7 +211,8 @@ def unfollow(username):
     current_user.unfollow(user)
     db.session.commit()
     flash('You are not following {}.'.format(username))
-    return redirect(url_for('user', username=username))
+    mainbarquery = Mainbar.query.all()
+    return redirect(url_for('user', username=username), mainbarquery=mainbarquery)
 
 
 @app.route('/setcookie', methods=['POST', 'GET'])
@@ -222,7 +242,10 @@ def getcookie():
 
 @app.route('/documentation')
 def documentation():
-    return render_template('Documentation/documentation.html', title="documentation")
+    docquery = DocumentBar.query.all()
+    mainbarquery = Mainbar.query.all()
+    return render_template('Documentation/documentation.html', title="documentation", docquery=docquery,
+                           mainbarquery=mainbarquery)
 
 
 @app.route('/documentation/product')
@@ -230,7 +253,10 @@ def product():
     server = ProductMysqlServer.query.all()
     api = ProductXDevAPI.query.all()
     pc = ProductMySQLNDBCluster.query.all()
-    return render_template('Documentation/product 2.html', title="Product", server=server, api=api, pc=pc)
+    docquery = DocumentBar.query.all()
+    mainbarquery = Mainbar.query.all()
+    return render_template('Documentation/product 2.html', title="Product", server=server, api=api, pc=pc,
+                           docquery=docquery, mainbarquery=mainbarquery)
 
 
 @app.route('/documentation/topic')
@@ -238,25 +264,35 @@ def topic():
     general = TopicGeneral.query.all()
     admin = TopicAdministrator_Guides.query.all()
     ha = TopicHA_Scalability.query.all()
-    return render_template('Documentation/topic.html', title="Topic", general=general, admin=admin, ha=ha)
+    docquery = DocumentBar.query.all()
+    mainbarquery = Mainbar.query.all()
+    return render_template('Documentation/topic.html', title="Topic", general=general, admin=admin, ha=ha,
+                           docquery=docquery, mainbarquery=mainbarquery)
 
 
 @app.route('/Download')
 def enterprise():
     enterquery = EnterpriseDownload.query.all()
     clusterquery = ClusterDownload.query.all()
+    downquery = DownloadBar.query.all()
+    mainbarquery = Mainbar.query.all()
     return render_template('Download/enterprise.html', title="Enterprise", enterquery=enterquery,
-                           clusterquery=clusterquery)
+                           clusterquery=clusterquery, downquery=downquery, mainbarquery=mainbarquery)
 
 
 @app.route('/Download/community')
 def community():
     comquery = MySQLCommunity.query.all()
-    return render_template('Download/community.html', title="Community", comquery=comquery)
+    downquery = DownloadBar.query.all()
+    mainbarquery = Mainbar.query.all()
+    return render_template('Download/community.html', title="Community", comquery=comquery, downquery=downquery,
+                           mainbarquery=mainbarquery)
 
 
 @app.route('/Download/windows')
 def windows():
     winquery = Windows.query.all()
-    return render_template('Download/windows.html', title="Windows", winquery=winquery)
-
+    downquery = DownloadBar.query.all()
+    mainbarquery = Mainbar.query.all()
+    return render_template('Download/windows.html', title="Windows", winquery=winquery, downquery=downquery,
+                           mainbarquery=mainbarquery)

@@ -1,13 +1,54 @@
 from app import db
 from app.models import User, Post, Product, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, \
     EnterpriseDownload, ClusterDownload, MySQLCommunity, Topic, TopicGeneral, TopicAdministrator_Guides, \
-    TopicHA_Scalability, Windows, ForumsTopic, ForumsPost, ForumsPostContect
+    TopicHA_Scalability, Windows, ForumsTopic, ForumsPost, ForumsPostContect, Mainbar, MySQLBar, DownloadBar, DocumentBar, DZBar
 from datetime import datetime, timedelta
 import unittest
 
 db.session.remove()
 db.drop_all()
 db.create_all()
+
+# ---------------------------MainBar-------------------------------
+M1 = Mainbar(Name='MYSQL.COM', url='/index')
+M2 = Mainbar(Name='DOWNLOADS', url='/Download')
+M3 = Mainbar(Name='DOCUMENTATION', url='/documentation')
+M4 = Mainbar(Name='DEVELOPER ZONE', url='/dzoneforums')
+
+# ---------------------------SubBar---------------------------------
+My1 = MySQLBar(Name='Products', url='#', MainID=1)
+My2 = MySQLBar(Name='Cloud', url='#', MainID=1)
+My3 = MySQLBar(Name='Services', url='#', MainID=1)
+My4 = MySQLBar(Name='Partners', url='#', MainID=1)
+My5 = MySQLBar(Name='Customers', url='#', MainID=1)
+My6 = MySQLBar(Name='Why MySQL?', url='#', MainID=1)
+My7 = MySQLBar(Name='News & Events', url='#', MainID=1)
+My8 = MySQLBar(Name='How to Buy', url='#', MainID=1)
+
+Down1 = DownloadBar(Name='Enterprise', url='/Download', MainID=2)
+Down2 = DownloadBar(Name='Community', url='/Download/community', MainID=2)
+Down3 = DownloadBar(Name='Yum Repository', url='#', MainID=2)
+Down4 = DownloadBar(Name='APT Repository', url='#', MainID=2)
+Down5 = DownloadBar(Name='SUSE Repository', url='#', MainID=2)
+Down6 = DownloadBar(Name='Windows', url='Download/windows.html', MainID=2)
+Down7 = DownloadBar(Name='Archives', url='#', MainID=2)
+
+Doc1 = DocumentBar(Name='MySQL Server', url='#', MainID=3)
+Doc2 = DocumentBar(Name='MySQL Enterprise', url='#', MainID=3)
+Doc3 = DocumentBar(Name='Workbench', url='#', MainID=3)
+Doc4 = DocumentBar(Name='InnoDB Cluster', url='#', MainID=3)
+Doc5 = DocumentBar(Name='MySQL NDB Cluster', url='#', MainID=3)
+Doc6 = DocumentBar(Name='Connectors', url='#', MainID=3)
+Doc7 = DocumentBar(Name='More', url='#', MainID=3)
+
+DZ1 = DZBar(Name='Forums', url='#', MainID=4)
+DZ2 = DZBar(Name='Bugs', url='#', MainID=4)
+DZ3 = DZBar(Name='Worklog', url='#', MainID=4)
+DZ4 = DZBar(Name='Labs', url='#', MainID=4)
+DZ5 = DZBar(Name='Planet MySQL', url='#', MainID=4)
+DZ6 = DZBar(Name='News and Events', url='#', MainID=4)
+DZ7 = DZBar(Name='Community', url='#', MainID=4)
+
 
 # ---------------------------DOCUMENTATION---------------------------
 p1 = Product(title="MysqlServer")
@@ -46,6 +87,8 @@ pc4 = ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/mysql-cluster-manage
                              name="MySQL Cluster Manager 1.4", title_id="MySQLNDBCluster")
 pc5 = ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/mysql-cluster-manager/1.3/en/",
                              name="MySQL Cluster Manager 1.3", title_id="MySQLNDBCluster")
+
+# ------------------------------Download----------------------------
 
 down1 = EnterpriseDownload(name='MySQLDatabase', MainID=2)
 down2 = EnterpriseDownload(name='MySQL Storage Engines (InnoDB, MyISAM, etc.)', MainID=2)
@@ -90,6 +133,8 @@ win6 = Windows(name='MySQL for Visual Studio',
                description='MySQL for Visual Studio provides access to MySQL objects and data using Visual Studio. Available with MySQL Installer.',
                win_link='#')
 
+# ----------------------Download----------------------------------
+
 t1 = Topic(title="General")
 t2 = Topic(title="Administrator Guides")
 t3 = Topic(title="HA/Scalability")
@@ -119,6 +164,44 @@ ts3 = TopicHA_Scalability(url="https://dev.mysql.com/doc/ndbapi/en/ndbmemcache.h
                           title_id="HA/Scalability")
 ts4 = TopicHA_Scalability(url="https://dev.mysql.com/doc/refman/en/innodb-memcached.html", name="memcached with InnoDB",
                           title_id="HA/Scalability")
+
+db.session.add(M1)
+db.session.add(M2)
+db.session.add(M3)
+db.session.add(M4)
+
+db.session.add(My1)
+db.session.add(My2)
+db.session.add(My3)
+db.session.add(My4)
+db.session.add(My5)
+db.session.add(My6)
+db.session.add(My7)
+db.session.add(My8)
+
+db.session.add(Down1)
+db.session.add(Down2)
+db.session.add(Down3)
+db.session.add(Down4)
+db.session.add(Down5)
+db.session.add(Down6)
+db.session.add(Down7)
+
+db.session.add(Doc1)
+db.session.add(Doc2)
+db.session.add(Doc3)
+db.session.add(Doc4)
+db.session.add(Doc5)
+db.session.add(Doc6)
+db.session.add(Doc7)
+
+db.session.add(DZ1)
+db.session.add(DZ2)
+db.session.add(DZ3)
+db.session.add(DZ4)
+db.session.add(DZ5)
+db.session.add(DZ6)
+db.session.add(DZ7)
 
 db.session.add(p1)
 db.session.add(p2)
