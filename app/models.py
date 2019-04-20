@@ -102,12 +102,14 @@ class ForumsTopic(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
     description = db.Column(db.String(150))
+    url = db.Column(db.String(140))
 
 
 class ForumsPost(db.Model):
     __tablename__ = 'forums_post'
     id = db.Column(db.Integer, primary_key=True)
     subject = db.Column(db.String(180))
+    url = db.Column(db.String(140))
     topic_id = db.Column(db.Integer, db.ForeignKey('forums_topic.id'))
     writer_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
@@ -183,6 +185,7 @@ class Mainbar(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     Name = db.Column(db.String(80))
     url = db.Column(db.String(140))
+
 
 # -------------------------SubBar----------------------------
 class MySQLBar(db.Model):

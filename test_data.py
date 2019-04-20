@@ -1,7 +1,7 @@
 from app import db
 from app.models import User, Post, Product, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, \
     EnterpriseDownload, ClusterDownload, MySQLCommunity, Topic, TopicGeneral, TopicAdministrator_Guides, \
-    TopicHA_Scalability, Windows, Mainbar, MySQLBar, DownloadBar, DocumentBar, DZBar
+    TopicHA_Scalability, Windows, ForumsTopic, ForumsPost, ForumsPostContect, Mainbar, MySQLBar, DownloadBar, DocumentBar, DZBar
 from datetime import datetime, timedelta
 import unittest
 
@@ -268,6 +268,24 @@ db.session.add(ts1)
 db.session.add(ts2)
 db.session.add(ts3)
 db.session.add(ts4)
+
 # ---------------------------DOCUMENTATION---------------------------
+
+# ---------------------------DeveloperZone---------------------------
+ft1 = ForumsTopic(name="Announcements", description="MySQL related Product and Service announcements.", url="ForumsTopic/Announcements")
+ft2 = ForumsTopic(name="Perl", description="Forum for MySQL and Perl.", url="ForumsTopic/Perl")
+ft3 = ForumsTopic(name="PHP", description="Forum for MySQL and PHP.", url="ForumsTopic/PHP")
+ft4 = ForumsTopic(name="Ruby", description="Forum for MySQL and Ruby", url="ForumsTopic/Ruby")
+ft5 = ForumsTopic(name="InnoDB", description="Forum for InnoDB Storage Engine.", url="ForumsTopic/InnoDB")
+ft6 = ForumsTopic(name="MyISAM", description="Forum for MyISAM Storage Engine.", url="ForumsTopic/MyISAM")
+
+db.session.add(ft1)
+db.session.add(ft2)
+db.session.add(ft3)
+db.session.add(ft4)
+db.session.add(ft5)
+db.session.add(ft6)
+# ---------------------------DeveloperZone---------------------------
+
 
 db.session.commit()

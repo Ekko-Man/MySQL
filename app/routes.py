@@ -8,8 +8,7 @@ from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, \
 from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, \
     ClusterDownload, MySQLCommunity
 from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, \
-    ClusterDownload, MySQLCommunity, TopicGeneral, TopicAdministrator_Guides, TopicHA_Scalability, Windows, Mainbar, \
-    MySQLBar, DownloadBar, DocumentBar, DZBar
+    ClusterDownload, MySQLCommunity, TopicGeneral, TopicAdministrator_Guides, TopicHA_Scalability, Windows, ForumsTopic, ForumsPost, ForumsPostContect, Mainbar, MySQLBar, DownloadBar, DocumentBar, DZBar
 from app.email import send_password_reset_email
 
 
