@@ -1,13 +1,28 @@
 from app import db
 from app.models import User, Post, Product, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, \
     EnterpriseDownload, ClusterDownload, MySQLCommunity, Topic, TopicGeneral, TopicAdministrator_Guides, \
-    TopicHA_Scalability, Windows, ForumsTopic, ForumsPost, ForumsPostContect, Mainbar, MySQLBar, DownloadBar, DocumentBar, DZBar
+    TopicHA_Scalability, Windows, ForumsTopic, ForumsPost, ForumsPostContect, Mainbar, MySQLBar, DownloadBar, \
+    DocumentBar, DZBar
 from datetime import datetime, timedelta
 import unittest
 
 db.session.remove()
 db.drop_all()
 db.create_all()
+
+testUser1 = User(username='Cyrus', email='cyrus@example.com')
+testUser2 = User(username='Kitson', email='kitson@example.com')
+testUser3 = User(username='Jeff Bezos', email='jeff@example.com')
+testUser4 = User(username='Bill Gates', email='gaygay@example.com')
+testUser5 = User(username='Steve Jobs', email='apple@example.com')
+testUser6 = User(username='Thomas Edison', email='edison@example.com')
+
+db.session.add(testUser1)
+db.session.add(testUser2)
+db.session.add(testUser3)
+db.session.add(testUser4)
+db.session.add(testUser5)
+db.session.add(testUser6)
 
 # ---------------------------MainBar-------------------------------
 M1 = Mainbar(Name='MYSQL.COM', url='/index')
@@ -48,7 +63,6 @@ DZ4 = DZBar(Name='Labs', url='https://labs.mysql.com/', MainID=4)
 DZ5 = DZBar(Name='Planet MySQL', url='https://planet.mysql.com/', MainID=4)
 DZ6 = DZBar(Name='News and Events', url='https://www.mysql.com/news-and-events/web-seminars/', MainID=4)
 DZ7 = DZBar(Name='Community', url='https://dev.mysql.com/community/', MainID=4)
-
 
 # ---------------------------DOCUMENTATION---------------------------
 p1 = Product(title="MysqlServer")
@@ -288,7 +302,55 @@ db.session.add(ft3)
 db.session.add(ft4)
 db.session.add(ft5)
 db.session.add(ft6)
-# ---------------------------DeveloperZone---------------------------
 
+fp11 = ForumsPost(subject="", url="", topic_id="1", writer_id="1")
+fp12 = ForumsPost(subject="", url="", topic_id="1", writer_id="2")
+fp13 = ForumsPost(subject="", url="", topic_id="1", writer_id="3")
+
+fp21 = ForumsPost(subject="", url="", topic_id="2", writer_id="4")
+fp22 = ForumsPost(subject="", url="", topic_id="2", writer_id="5")
+fp23 = ForumsPost(subject="", url="", topic_id="2", writer_id="6")
+
+fp31 = ForumsPost(subject="", url="", topic_id="3", writer_id="3")
+fp32 = ForumsPost(subject="", url="", topic_id="3", writer_id="4")
+fp33 = ForumsPost(subject="", url="", topic_id="3", writer_id="5")
+
+fp41 = ForumsPost(subject="", url="", topic_id="4", writer_id="1")
+fp42 = ForumsPost(subject="", url="", topic_id="4", writer_id="2")
+fp43 = ForumsPost(subject="", url="", topic_id="4", writer_id="6")
+
+fp51 = ForumsPost(subject="", url="", topic_id="5", writer_id="2")
+fp52 = ForumsPost(subject="", url="", topic_id="5", writer_id="3")
+fp53 = ForumsPost(subject="", url="", topic_id="5", writer_id="4")
+
+fp61 = ForumsPost(subject="", url="", topic_id="6", writer_id="5")
+fp62 = ForumsPost(subject="", url="", topic_id="6", writer_id="6")
+fp63 = ForumsPost(subject="", url="", topic_id="6", writer_id="1")
+
+db.session.add(fp11)
+db.session.add(fp12)
+db.session.add(fp13)
+
+db.session.add(fp21)
+db.session.add(fp22)
+db.session.add(fp23)
+
+db.session.add(fp31)
+db.session.add(fp32)
+db.session.add(fp33)
+
+db.session.add(fp41)
+db.session.add(fp42)
+db.session.add(fp43)
+
+db.session.add(fp51)
+db.session.add(fp52)
+db.session.add(fp53)
+
+db.session.add(fp61)
+db.session.add(fp62)
+db.session.add(fp63)
+
+# ---------------------------DeveloperZone---------------------------
 
 db.session.commit()
