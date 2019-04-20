@@ -27,7 +27,7 @@ def index():
     downquery = DownloadBar.query.all()
     docquery = DocumentBar.query.all()
     dzquery = DZBar.query.all()
-    return mainbarquery == mainbarquery, mysqlquery == mysqlquery, downquery == downquery, docquery == docquery, dzquery == dzquery
+    return render_template('MYSQLCOM/index.html', mainbarquery = mainbarquery, mysqlquery=mysqlquery, downquery = downquery, docquery = docquery, dzquery = dzquery)
 
 
 @app.route('/index', methods=['GET'])
