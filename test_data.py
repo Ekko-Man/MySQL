@@ -394,17 +394,262 @@ fp31 = ForumsPost(subject="MySQL 8.0: X DevAPI PHP Extension", url="/forumspost/
 fp32 = ForumsPost(subject="MySQL Workbench: Plugins for PHP development", url="/forumspost/8", topic_id="3", writer_id="4")
 fp33 = ForumsPost(subject="Upgrading from MyISAM to InnoDB", url="/forumspost/9", topic_id="3", writer_id="5")
 
-fp41 = ForumsPost(subject="Ruby and MySQL: Articles, Blogs, FAQs", url="/forumspost/11", topic_id="4", writer_id="1")
-fp42 = ForumsPost(subject="Permission denied", url="/forumspost/12", topic_id="4", writer_id="2")
-fp43 = ForumsPost(subject="MySQL Evolution - From 5.6 to 8.0 -- plus Ruby on Rails", url="/forumspost/13", topic_id="4", writer_id="6")
+fp41 = ForumsPost(subject="Ruby and MySQL: Articles, Blogs, FAQs", url="/forumspost/10", topic_id="4", writer_id="1")
+fp42 = ForumsPost(subject="Permission denied", url="/forumspost/11", topic_id="4", writer_id="2")
+fp43 = ForumsPost(subject="MySQL Evolution - From 5.6 to 8.0 -- plus Ruby on Rails", url="/forumspost/12", topic_id="4", writer_id="6")
 
-fp51 = ForumsPost(subject="MySQL 8.0: InnoDB New Lock free, scalable WAL design", url="/forumspost/14", topic_id="5", writer_id="2")
-fp52 = ForumsPost(subject="MySQL 8.0: Instant ADD COLUMN for InnoDB", url="/forumspost/15", topic_id="5", writer_id="3")
-fp53 = ForumsPost(subject="MySQL HA: InnoDB clusters", url="/forumspost/16", topic_id="5", writer_id="4")
+fp51 = ForumsPost(subject="MySQL 8.0: InnoDB New Lock free, scalable WAL design", url="/forumspost/13", topic_id="5", writer_id="2")
+fp52 = ForumsPost(subject="MySQL 8.0: Instant ADD COLUMN for InnoDB", url="/forumspost/14", topic_id="5", writer_id="3")
+fp53 = ForumsPost(subject="MySQL HA: InnoDB clusters", url="/forumspost/15", topic_id="5", writer_id="4")
 
-fp61 = ForumsPost(subject="Meltdown Fix: 40% performance regression for MyISAM; recommend switch to InnoDB", url="/forumspost/17", topic_id="6", writer_id="5")
-fp62 = ForumsPost(subject="MySQL: InnoDB -vs- MyISAM", url="/forumspost/18", topic_id="6", writer_id="6")
-fp63 = ForumsPost(subject="MySQL 5.6: InnoDB Read-only Performance", url="/forumspost/19", topic_id="6", writer_id="1")
+fp61 = ForumsPost(subject="Meltdown Fix: 40% performance regression for MyISAM; recommend switch to InnoDB", url="/forumspost/16", topic_id="6", writer_id="5")
+fp62 = ForumsPost(subject="MySQL: InnoDB -vs- MyISAM", url="/forumspost/17", topic_id="6", writer_id="6")
+fp63 = ForumsPost(subject="MySQL 5.6: InnoDB Read-only Performance", url="/forumspost/18", topic_id="6", writer_id="1")
+
+fpc1 = ForumsPostContect(contect="""Dear MySQL users, 
+
+MySQL Enterprise Backup v3.12.4, a new version of the online MySQL backup 
+tool, is now available for download from the My Oracle Support (MOS) website 
+as our latest GA release. This release will be available on eDelivery (OSDC) 
+after the next upload cycle. MySQL Enterprise Backup is a commercial 
+extension to the MySQL family of products. 
+
+A brief summary of the changes in MySQL Enterprise Backup (MEB) 
+version 3.12.4 is given below. 
+
+Changes in MySQL Enterprise Backup 3.12.4 (2019-02-15) 
+
+* Functionality Added or Changed 
+
+* Bugs Fixed 
+
+Functionality Added or Changed 
+""", post_id="1")
+fpc2 = ForumsPostContect(contect="""Plx,
+subscribe pewdiepie !!!
+""", post_id="1")
+fpc3 = ForumsPostContect(contect="""Dear MySQL users,
+
+MySQL Enterprise Backup v4.1.3, a new version of the MySQL backup tool, is
+now available for download from the My Oracle Support (MOS) website
+as our latest GA release. This release will be available on eDelivery (OSDC)
+after the next upload cycle. MySQL Enterprise Backup is a commercial
+extension to the MySQL family of products.
+
+MySQL Enterprise Backup 4.1.3 only supports MySQL 5.7.
+MySQL Enterprise Backup 3.12.4 only supports MySQL 5.6 and earlier.
+MySQL Enterprise Backup 8.0 only supports MySQL 8.0.""", post_id="2")
+fpc4 = ForumsPostContect(contect="""i have been backup already ^.^""", post_id="2")
+fpc5 = ForumsPostContect(contect="""Dear MySQL users, 
+
+MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
+tool, is now available for download from the My Oracle Support (MOS) website 
+as our latest GA release. This release will be available on eDelivery (OSDC) 
+after the next upload cycle. MySQL Enterprise Backup is a commercial 
+extension to the MySQL family of products. 
+
+MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15. 
+For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
+version with the same version number as the server. For MySQL server 
+5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
+and 5.5, please use MySQL Enterprise Backup 3.12. """, post_id="3")
+fpc6 = ForumsPostContect(contect="""Dear MySQL users, 
+
+MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
+tool, is now available for download from the My Oracle Support (MOS) website 
+as our latest GA release. This release will be available on eDelivery (OSDC) 
+after the next upload cycle. MySQL Enterprise Backup is a commercial 
+extension to the MySQL family of products. 
+
+MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15. 
+For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
+version with the same version number as the server. For MySQL server 
+5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
+and 5.5, please use MySQL Enterprise Backup 3.12. """, post_id="4")
+fpc7 = ForumsPostContect(contect="""Dear MySQL users, 
+
+MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
+tool, is now available for download from the My Oracle Support (MOS) website 
+as our latest GA release. This release will be available on eDelivery (OSDC) 
+after the next upload cycle. MySQL Enterprise Backup is a commercial 
+extension to the MySQL family of products. 
+
+MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15. 
+For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
+version with the same version number as the server. For MySQL server 
+5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
+and 5.5, please use MySQL Enterprise Backup 3.12. """, post_id="5")
+fpc8 = ForumsPostContect(contect="""Dear MySQL users, 
+
+MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
+tool, is now available for download from the My Oracle Support (MOS) website 
+as our latest GA release. This release will be available on eDelivery (OSDC) 
+after the next upload cycle. MySQL Enterprise Backup is a commercial 
+extension to the MySQL family of products. 
+
+MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15. 
+For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
+version with the same version number as the server. For MySQL server 
+5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="6")
+fpc9 = ForumsPostContect(contect="""Dear MySQL users, 
+
+MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
+tool, is now available for download from the My Oracle Support (MOS) website 
+as our latest GA release. This release will be available on eDelivery (OSDC) 
+after the next upload cycle. MySQL Enterprise Backup is a commercial 
+extension to the MySQL family of products. 
+
+MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15. 
+For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
+version with the same version number as the server. For MySQL server 
+5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="7")
+fpc10 = ForumsPostContect(contect="""Dear MySQL users, 
+
+MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
+tool, is now available for download from the My Oracle Support (MOS) website 
+as our latest GA release. This release will be available on eDelivery (OSDC) 
+after the next upload cycle. MySQL Enterprise Backup is a commercial 
+extension to the MySQL family of products. 
+
+MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15. 
+For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
+version with the same version number as the server. For MySQL server 
+5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="8")
+fpc11 = ForumsPostContect(contect="""Dear MySQL users, 
+
+MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
+tool, is now available for download from the My Oracle Support (MOS) website 
+as our latest GA release. This release will be available on eDelivery (OSDC) 
+after the next upload cycle. MySQL Enterprise Backup is a commercial 
+extension to the MySQL family of products. 
+
+MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15. 
+For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
+version with the same version number as the server. For MySQL server 
+5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="9")
+fpc12 = ForumsPostContect(contect="""Dear MySQL users, 
+
+MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
+tool, is now available for download from the My Oracle Support (MOS) website 
+as our latest GA release. This release will be available on eDelivery (OSDC) 
+after the next upload cycle. MySQL Enterprise Backup is a commercial 
+extension to the MySQL family of products. 
+
+MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15. 
+For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
+version with the same version number as the server. For MySQL server 
+5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="10")
+fpc13 = ForumsPostContect(contect="""Dear MySQL users, 
+
+MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
+tool, is now available for download from the My Oracle Support (MOS) website 
+as our latest GA release. This release will be available on eDelivery (OSDC) 
+after the next upload cycle. MySQL Enterprise Backup is a commercial 
+extension to the MySQL family of products. 
+
+MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15. 
+For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
+version with the same version number as the server. For MySQL server 
+5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="11")
+fpc14 = ForumsPostContect(contect="""Dear MySQL users, 
+
+MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
+tool, is now available for download from the My Oracle Support (MOS) website 
+as our latest GA release. This release will be available on eDelivery (OSDC) 
+after the next upload cycle. MySQL Enterprise Backup is a commercial 
+extension to the MySQL family of products. 
+
+MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15. 
+For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
+version with the same version number as the server. For MySQL server 
+5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="12")
+fpc15 = ForumsPostContect(contect="""Dear MySQL users, 
+
+MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
+tool, is now available for download from the My Oracle Support (MOS) website 
+as our latest GA release. This release will be available on eDelivery (OSDC) 
+after the next upload cycle. MySQL Enterprise Backup is a commercial 
+extension to the MySQL family of products. 
+
+MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15. 
+For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
+version with the same version number as the server. For MySQL server 
+5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="13")
+fpc16 = ForumsPostContect(contect="""Dear MySQL users, 
+
+MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
+tool, is now available for download from the My Oracle Support (MOS) website 
+as our latest GA release. This release will be available on eDelivery (OSDC) 
+after the next upload cycle. MySQL Enterprise Backup is a commercial 
+extension to the MySQL family of products. 
+
+MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15. 
+For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
+version with the same version number as the server. For MySQL server 
+5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="14")
+fpc17 = ForumsPostContect(contect="""Dear MySQL users, 
+
+MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
+tool, is now available for download from the My Oracle Support (MOS) website 
+as our latest GA release. This release will be available on eDelivery (OSDC) 
+after the next upload cycle. MySQL Enterprise Backup is a commercial 
+extension to the MySQL family of products. 
+
+MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15. 
+For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
+version with the same version number as the server. For MySQL server 
+5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="15")
+fpc18 = ForumsPostContect(contect="""Dear MySQL users, 
+
+MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
+tool, is now available for download from the My Oracle Support (MOS) website 
+as our latest GA release. This release will be available on eDelivery (OSDC) 
+after the next upload cycle. MySQL Enterprise Backup is a commercial 
+extension to the MySQL family of products. 
+
+MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15. 
+For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
+version with the same version number as the server. For MySQL server 
+5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="16")
+fpc19 = ForumsPostContect(contect="""Dear MySQL users, 
+
+MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
+tool, is now available for download from the My Oracle Support (MOS) website 
+as our latest GA release. This release will be available on eDelivery (OSDC) 
+after the next upload cycle. MySQL Enterprise Backup is a commercial 
+extension to the MySQL family of products. 
+
+MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15. 
+For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
+version with the same version number as the server. For MySQL server 
+5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="17")
+fpc20 = ForumsPostContect(contect="""Dear MySQL users, 
+
+MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
+tool, is now available for download from the My Oracle Support (MOS) website 
+as our latest GA release. This release will be available on eDelivery (OSDC) 
+after the next upload cycle. MySQL Enterprise Backup is a commercial 
+extension to the MySQL family of products. 
+
+MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15. 
+For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
+version with the same version number as the server. For MySQL server 
+5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="18")
+fpc21 = ForumsPostContect(contect="""I am so rich!""", post_id="1")
+fpc22 = ForumsPostContect(contect="""I am so poor""", post_id="2")
 
 db.session.add(fp11)
 db.session.add(fp12)
@@ -430,6 +675,32 @@ db.session.add(fp61)
 db.session.add(fp62)
 db.session.add(fp63)
 
+db.session.add(fpc1)
+db.session.add(fpc2)
+db.session.add(fpc3)
+db.session.add(fpc4)
+db.session.add(fpc5)
+
+db.session.add(fpc6)
+db.session.add(fpc7)
+db.session.add(fpc8)
+db.session.add(fpc9)
+db.session.add(fpc10)
+
+db.session.add(fpc11)
+db.session.add(fpc12)
+db.session.add(fpc13)
+db.session.add(fpc14)
+db.session.add(fpc15)
+
+db.session.add(fpc16)
+db.session.add(fpc17)
+db.session.add(fpc18)
+db.session.add(fpc19)
+db.session.add(fpc20)
+
+db.session.add(fpc21)
+db.session.add(fpc22)
 # ---------------------------DeveloperZone---------------------------
 
 

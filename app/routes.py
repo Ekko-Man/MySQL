@@ -7,7 +7,8 @@ from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, \
     ResetPasswordRequestForm, ResetPasswordForm
 from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, \
     ClusterDownload, MySQLCommunity, TopicGeneral, TopicAdministrator_Guides, TopicHA_Scalability, Windows, ForumsTopic, \
-    ForumsPost, ForumsPostContect, Mainbar, MySQLBar, DownloadBar, DocumentBar, DZBar, index_product, Product_Enterprise, \
+    ForumsPost, ForumsPostContect, Mainbar, MySQLBar, DownloadBar, DocumentBar, DZBar, index_product, \
+    Product_Enterprise, \
     Product_Cluster, ProductForOME, Product_SqlClound, CustomerLogo
 
 from app.email import send_password_reset_email
@@ -313,14 +314,22 @@ def forumstopic(topictype):
         return redirect(url_for('index'))
     idd = supertopic.id
     data = ForumsPost.query.filter_by(topic_id=f'{str(idd)}').all()
-    writerlist =[]
+    writerlist = []
     for dada in data:
         writerquery = User.query.filter_by(id=f'{dada.writer_id}').first()
         writerlist.append(writerquery.username)
-    superdata = zip(data,writerlist)
+    superdata = zip(data, writerlist)
     dzquery = DZBar.query.all()
     mainbarquery = Mainbar.query.all()
-    return render_template('DeveloperZone/supertopic.html', dzquery=dzquery, mainbarquery=mainbarquery, superdata=superdata, topictype=topictype)
+    return render_template('DeveloperZone/supertopic.html', dzquery=dzquery, mainbarquery=mainbarquery, \
+                           superdata=superdata, topictype=topictype)
+
+
+@app.route('/forumspost/<postid>')
+def forumspost(postid):
+    dzquery = DZBar.query.all()
+    mainbarquery = Mainbar.query.all()
+    return render_template('DeveloperZone/forumspost.html', dzquery=dzquery, mainbarquery=mainbarquery)
 
 
 @app.route('/dzoneforums', methods=['GET', 'POST'])
