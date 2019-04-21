@@ -1,0 +1,70 @@
+{% extends "DeveloperZone/DeveloperZone_base.html" %}
+
+
+{% block app_content %}
+
+    <div class="container">
+        <div class="col-auto mr-auto float-left">
+            <img src="https://i.imgur.com/ezpzoaW.png" class="rounded float-left" alt="forum-icon">
+            <div class="span8">
+                <h1>MySQL Forums</h1>
+                <h2>Forum List</h2>
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col"><h3>Forums</h3></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for forum in forums %}
+            <tr>
+                <th scope="row">
+                    <a href="{{ forum.url }}">{{ forum.name }}</a>
+                    <p class="text-muted">{{ forum.description }}</p>
+                </th>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col"><h3>MySQL Connectors & Languages</h3></th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for language in languages %}
+            <tr>
+                <th scope="row">
+                    <a href="{{ language.url }}">{{ language.name }}</a>
+                    <p class="text-muted">{{ language.description }}</p>
+                </th>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col"><h3>MySQL Storage Engines</h3></th>
+        </tr>
+        </thead>
+        {% for storage in storages %}
+            <tr>
+                <th scope="row">
+                    <a href="{{ storage.url }}">{{ storage.name }}</a>
+                    <p class="text-muted">{{ storage.description }}</p>
+                </th>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock app_content %}
