@@ -8,7 +8,7 @@
             <img src="https://i.imgur.com/ezpzoaW.png" class="rounded float-left" alt="forum-icon">
             <div class="span8">
                 <h1>MySQL Forums</h1>
-                <h2>Forum List</h2>
+                <h2><a href="/forums">Forum List</a> -> {{ topictype }}</h2>
             </div>
         </div>
     </div>
@@ -20,13 +20,13 @@
         </tr>
         </thead>
         <tbody>
-        {% for dada in data %}
+        {% for dada, wrwr in superdata %}
             <tr>
                 <th scope="row">
                     <a href="{{ dada.url }}">{{ dada.subject }}</a>
                 </th>
                 <th scope="row">
-                    <a href="#">writer</a>
+                    <a href="/user/{{ wrwr }}">{{ wrwr }}</a>
                 </th>
             </tr>
         {% endfor %}

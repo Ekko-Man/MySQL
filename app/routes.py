@@ -313,9 +313,14 @@ def forumstopic(topictype):
         return redirect(url_for('index'))
     idd = supertopic.id
     data = ForumsPost.query.filter_by(topic_id=f'{str(idd)}').all()
+    writerlist =[]
+    for dada in data:
+        writerquery = User.query.filter_by(id=f'{dada.writer_id}').first()
+        writerlist.append(writerquery.username)
+    superdata = zip(data,writerlist)
     dzquery = DZBar.query.all()
     mainbarquery = Mainbar.query.all()
-    return render_template('DeveloperZone/supertopic.html', dzquery=dzquery, mainbarquery=mainbarquery, data=data)
+    return render_template('DeveloperZone/supertopic.html', dzquery=dzquery, mainbarquery=mainbarquery, superdata=superdata, topictype=topictype)
 
 
 @app.route('/dzoneforums', methods=['GET', 'POST'])
