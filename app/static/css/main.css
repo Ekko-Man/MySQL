@@ -19,14 +19,14 @@ table {
     line-height: 40px;
     border-collapse: separate;
     border-spacing: 0;
-    border: 2px solid #21C8FB;
+    border: 2px solid #4479a1;
     width: 500px;
     margin: 50px auto;
     border-radius: .25rem;
 }
 
 thead tr:first-child {
-    background: #21C8FB;
+    background-color: #4479a1;
     color: #fff;
     border: none;
 }

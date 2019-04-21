@@ -424,10 +424,10 @@ Changes in MySQL Enterprise Backup 3.12.4 (2019-02-15)
 * Bugs Fixed 
 
 Functionality Added or Changed 
-""", post_id="1")
+""", post_id="1", writer_id="1")
 fpc2 = ForumsPostContect(contect="""Plx,
 subscribe pewdiepie !!!
-""", post_id="1")
+""", post_id="1", writer_id="2")
 fpc3 = ForumsPostContect(contect="""Dear MySQL users,
 
 MySQL Enterprise Backup v4.1.3, a new version of the MySQL backup tool, is
@@ -438,8 +438,8 @@ extension to the MySQL family of products.
 
 MySQL Enterprise Backup 4.1.3 only supports MySQL 5.7.
 MySQL Enterprise Backup 3.12.4 only supports MySQL 5.6 and earlier.
-MySQL Enterprise Backup 8.0 only supports MySQL 8.0.""", post_id="2")
-fpc4 = ForumsPostContect(contect="""i have been backup already ^.^""", post_id="2")
+MySQL Enterprise Backup 8.0 only supports MySQL 8.0.""", post_id="2", writer_id="2")
+fpc4 = ForumsPostContect(contect="""i have been backup already ^.^""", post_id="2", writer_id="3")
 fpc5 = ForumsPostContect(contect="""Dear MySQL users, 
 
 MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
@@ -452,7 +452,7 @@ MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15.
 For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
 version with the same version number as the server. For MySQL server 
 5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
-and 5.5, please use MySQL Enterprise Backup 3.12. """, post_id="3")
+and 5.5, please use MySQL Enterprise Backup 3.12. """, post_id="3", writer_id="3")
 fpc6 = ForumsPostContect(contect="""Dear MySQL users, 
 
 MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
@@ -465,7 +465,7 @@ MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15.
 For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
 version with the same version number as the server. For MySQL server 
 5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
-and 5.5, please use MySQL Enterprise Backup 3.12. """, post_id="4")
+and 5.5, please use MySQL Enterprise Backup 3.12. """, post_id="4", writer_id="4")
 fpc7 = ForumsPostContect(contect="""Dear MySQL users, 
 
 MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
@@ -478,7 +478,7 @@ MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15.
 For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
 version with the same version number as the server. For MySQL server 
 5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
-and 5.5, please use MySQL Enterprise Backup 3.12. """, post_id="5")
+and 5.5, please use MySQL Enterprise Backup 3.12. """, post_id="5", writer_id="5")
 fpc8 = ForumsPostContect(contect="""Dear MySQL users, 
 
 MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
@@ -491,7 +491,7 @@ MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15.
 For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
 version with the same version number as the server. For MySQL server 
 5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
-and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="6")
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="6", writer_id="6")
 fpc9 = ForumsPostContect(contect="""Dear MySQL users, 
 
 MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
@@ -504,7 +504,7 @@ MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15.
 For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
 version with the same version number as the server. For MySQL server 
 5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
-and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="7")
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="7", writer_id="3")
 fpc10 = ForumsPostContect(contect="""Dear MySQL users, 
 
 MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
@@ -517,7 +517,7 @@ MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15.
 For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
 version with the same version number as the server. For MySQL server 
 5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
-and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="8")
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="8", writer_id="4")
 fpc11 = ForumsPostContect(contect="""Dear MySQL users, 
 
 MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
@@ -530,7 +530,7 @@ MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15.
 For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
 version with the same version number as the server. For MySQL server 
 5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
-and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="9")
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="9", writer_id="5")
 fpc12 = ForumsPostContect(contect="""Dear MySQL users, 
 
 MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
@@ -543,7 +543,7 @@ MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15.
 For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
 version with the same version number as the server. For MySQL server 
 5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
-and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="10")
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="10", writer_id="1")
 fpc13 = ForumsPostContect(contect="""Dear MySQL users, 
 
 MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
@@ -556,7 +556,7 @@ MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15.
 For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
 version with the same version number as the server. For MySQL server 
 5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
-and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="11")
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="11", writer_id="2")
 fpc14 = ForumsPostContect(contect="""Dear MySQL users, 
 
 MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
@@ -569,7 +569,7 @@ MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15.
 For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
 version with the same version number as the server. For MySQL server 
 5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
-and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="12")
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="12", writer_id="6")
 fpc15 = ForumsPostContect(contect="""Dear MySQL users, 
 
 MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
@@ -582,7 +582,7 @@ MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15.
 For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
 version with the same version number as the server. For MySQL server 
 5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
-and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="13")
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="13", writer_id="2")
 fpc16 = ForumsPostContect(contect="""Dear MySQL users, 
 
 MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
@@ -595,7 +595,7 @@ MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15.
 For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
 version with the same version number as the server. For MySQL server 
 5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
-and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="14")
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="14", writer_id="3")
 fpc17 = ForumsPostContect(contect="""Dear MySQL users, 
 
 MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
@@ -608,7 +608,7 @@ MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15.
 For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
 version with the same version number as the server. For MySQL server 
 5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
-and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="15")
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="15", writer_id="4")
 fpc18 = ForumsPostContect(contect="""Dear MySQL users, 
 
 MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
@@ -621,7 +621,7 @@ MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15.
 For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
 version with the same version number as the server. For MySQL server 
 5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
-and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="16")
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="16", writer_id="5")
 fpc19 = ForumsPostContect(contect="""Dear MySQL users, 
 
 MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
@@ -634,7 +634,7 @@ MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15.
 For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
 version with the same version number as the server. For MySQL server 
 5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
-and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="17")
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="17", writer_id="6")
 fpc20 = ForumsPostContect(contect="""Dear MySQL users, 
 
 MySQL Enterprise Backup 8.0.15, a new version of the online MySQL backup 
@@ -647,9 +647,9 @@ MySQL Enterprise Backup 8.0.15 supports only the MySQL Server 8.0.15.
 For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup 
 version with the same version number as the server. For MySQL server 
 5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
-and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="18")
-fpc21 = ForumsPostContect(contect="""I am so rich!""", post_id="1")
-fpc22 = ForumsPostContect(contect="""I am so poor""", post_id="2")
+and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="18", writer_id="1")
+fpc21 = ForumsPostContect(contect="""I am so rich!""", post_id="1", writer_id="5")
+fpc22 = ForumsPostContect(contect="""I am so poor""", post_id="2", writer_id="6")
 
 db.session.add(fp11)
 db.session.add(fp12)

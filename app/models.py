@@ -116,6 +116,7 @@ class ForumsPostContect(db.Model):
     contect = db.Column(db.String(300))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     post_id = db.Column(db.Integer, db.ForeignKey('forums_post.id'))
+    writer_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 
 # ---------------------------Forums---------------------------

@@ -13,32 +13,35 @@
         </div>
     </div>
     <table class="table">
-        <thead class="thead-dark">
+        <thead class="thead-dark thead-dark">
         <tr>
-            <th scope="col"><h2>Subject</h2></th>
+            <th scope="col"><h2>{{ postdata.subject }}</h2></th>
         </tr>
         </thead>
         <tbody>
         <tr>
             <th scope="row">
-                <a href="url ">writer change bg color</a>
+                <a href="/user/{{ writer.username }}">Topic posted by: {{ writer.username }}</a>
             </th>
         </tr>
         </tbody>
     </table>
 
-    <table class="table">
+    <table class="table table-striped">
         <tbody>
-        <tr>
-            <th scope="row">
-                <a href="url ">contect1</a>
-            </th>
-        </tr>
-        <tr>
-            <th scope="row">
-                <a href="url ">contect2</a>
-            </th>
-        </tr>
+        {% for postpost, contectwriter in superpostcontect %}
+            <tr>
+                <th scope="row">
+                    <a>Written By: </a><a href="/user/{{ contectwriter }}">{{ contectwriter }}</a>
+                    <h5>Posted: {{ postpost.timestamp }}</h5>
+                </th>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <h4>{{postpost.contect}}</h4>
+                </th>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
 
