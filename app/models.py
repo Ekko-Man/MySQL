@@ -173,7 +173,7 @@ class MySQLCommunity(db.Model):
     name = db.Column(db.String(50))
     version = db.Column(db.String(100))
     description = db.Column(db.String(200))
-    download = db.Column(db.String(100))
+    com_link = db.Column(db.String(100))
     MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
 
 
