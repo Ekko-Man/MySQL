@@ -19,6 +19,8 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
     posts = db.relationship('Post', backref='author', lazy='dynamic')
+    forumspost = db.relationship('ForumsPost', backref='postauthor', lazy='dynamic')
+    forumspostscontect = db.relationship('ForumsPostContect', backref='postcontectauthor', lazy='dynamic')
     about_me = db.Column(db.String(140))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
     followed = db.relationship(
@@ -112,6 +114,7 @@ class ForumsPost(db.Model):
     writer_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 class ForumsPostContect(db.Model):
+    __tablename__ = 'forums_post_contect'
     id = db.Column(db.Integer, primary_key=True)
     contect = db.Column(db.String(300))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)

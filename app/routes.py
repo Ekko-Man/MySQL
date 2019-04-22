@@ -1,10 +1,10 @@
-from datetime import datetime,timedelta
+from datetime import datetime, timedelta
 from flask import render_template, flash, redirect, url_for, request, make_response
 from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, \
-    ResetPasswordRequestForm, ResetPasswordForm
+    ResetPasswordRequestForm, ResetPasswordForm, ForumsPostReplyForm
 from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, \
     ClusterDownload, MySQLCommunity, TopicGeneral, TopicAdministrator_Guides, TopicHA_Scalability, Windows, ForumsTopic, \
     ForumsPost, ForumsPostContect, Mainbar, MySQLBar, DownloadBar, DocumentBar, DZBar, index_product, \
@@ -325,24 +325,51 @@ def forumstopic(topictype):
                            superdata=superdata, topictype=topictype)
 
 
-@app.route('/forumspost/<postid>')
+@app.route('/forumspost/<postid>', methods=['GET', 'POST'])
 def forumspost(postid):
-    postdata = ForumsPost.query.filter_by(id=f'{str(postid)}').first()
-    if postdata is None:
-        flash("What are u doing? We don't have this POST!!!!!  GOOD BYE")
-        return redirect(url_for('index'))
-    topicdata = ForumsTopic.query.filter_by(id=f'{str(postdata.topic_id)}').first()
-    writer = User.query.filter_by(id=f'{postdata.writer_id}').first()
-    postcontect = ForumsPostContect.query.filter_by(post_id=f'{str(postid)}').all()
-    writerlist = []
-    for dada in postcontect:
-        writerquery = User.query.filter_by(id=f'{dada.writer_id}').first()
-        writerlist.append(writerquery.username)
-    superpostcontect = zip(postcontect, writerlist)
-    dzquery = DZBar.query.all()
-    mainbarquery = Mainbar.query.all()
-    return render_template('DeveloperZone/forumspost.html', dzquery=dzquery, mainbarquery=mainbarquery, \
-                           topicdata=topicdata, postdata=postdata, writer=writer, superpostcontect=superpostcontect)
+    if current_user.is_authenticated:
+        postdata = ForumsPost.query.filter_by(id=f'{str(postid)}').first()
+        if postdata is None:
+            flash("What are u doing? We don't have this POST!!!!!  GOOD BYE")
+            return redirect(url_for('index'))
+        topicdata = ForumsTopic.query.filter_by(id=f'{str(postdata.topic_id)}').first()
+        writer = User.query.filter_by(id=f'{postdata.writer_id}').first()
+        postcontect = ForumsPostContect.query.filter_by(post_id=f'{str(postid)}').all()
+        writerlist = []
+        for dada in postcontect:
+            writerquery = User.query.filter_by(id=f'{dada.writer_id}').first()
+            writerlist.append(writerquery.username)
+        superpostcontect = zip(postcontect, writerlist)
+        form = ForumsPostReplyForm()
+        if form.validate_on_submit():
+            post = ForumsPostContect(contect=form.postcontect.data, post_id=postid, postcontectauthor=current_user)
+            db.session.add(post)
+            db.session.commit()
+            flash('You were replied!')
+            return redirect(url_for('forumspost',postid=postid))
+        dzquery = DZBar.query.all()
+        mainbarquery = Mainbar.query.all()
+        return render_template('DeveloperZone/forumspost.html', dzquery=dzquery, mainbarquery=mainbarquery, \
+                               topicdata=topicdata, postdata=postdata, writer=writer, superpostcontect=superpostcontect \
+                               , form=form)
+    elif not current_user.is_authenticated:
+        postdata = ForumsPost.query.filter_by(id=f'{str(postid)}').first()
+        if postdata is None:
+            flash("What are u doing? We don't have this POST!!!!!  GOOD BYE")
+            return redirect(url_for('index'))
+        topicdata = ForumsTopic.query.filter_by(id=f'{str(postdata.topic_id)}').first()
+        writer = User.query.filter_by(id=f'{postdata.writer_id}').first()
+        postcontect = ForumsPostContect.query.filter_by(post_id=f'{str(postid)}').all()
+        writerlist = []
+        for dada in postcontect:
+            writerquery = User.query.filter_by(id=f'{dada.writer_id}').first()
+            writerlist.append(writerquery.username)
+        superpostcontect = zip(postcontect, writerlist)
+        dzquery = DZBar.query.all()
+        mainbarquery = Mainbar.query.all()
+        return render_template('DeveloperZone/forumspost.html', dzquery=dzquery, mainbarquery=mainbarquery, \
+                               topicdata=topicdata, postdata=postdata, writer=writer, superpostcontect=superpostcontect)
+
 
 
 @app.route('/dzoneforums', methods=['GET', 'POST'])

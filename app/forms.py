@@ -3,7 +3,7 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, \
     TextAreaField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, \
     Length
-from app.models import User
+from app.models import User, ForumsTopic,ForumsPostContect,ForumsPost
 
 
 class LoginForm(FlaskForm):
@@ -62,4 +62,8 @@ class EditProfileForm(FlaskForm):
 
 class PostForm(FlaskForm):
     post = TextAreaField('Say something', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+class ForumsPostReplyForm(FlaskForm):
+    postcontect = TextAreaField('Here to reply', validators=[DataRequired()])
     submit = SubmitField('Submit')

@@ -1,4 +1,5 @@
 {% extends "DeveloperZone/DeveloperZone_base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
 
 {% block app_content %}
@@ -8,7 +9,8 @@
             <img src="https://i.imgur.com/ezpzoaW.png" class="rounded float-left" alt="forum-icon">
             <div class="span8">
                 <h1>MySQL Forums</h1>
-                <h2><a href="/forums">Forum List</a> &rArr; <a href="/forumstopic/{{ topicdata.name }}"> {{ topicdata.name }}</a></h2>
+                <h2><a href="/forums">Forum List</a> &rArr; <a
+                        href="/forumstopic/{{ topicdata.name }}"> {{ topicdata.name }}</a></h2>
             </div>
         </div>
     </div>
@@ -45,6 +47,17 @@
         </tbody>
     </table>
 
-
+    {% if form %}
+        <table class="table">
+            <tbody>
+            <tr>
+                <th scope="row">
+                    {{ wtf.quick_form(form) }}
+                    <br>
+                </th>
+            </tr>
+            </tbody>
+        </table>
+    {% endif %}
 
 {% endblock app_content %}
