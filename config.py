@@ -5,7 +5,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
-    SQLALCHEMY_DATABASE_URI ='mysql+pymysql://flask:568472abde@flaskdatabase.ckhwwzvckwgn.ap-northeast-1.rds.amazonaws.com/flaskdatabase.ckhwwzvckwgn.ap-northeast-1.rds.amazonaws.com'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://aws_leo:933260Ad123@webserver.ckhwwzvckwgn.ap-northeast-1.rds.amazonaws.com/webserverdb'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     MAIL_SERVER = os.environ.get('MAIL_SERVER')
     MAIL_PORT = int(os.environ.get('MAIL_PORT') or 25)
