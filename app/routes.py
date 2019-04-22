@@ -261,7 +261,9 @@ def community():
 @app.route('/Download/windows')
 def windows():
     winquery = Windows.query.all()
-    return render_template('Download/windows.html', title="Windows", winquery=winquery)
+    mainbarquery = Mainbar.query.all()
+    downquery = DownloadBar.query.all()
+    return render_template('Download/windows.html', title="Windows", winquery=winquery, downquery=downquery, mainbarquery=mainbarquery)
 
 
 @app.route('/MySQLCOM/Enterprise')
@@ -269,8 +271,10 @@ def MysqlProduct():
     EnterpriseDropDown = Product_Enterprise.query.all()
     ClusterDropDown = Product_Cluster.query.all()
     OEMDropDown = ProductForOME.query.all()
+    mainbarquery = Mainbar.query.all()
+    mysqlbarquery = MySQLBar.query.all()
     return render_template('MySQLCOM/MySQL_Enterprise.html', title='Enterprise', EnterpriseDropDown=EnterpriseDropDown,
-                           OEMDropDown=OEMDropDown, ClusterDropDown=ClusterDropDown)
+                           OEMDropDown=OEMDropDown, ClusterDropDown=ClusterDropDown, mysqlbarquery=mysqlbarquery, mainbarquery=mainbarquery)
 
 
 @app.route('/MySQLCOM/Cloud')
@@ -280,11 +284,11 @@ def MysqlCloud():
     OEMDropDown = ProductForOME.query.all()
     cloudbutton = Product_SqlClound.query.filter_by(id=2)
     cloudbutton2 = Product_SqlClound.query.filter_by(id=3)
-    downquery = DownloadBar.query.all()
+    mysqlbarquery = MySQLBar.query.all()
     mainbarquery = Mainbar.query.all()
     return render_template('MySQLCOM/MySQL_Cloud.html', title='Cloud', EnterpriseDropDown=EnterpriseDropDown,
                            OEMDropDown=OEMDropDown, ClusterDropDown=ClusterDropDown, cloudbutton=cloudbutton,
-                           cloudbutton2=cloudbutton2, downquery=downquery, mainbarquery=mainbarquery)
+                           cloudbutton2=cloudbutton2, mysqlbarquery=mysqlbarquery, mainbarquery=mainbarquery)
 
 
 @app.route('/developerzone')
