@@ -46,7 +46,7 @@ Down2 = DownloadBar(Name='Community', url='/Download/community', MainID=2)
 Down3 = DownloadBar(Name='Yum Repository', url='#', MainID=2)
 Down4 = DownloadBar(Name='APT Repository', url='#', MainID=2)
 Down5 = DownloadBar(Name='SUSE Repository', url='#', MainID=2)
-Down6 = DownloadBar(Name='Windows', url='Download/windows.html', MainID=2)
+Down6 = DownloadBar(Name='Windows', url='/Download/windows.html', MainID=2)
 Down7 = DownloadBar(Name='Archives', url='#', MainID=2)
 
 Doc1 = DocumentBar(Name='MySQL Server', url='#', MainID=3)
