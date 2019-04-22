@@ -332,13 +332,12 @@ def forumspost(postid):
         flash("What are u doing? We don't have this POST!!!!!  GOOD BYE")
         return redirect(url_for('index'))
     writer = User.query.filter_by(id=f'{postdata.writer_id}').first()
-    postcontect = ForumsPostContect.query.filter_by(id=f'{str(postid)}').all()
+    postcontect = ForumsPostContect.query.filter_by(post_id=f'{str(postid)}').all()
     writerlist = []
     for dada in postcontect:
         writerquery = User.query.filter_by(id=f'{dada.writer_id}').first()
         writerlist.append(writerquery.username)
     superpostcontect = zip(postcontect, writerlist)
-
     dzquery = DZBar.query.all()
     mainbarquery = Mainbar.query.all()
     return render_template('DeveloperZone/forumspost.html', dzquery=dzquery, mainbarquery=mainbarquery, \
