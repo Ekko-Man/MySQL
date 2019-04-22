@@ -2,7 +2,7 @@ from app import db
 from app.models import User, Post, Product, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, \
     EnterpriseDownload, ClusterDownload, MySQLCommunity, Topic, TopicGeneral, TopicAdministrator_Guides, \
     TopicHA_Scalability, Windows, index_product, Product_Cluster, Product_Enterprise, Product_SqlClound, \
-    ProductForOME, CustomerLogo, TopicHA_Scalability, Windows, ForumsTopic, ForumsPost, ForumsPostContect, Mainbar, MySQLBar, DownloadBar, DocumentBar, DZBar
+    ProductForOME, CustomerLogo, TopicHA_Scalability, Windows, ForumsTopic, ForumsPost, ForumsPostContect, Mainbar, MySQLBar, DownloadBar, DocumentBar, DZBar, Newdownload
 
 from datetime import datetime, timedelta
 import unittest
@@ -104,6 +104,15 @@ pc5 = ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/mysql-cluster-manage
                              name="MySQL Cluster Manager 1.3", title_id="MySQLNDBCluster")
 
 # ------------------------------Download----------------------------
+new1 = Newdownload(name='Enterprise')
+new2 = Newdownload(name='Community')
+new3 = Newdownload(name='Yum Repository')
+new4 = Newdownload(name='APT Repository')
+new5 = Newdownload(name='SUSE Repository')
+new6 = Newdownload(name='Windows')
+new7 = Newdownload(name='Archives')
+
+
 
 down1 = EnterpriseDownload(name='MySQLDatabase', MainID=1)
 down2 = EnterpriseDownload(name='MySQL Storage Engines (InnoDB, MyISAM, etc.)', MainID=1)
@@ -239,6 +248,15 @@ db.session.add(My5)
 db.session.add(My6)
 db.session.add(My7)
 db.session.add(My8)
+
+db.session.add(new1)
+db.session.add(new2)
+db.session.add(new3)
+db.session.add(new4)
+db.session.add(new5)
+db.session.add(new6)
+db.session.add(new7)
+
 
 db.session.add(Down1)
 db.session.add(Down2)

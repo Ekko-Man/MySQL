@@ -215,19 +215,22 @@ class DZBar(db.Model):
 
 
 # ---------------------------Download---------------------------
-
+class Newdownload(db.Model):
+    __tablename__ = 'New_download'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(200))
 
 class EnterpriseDownload(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
-    MainID = db.Column(db.Integer, db.ForeignKey('Download_Bar.id'))
+    MainID = db.Column(db.Integer, db.ForeignKey('New_download.id'))
 
 
 
 class ClusterDownload(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
-    MainID = db.Column(db.Integer, db.ForeignKey('Download_Bar.id'))
+    MainID = db.Column(db.Integer, db.ForeignKey('New_download.id'))
 
 
 
@@ -237,7 +240,7 @@ class MySQLCommunity(db.Model):
     version = db.Column(db.String(100))
     description = db.Column(db.String(200))
     com_link = db.Column(db.String(200))
-    MainID = db.Column(db.Integer, db.ForeignKey('Download_Bar.id'))
+    MainID = db.Column(db.Integer, db.ForeignKey('New_download.id'))
 
 
 
@@ -246,7 +249,7 @@ class Windows(db.Model):
     name = db.Column(db.String(50))
     description = db.Column(db.String(200))
     win_link = db.Column(db.String(200))
-    MainID = db.Column(db.Integer, db.ForeignKey(Mainbar.id))
+    MainID = db.Column(db.Integer, db.ForeignKey('New_download.id'))
 
 
 # ---------------------------Download---------------------------
