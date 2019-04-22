@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime,timedelta
 from flask import render_template, flash, redirect, url_for, request, make_response
 from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.urls import url_parse
@@ -189,8 +189,8 @@ def setcookie():
     if request.method == 'POST':
         user = request.form['username']
     resp = make_response(render_template('readcookie.html'))
-    expire = datetime.datetime.now()
-    expire = expire + datetime.timedelta(seconds=60000)
+    expire = datetime.now()
+    expire = expire + timedelta(seconds=60000)
     resp.set_cookie('userID', user, expires=expire)
     resp.set_cookie('secureUserID', user, expires=expire, secure=True)
     resp.set_cookie('httpOnlyUserID', user, expires=expire, httponly=True)
