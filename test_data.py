@@ -71,37 +71,37 @@ p2 = Product(title="XDevAPI")
 p3 = Product(title="MySQLNDBCluster")
 
 pm1 = ProductMysqlServer(url="https://dev.mysql.com/doc/refman/8.0/en/", name="MySQL8.0ReferenceManual",
-                         title_id="MysqlServer")
+                         title_id=1)
 pm2 = ProductMysqlServer(url="https://dev.mysql.com/doc/refman/5.7/en/", name="MySQL 5.7 Reference Manual",
-                         title_id="MysqlServer")
+                         title_id=1)
 pm3 = ProductMysqlServer(url="https://dev.mysql.com/doc/refman/5.6/en/", name="MySQL 5.6 Reference Manual",
-                         title_id="MysqlServer")
+                         title_id=1)
 pm4 = ProductMysqlServer(url="https://dev.mysql.com/doc/refman/5.6/ja/", name="MySQL 5.6 Reference Manual (Japanese)",
-                         title_id="MysqlServer")
+                         title_id=1)
 pm5 = ProductMysqlServer(url="https://dev.mysql.com/doc/refman/5.5/en/", name="MySQL 5.5 Reference Manual",
-                         title_id="MysqlServer")
+                         title_id=1)
 
 px1 = ProductXDevAPI(url="https://dev.mysql.com/doc/dev/connector-cpp/8.0/",
-                     name="MySQL Connector/C++ X DevAPI Reference", title_id="XDevAPI")
+                     name="MySQL Connector/C++ X DevAPI Reference", title_id=2)
 px2 = ProductXDevAPI(url="https://dev.mysql.com/doc/dev/connector-j/8.0/", name="MySQL Connector/J X DevAPI Reference",
-                     title_id="XDevAPI")
+                     title_id=2)
 px3 = ProductXDevAPI(url="https://dev.mysql.com/doc/dev/connector-net/8.0/",
-                     name="MySQL Connector/NET X DevAPI Reference", title_id="XDevAPI")
+                     name="MySQL Connector/NET X DevAPI Reference", title_id=2)
 px4 = ProductXDevAPI(url="https://dev.mysql.com/doc/dev/connector-nodejs/8.0/",
-                     name="MySQL Connector/Node.js X DevAPI Reference", title_id="XDevAPI")
+                     name="MySQL Connector/Node.js X DevAPI Reference", title_id=2)
 px5 = ProductXDevAPI(url="https://dev.mysql.com/doc/dev/connector-python/8.0/",
-                     name="MySQL Connector/Python X DevAPI Reference", title_id="XDevAPI")
+                     name="MySQL Connector/Python X DevAPI Reference", title_id=2)
 
 pc1 = ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/ndbapi/en/", name="NDB Cluster API Developer Guide",
-                             title_id="MySQLNDBCluster")
+                             title_id="3")
 pc2 = ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/ndb-internals/en/index.html",
-                             name="NDB Cluster Internals Manual", title_id="MySQLNDBCluster")
+                             name="NDB Cluster Internals Manual", title_id="3")
 pc3 = ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/ndbapi/en/ndbmemcache.html",
-                             name="memcache and NDB Cluster", title_id="MySQLNDBCluster")
+                             name="memcache and NDB Cluster", title_id="3")
 pc4 = ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/mysql-cluster-manager/1.4/en/",
-                             name="MySQL Cluster Manager 1.4", title_id="MySQLNDBCluster")
+                             name="MySQL Cluster Manager 1.4", title_id="3")
 pc5 = ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/mysql-cluster-manager/1.3/en/",
-                             name="MySQL Cluster Manager 1.3", title_id="MySQLNDBCluster")
+                             name="MySQL Cluster Manager 1.3", title_id="3")
 
 # ------------------------------Download----------------------------
 new1 = Newdownload(name='Enterprise')
@@ -164,30 +164,30 @@ t2 = Topic(title="Administrator Guides")
 t3 = Topic(title="HA/Scalability")
 
 tg1 = TopicGeneral(url="https://dev.mysql.com/doc/refman/8.0/en/server-administration.html",
-                   name="Server Administration", title_id="General")
+                   name="Server Administration", title_id="1")
 tg2 = TopicGeneral(url="https://dev.mysql.com/doc/refman/8.0/en/sql-syntax.html", name="SQL Syntax", title_id="General")
 tg3 = TopicGeneral(url="https://dev.mysql.com/doc/refman/8.0/en/innodb-storage-engine.html",
-                   name="InnoDB Storage Engine", title_id="General")
+                   name="InnoDB Storage Engine", title_id="1")
 tg4 = TopicGeneral(url="https://dev.mysql.com/doc/refman/8.0/en/storage-engines.html",
-                   name="Alternative Storage Engines", title_id="General")
+                   name="Alternative Storage Engines", title_id="1")
 
 tag1 = TopicAdministrator_Guides(url="https://dev.mysql.com/doc/mysql-security-excerpt/8.0/en/index.html",
-                                 name="Security", title_id="Administrator Guides")
+                                 name="Security", title_id="2")
 tag2 = TopicAdministrator_Guides(url="https://dev.mysql.com/doc/mysql-secure-deployment-guide/8.0/en/index.html",
-                                 name="Secure Deployment Guide", title_id="Administrator Guides")
+                                 name="Secure Deployment Guide", title_id="2")
 tag3 = TopicAdministrator_Guides(url="https://dev.mysql.com/doc/mysql-startstop-excerpt/8.0/en/index.html",
-                                 name="Startup / Shutdown", title_id="Administrator Guides")
+                                 name="Startup / Shutdown", title_id="2")
 tag4 = TopicAdministrator_Guides(url="https://dev.mysql.com/doc/mysql-backup-excerpt/8.0/en/index.html",
-                                 name="Backup and Recovery Overview", title_id="Administrator Guides")
+                                 name="Backup and Recovery Overview", title_id="2")
 
 ts1 = TopicHA_Scalability(url="https://dev.mysql.com/doc/refman/8.0/en/mysql-innodb-cluster-userguide.html",
-                          name="MySQL InnoDB cluster", title_id="HA/Scalability")
+                          name="MySQL InnoDB cluster", title_id="3")
 ts2 = TopicHA_Scalability(url="https://dev.mysql.com/doc/refman/en/ha-memcached.html", name="memcached",
-                          title_id="HA/Scalability")
+                          title_id="3")
 ts3 = TopicHA_Scalability(url="https://dev.mysql.com/doc/ndbapi/en/ndbmemcache.html", name="memcached with NDB Cluster",
-                          title_id="HA/Scalability")
+                          title_id=3)
 ts4 = TopicHA_Scalability(url="https://dev.mysql.com/doc/refman/en/innodb-memcached.html", name="memcached with InnoDB",
-                          title_id="HA/Scalability")
+                          title_id="3")
 # ---------------------------MySQL---------------------------
 IP1 = index_product(producttitle="MySQL Enterprise Edition", url='/MySQLCOM/Enterprise')
 IP2 = index_product(producttitle="Oracle MySQL cloud Service", url='/MySQLCOM/Cloud')

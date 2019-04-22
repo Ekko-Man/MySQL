@@ -127,55 +127,55 @@ class ForumsPostContect(db.Model):
 # ---------------------------DOCUMENTATION---------------------------
 
 class Product(db.Model):
-    title_id = db.Column(db.Integer, primary_key=True)
+    title_id = db.Column(db.Integer, primary_key=True,nullable=False,unique=True)
     title = db.Column(db.String(200))
 
 
 class Topic(db.Model):
-    title_id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(200))
+    title_id = db.Column(db.Integer, primary_key=True,nullable=False,unique=True)
+    title = db.Column(db.String(200),nullable=False)
 
 
 class ProductMysqlServer(db.Model):
-    product_id = db.Column(db.Integer, primary_key=True)
-    url = db.Column(db.String(140))
-    name = db.Column(db.String(80))
-    title_id = db.Column(db.Integer, db.ForeignKey('product.title_id'))
+    product_id = db.Column(db.Integer, primary_key=True,nullable=False,unique=True)
+    url = db.Column(db.String(140),nullable=False)
+    name = db.Column(db.String(80),nullable=False)
+    title_id = db.Column(db.Integer, db.ForeignKey('product.title_id'),nullable=False)
 
 
 class ProductXDevAPI(db.Model):
-    product_id = db.Column(db.Integer, primary_key=True)
-    url = db.Column(db.String(140))
-    name = db.Column(db.String(80))
-    title_id = db.Column(db.Integer, db.ForeignKey('product.title_id'))
+    product_id = db.Column(db.Integer, primary_key=True,nullable=False,unique=True)
+    url = db.Column(db.String(140),nullable=False)
+    name = db.Column(db.String(80),nullable=False)
+    title_id = db.Column(db.Integer, db.ForeignKey('product.title_id'),nullable=False)
 
 
 class ProductMySQLNDBCluster(db.Model):
-    product_id = db.Column(db.Integer, primary_key=True)
-    url = db.Column(db.String(140))
-    name = db.Column(db.String(80))
-    title_id = db.Column(db.Integer, db.ForeignKey('product.title_id'))
+    product_id = db.Column(db.Integer, primary_key=True,nullable=False)
+    url = db.Column(db.String(140),nullable=False)
+    name = db.Column(db.String(80),nullable=False)
+    title_id = db.Column(db.Integer, db.ForeignKey('product.title_id'),nullable=False)
 
 
 class TopicGeneral(db.Model):
-    doc_id = db.Column(db.Integer, primary_key=True)
-    url = db.Column(db.String(140))
-    name = db.Column(db.String(80))
-    title_id = db.Column(db.Integer, db.ForeignKey('topic.title_id'))
+    doc_id = db.Column(db.Integer, primary_key=True,nullable=False,unique=True)
+    url = db.Column(db.String(140),nullable=False)
+    name = db.Column(db.String(80),nullable=False)
+    title_id = db.Column(db.Integer, db.ForeignKey('topic.title_id'),nullable=False)
 
 
 class TopicAdministrator_Guides(db.Model):
-    doc_id = db.Column(db.Integer, primary_key=True)
-    url = db.Column(db.String(140))
-    name = db.Column(db.String(80))
-    title_id = db.Column(db.Integer, db.ForeignKey('topic.title_id'))
+    doc_id = db.Column(db.Integer, primary_key=True,unique=True)
+    url = db.Column(db.String(140),nullable=False)
+    name = db.Column(db.String(80),nullable=False)
+    title_id = db.Column(db.Integer, db.ForeignKey('topic.title_id'),nullable=False)
 
 
 class TopicHA_Scalability(db.Model):
-    doc_id = db.Column(db.Integer, primary_key=True)
-    url = db.Column(db.String(140))
-    name = db.Column(db.String(80))
-    title_id = db.Column(db.Integer, db.ForeignKey('topic.title_id'))
+    doc_id = db.Column(db.Integer, primary_key=True,nullable=False)
+    url = db.Column(db.String(140),nullable=False)
+    name = db.Column(db.String(80),nullable=False)
+    title_id = db.Column(db.Integer, db.ForeignKey('topic.title_id'),nullable=False)
 
 
 
