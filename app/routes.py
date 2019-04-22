@@ -327,10 +327,11 @@ def forumstopic(topictype):
 
 @app.route('/forumspost/<postid>')
 def forumspost(postid):
-    postdata = ForumsPost.query.filter_by(topic_id=f'{str(postid)}').first()
+    postdata = ForumsPost.query.filter_by(id=f'{str(postid)}').first()
     if postdata is None:
         flash("What are u doing? We don't have this POST!!!!!  GOOD BYE")
         return redirect(url_for('index'))
+    topicdata = ForumsTopic.query.filter_by(id=f'{str(postdata.topic_id)}').first()
     writer = User.query.filter_by(id=f'{postdata.writer_id}').first()
     postcontect = ForumsPostContect.query.filter_by(post_id=f'{str(postid)}').all()
     writerlist = []
@@ -341,7 +342,7 @@ def forumspost(postid):
     dzquery = DZBar.query.all()
     mainbarquery = Mainbar.query.all()
     return render_template('DeveloperZone/forumspost.html', dzquery=dzquery, mainbarquery=mainbarquery, \
-                           postdata=postdata, writer=writer, superpostcontect=superpostcontect)
+                           topicdata=topicdata, postdata=postdata, writer=writer, superpostcontect=superpostcontect)
 
 
 @app.route('/dzoneforums', methods=['GET', 'POST'])

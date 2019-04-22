@@ -8,7 +8,7 @@
             <img src="https://i.imgur.com/ezpzoaW.png" class="rounded float-left" alt="forum-icon">
             <div class="span8">
                 <h1>MySQL Forums</h1>
-                <h2><a href="/forums">Forum List</a> -> topictype</h2>
+                <h2><a href="/forums">Forum List</a> &rArr; <a href="/forumstopic/{{ topicdata.name }}"> {{ topicdata.name }}</a></h2>
             </div>
         </div>
     </div>
@@ -21,7 +21,7 @@
         <tbody>
         <tr>
             <th scope="row">
-                <a href="/user/{{ writer.username }}">Topic posted by: {{ writer.username }}</a>
+                Topic posted by: <a href="/user/{{ writer.username }}">{{ writer.username }}</a>
             </th>
         </tr>
         </tbody>
@@ -32,7 +32,7 @@
         {% for postpost, contectwriter in superpostcontect %}
             <tr>
                 <th scope="row">
-                    <a>Written By: </a><a href="/user/{{ contectwriter }}">{{ contectwriter }}</a>
+                    Written By: <a href="/user/{{ contectwriter }}">{{ contectwriter }}</a>
                     <h5>Posted: {{ postpost.timestamp }}</h5>
                 </th>
             </tr>
