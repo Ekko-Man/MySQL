@@ -5,7 +5,7 @@ from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, \
     ResetPasswordRequestForm, ResetPasswordForm, ForumsPostReplyForm
-from app.models import User, Post, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, \
+from app.models import User, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, \
     ClusterDownload, MySQLCommunity, TopicGeneral, TopicAdministrator_Guides, TopicHA_Scalability, Windows, ForumsTopic, \
     ForumsPost, ForumsPostContect, Mainbar, MySQLBar, DownloadBar, DocumentBar, DZBar, index_product, \
     Product_Enterprise, \
@@ -120,16 +120,8 @@ def reset_password(token):
 @login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
-    page = request.args.get('page', 1, type=int)
-    posts = user.posts.order_by(Post.timestamp.desc()).paginate(
-        page, app.config['POSTS_PER_PAGE'], False)
-    next_url = url_for('user', username=user.username, page=posts.next_num) \
-        if posts.has_next else None
-    prev_url = url_for('user', username=user.username, page=posts.prev_num) \
-        if posts.has_prev else None
     mainbarquery = Mainbar.query.all()
-    return render_template('user.html', user=user, posts=posts.items,
-                           next_url=next_url, prev_url=prev_url, mainbarquery=mainbarquery)
+    return render_template('user.html', user=user, mainbarquery=mainbarquery)
 
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
@@ -263,7 +255,8 @@ def windows():
     winquery = Windows.query.all()
     mainbarquery = Mainbar.query.all()
     downquery = DownloadBar.query.all()
-    return render_template('Download/windows.html', title="Windows", winquery=winquery, downquery=downquery, mainbarquery=mainbarquery)
+    return render_template('Download/windows.html', title="Windows", winquery=winquery, downquery=downquery,
+                           mainbarquery=mainbarquery)
 
 
 @app.route('/MySQLCOM/Enterprise')
@@ -274,7 +267,8 @@ def MysqlProduct():
     mainbarquery = Mainbar.query.all()
     mysqlquery = MySQLBar.query.all()
     return render_template('MySQLCOM/MySQL_Enterprise.html', title='Enterprise', EnterpriseDropDown=EnterpriseDropDown,
-                           OEMDropDown=OEMDropDown, ClusterDropDown=ClusterDropDown, mysqlquery=mysqlquery, mainbarquery=mainbarquery)
+                           OEMDropDown=OEMDropDown, ClusterDropDown=ClusterDropDown, mysqlquery=mysqlquery,
+                           mainbarquery=mainbarquery)
 
 
 @app.route('/MySQLCOM/Cloud')
@@ -312,21 +306,38 @@ def forums():
 
 @app.route('/forumstopic/<topictype>')
 def forumstopic(topictype):
-    supertopic = ForumsTopic.query.filter_by(name=f'{topictype}').first()
-    if supertopic is None:
-        flash("What are u doing? We don't have this TOPIC!!!!!  GOOD BYE")
-        return redirect(url_for('index'))
-    idd = supertopic.id
-    data = ForumsPost.query.filter_by(topic_id=f'{str(idd)}').all()
-    writerlist = []
-    for dada in data:
-        writerquery = User.query.filter_by(id=f'{dada.writer_id}').first()
-        writerlist.append(writerquery.username)
-    superdata = zip(data, writerlist)
-    dzquery = DZBar.query.all()
-    mainbarquery = Mainbar.query.all()
-    return render_template('DeveloperZone/supertopic.html', dzquery=dzquery, mainbarquery=mainbarquery, \
-                           superdata=superdata, topictype=topictype)
+    if current_user.is_authenticated:
+        supertopic = ForumsTopic.query.filter_by(name=f'{topictype}').first()
+        if supertopic is None:
+            flash("What are u doing? We don't have this TOPIC!!!!!  GOOD BYE")
+            return redirect(url_for('index'))
+        idd = supertopic.id
+        data = ForumsPost.query.filter_by(topic_id=f'{str(idd)}').all()
+        writerlist = []
+        for dada in data:
+            writerquery = User.query.filter_by(id=f'{dada.writer_id}').first()
+            writerlist.append(writerquery.username)
+        superdata = zip(data, writerlist)
+        dzquery = DZBar.query.all()
+        mainbarquery = Mainbar.query.all()
+        return render_template('DeveloperZone/supertopic.html', dzquery=dzquery, mainbarquery=mainbarquery, \
+                               superdata=superdata, topictype=topictype)
+    elif not current_user.is_authenticated:
+        supertopic = ForumsTopic.query.filter_by(name=f'{topictype}').first()
+        if supertopic is None:
+            flash("What are u doing? We don't have this TOPIC!!!!!  GOOD BYE")
+            return redirect(url_for('index'))
+        idd = supertopic.id
+        data = ForumsPost.query.filter_by(topic_id=f'{str(idd)}').all()
+        writerlist = []
+        for dada in data:
+            writerquery = User.query.filter_by(id=f'{dada.writer_id}').first()
+            writerlist.append(writerquery.username)
+        superdata = zip(data, writerlist)
+        dzquery = DZBar.query.all()
+        mainbarquery = Mainbar.query.all()
+        return render_template('DeveloperZone/supertopic.html', dzquery=dzquery, mainbarquery=mainbarquery, \
+                               superdata=superdata, topictype=topictype)
 
 
 @app.route('/forumspost/<postid>', methods=['GET', 'POST'])
@@ -350,7 +361,7 @@ def forumspost(postid):
             db.session.add(post)
             db.session.commit()
             flash('You were replied!')
-            return redirect(url_for('forumspost',postid=postid))
+            return redirect(url_for('forumspost', postid=postid))
         dzquery = DZBar.query.all()
         mainbarquery = Mainbar.query.all()
         return render_template('DeveloperZone/forumspost.html', dzquery=dzquery, mainbarquery=mainbarquery, \
@@ -373,5 +384,3 @@ def forumspost(postid):
         mainbarquery = Mainbar.query.all()
         return render_template('DeveloperZone/forumspost.html', dzquery=dzquery, mainbarquery=mainbarquery, \
                                topicdata=topicdata, postdata=postdata, writer=writer, superpostcontect=superpostcontect)
-
-
