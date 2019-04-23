@@ -3,8 +3,8 @@ from flask import render_template, flash, redirect, url_for, request, make_respo
 from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.urls import url_parse
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, \
-    ResetPasswordRequestForm, ResetPasswordForm, ForumsPostReplyForm
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, \
+    ResetPasswordRequestForm, ResetPasswordForm, ForumsPostReplyForm, ForumsPostForm
 from app.models import User, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, \
     ClusterDownload, MySQLCommunity, TopicGeneral, TopicAdministrator_Guides, TopicHA_Scalability, Windows, ForumsTopic, \
     ForumsPost, ForumsPostContect, Mainbar, MySQLBar, DownloadBar, DocumentBar, DZBar, index_product, \
@@ -304,7 +304,7 @@ def forums():
                            storages=typestorage, dzquery=dzquery, mainbarquery=mainbarquery)
 
 
-@app.route('/forumstopic/<topictype>')
+@app.route('/forumstopic/<topictype>', methods=['GET', 'POST'])
 def forumstopic(topictype):
     if current_user.is_authenticated:
         supertopic = ForumsTopic.query.filter_by(name=f'{topictype}').first()
@@ -318,10 +318,21 @@ def forumstopic(topictype):
             writerquery = User.query.filter_by(id=f'{dada.writer_id}').first()
             writerlist.append(writerquery.username)
         superdata = zip(data, writerlist)
+        form = ForumsPostForm()
+        if form.validate_on_submit():
+            newpostid = ForumsPost.query.order_by("id desc").first()
+            newpostid = newpostid.id + 1
+            post = ForumsPost(subject=form.subject.data, url=f'/forumspost/{newpostid}', topic_id=idd, postauthor=current_user)
+            postcontect = ForumsPostContect(contect=form.postcontect.data, post_id=newpostid, postcontectauthor=current_user)
+            db.session.add(post)
+            db.session.add(postcontect)
+            db.session.commit()
+            flash('You were Posted!')
+            return redirect(url_for('forumstopic', topictype=topictype))
         dzquery = DZBar.query.all()
         mainbarquery = Mainbar.query.all()
         return render_template('DeveloperZone/supertopic.html', dzquery=dzquery, mainbarquery=mainbarquery, \
-                               superdata=superdata, topictype=topictype)
+                               superdata=superdata, topictype=topictype, form=form)
     elif not current_user.is_authenticated:
         supertopic = ForumsTopic.query.filter_by(name=f'{topictype}').first()
         if supertopic is None:

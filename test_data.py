@@ -1,5 +1,5 @@
 from app import db
-from app.models import User, Post, Product, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, \
+from app.models import User, Product, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, \
     EnterpriseDownload, ClusterDownload, MySQLCommunity, Topic, TopicGeneral, TopicAdministrator_Guides, \
     TopicHA_Scalability, Windows, index_product, Product_Cluster, Product_Enterprise, Product_SqlClound, \
     ProductForOME, CustomerLogo, TopicHA_Scalability, Windows, ForumsTopic, ForumsPost, ForumsPostContect, Mainbar, MySQLBar, DownloadBar, DocumentBar, DZBar, Newdownload

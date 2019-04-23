@@ -1,4 +1,5 @@
 {% extends "DeveloperZone/DeveloperZone_base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
 
 {% block app_content %}
@@ -32,7 +33,35 @@
         {% endfor %}
         </tbody>
     </table>
+<br>
+<br>
+<br>
+<br>
+    {% if form %}
+        <h2>Post Your Post</h2>
+        <table class="table">
+            <tbody>
+            <tr>
+                <th scope="row">
+                    {{ wtf.quick_form(form) }}
+                    <br>
+                </th>
+            </tr>
+            </tbody>
+        </table>
+    {% else %}
+        <table class="table">
+            <tbody>
+            <tr>
+                <th scope="row">
+                    <h3>Plx, login for Reply</h3>
+                    <h3><a href="/login">Here to Login</a></h3>
+                </th>
+            </tr>
+            </tbody>
+        </table>
 
+    {% endif %}
 
 
 {% endblock app_content %}
