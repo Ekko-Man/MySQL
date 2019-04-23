@@ -272,9 +272,9 @@ def MysqlProduct():
     ClusterDropDown = Product_Cluster.query.all()
     OEMDropDown = ProductForOME.query.all()
     mainbarquery = Mainbar.query.all()
-    mysqlbarquery = MySQLBar.query.all()
+    mysqlquery = MySQLBar.query.all()
     return render_template('MySQLCOM/MySQL_Enterprise.html', title='Enterprise', EnterpriseDropDown=EnterpriseDropDown,
-                           OEMDropDown=OEMDropDown, ClusterDropDown=ClusterDropDown, mysqlbarquery=mysqlbarquery, mainbarquery=mainbarquery)
+                           OEMDropDown=OEMDropDown, ClusterDropDown=ClusterDropDown, mysqlquery=mysqlquery, mainbarquery=mainbarquery)
 
 
 @app.route('/MySQLCOM/Cloud')
@@ -284,11 +284,11 @@ def MysqlCloud():
     OEMDropDown = ProductForOME.query.all()
     cloudbutton = Product_SqlClound.query.filter_by(id=2)
     cloudbutton2 = Product_SqlClound.query.filter_by(id=3)
-    mysqlbarquery = MySQLBar.query.all()
+    mysqlquery = MySQLBar.query.all()
     mainbarquery = Mainbar.query.all()
     return render_template('MySQLCOM/MySQL_Cloud.html', title='Cloud', EnterpriseDropDown=EnterpriseDropDown,
                            OEMDropDown=OEMDropDown, ClusterDropDown=ClusterDropDown, cloudbutton=cloudbutton,
-                           cloudbutton2=cloudbutton2, mysqlbarquery=mysqlbarquery, mainbarquery=mainbarquery)
+                           cloudbutton2=cloudbutton2, mysqlquery=mysqlquery, mainbarquery=mainbarquery)
 
 
 @app.route('/developerzone')
