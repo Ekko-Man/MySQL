@@ -32,8 +32,8 @@ M3 = Mainbar(Name='DOCUMENTATION', url='/documentation')
 M4 = Mainbar(Name='DEVELOPER ZONE', url='/developerzone')
 
 # ---------------------------SubBar---------------------------------
-My1 = MySQLBar(Name='Products', url='#', MainID=1)
-My2 = MySQLBar(Name='Cloud', url='#', MainID=1)
+My1 = MySQLBar(Name='Products', url='/MySQLCOM/Enterprise', MainID=1)
+My2 = MySQLBar(Name='Cloud', url='/MySQLCOM/Cloud', MainID=1)
 My3 = MySQLBar(Name='Services', url='#', MainID=1)
 My4 = MySQLBar(Name='Partners', url='#', MainID=1)
 My5 = MySQLBar(Name='Customers', url='#', MainID=1)
