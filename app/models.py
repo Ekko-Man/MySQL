@@ -78,25 +78,25 @@ def load_user(id):
 
 class ForumsTopic(db.Model):
     __tablename__ = 'forums_topic'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80))
+    id = db.Column(db.Integer, primary_key=True, index=True)
+    name = db.Column(db.String(80), index=True)
     type = db.Column(db.String(50))
     description = db.Column(db.String(150))
-    url = db.Column(db.String(140))
+    url = db.Column(db.String(140), index=True)
 
 
 class ForumsPost(db.Model):
     __tablename__ = 'forums_post'
-    id = db.Column(db.Integer, primary_key=True)
-    subject = db.Column(db.String(180))
-    url = db.Column(db.String(140))
+    id = db.Column(db.Integer, primary_key=True, index=True)
+    subject = db.Column(db.String(180), index=True)
+    url = db.Column(db.String(140), index=True)
     topic_id = db.Column(db.Integer, db.ForeignKey('forums_topic.id'))
     writer_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 
 class ForumsPostContect(db.Model):
     __tablename__ = 'forums_post_contect'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, index=True)
     contect = db.Column(db.String(300))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     post_id = db.Column(db.Integer, db.ForeignKey('forums_post.id'))
