@@ -37,9 +37,15 @@ def index():
 
 @app.route('/index', methods=['GET'])
 def indexs():
+    MysqlOptions = index_product.query.filter_by(id=1)
+    MysqlOptions2 = index_product.query.filter_by(id=2)
+    MysqlOptions3 = index_product.query.filter_by(id=3)
+    MysqlOptions4 = index_product.query.filter_by(id=4)
     mainbarquery = Mainbar.query.all()
     mysqlquery = MySQLBar.query.all()
-    return render_template('MYSQLCOM/index.html', title='Home', mainbarquery=mainbarquery, mysqlquery=mysqlquery)
+    customer = CustomerLogo.query.all()
+    return render_template('MYSQLCOM/index.html', title='Home', mainbarquery=mainbarquery, mysqlquery=mysqlquery,customer=customer,MysqlOptions=MysqlOptions, MysqlOptions2=MysqlOptions2,
+                           MysqlOptions3=MysqlOptions3, MysqlOptions4=MysqlOptions4)
 
 
 @app.route('/login', methods=['GET', 'POST'])
