@@ -3,11 +3,6 @@ img#MySQLphoto {
     height: 60px;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -88,4 +83,17 @@ td:last-child {
 
 .navbar-custom .navbar-nav > li > a {
     color: white;
+}
+
+
+#w3-card-1 {
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px #888888;
+}
+
+.w3-card-1 {
+  border: 1px solid;
+  padding: 10px;
+  box-shadow: 5px 10px #888888;
 }

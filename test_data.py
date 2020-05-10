@@ -1,8 +1,9 @@
 from app import db
-from app.models import User, Product, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, \
-    EnterpriseDownload, ClusterDownload, MySQLCommunity, Topic, TopicGeneral, TopicAdministrator_Guides, \
-    TopicHA_Scalability, Windows, index_product, Product_Cluster, Product_Enterprise, Product_SqlClound, \
-    ProductForOME, CustomerLogo, TopicHA_Scalability, Windows, ForumsTopic, ForumsPost, ForumsPostContect, Mainbar, MySQLBar, DownloadBar, DocumentBar, DZBar, Newdownload
+from app.models import User, \
+     index_product, Product_Cluster, Product_Enterprise, Product_SqlClound, \
+    ProductForOME, CustomerLogo,  ForumsTopic, ForumsPost, ForumsPostContect, Mainbar, \
+    MySQLBar,  DZBar, NewestMovie, CinemaHongKong, CinemaKowloon, \
+    CinemaNewTerritories, InsertMovie, Partner
 
 from datetime import datetime, timedelta
 import unittest
@@ -26,36 +27,15 @@ db.session.add(testUser5)
 db.session.add(testUser6)
 
 # ---------------------------MainBar-------------------------------
-M1 = Mainbar(Name='MYSQL.COM', url='/index')
-M2 = Mainbar(Name='DOWNLOADS', url='/Download')
+M1 = Mainbar(Name='New Movies', url='/index')
+M2 = Mainbar(Name='Recommend movie ', url='/Download')
 M3 = Mainbar(Name='DOCUMENTATION', url='/documentation')
-M4 = Mainbar(Name='DEVELOPER ZONE', url='/developerzone')
+M4 = Mainbar(Name='Forum', url='/developerzone')
 
 # ---------------------------SubBar---------------------------------
-My1 = MySQLBar(Name='Products', url='/MySQLCOM/Enterprise', MainID=1)
+My1 = MySQLBar(Name='Cinema', url='/FLOVEMOVIE/Cinema', MainID=1)
 My2 = MySQLBar(Name='Cloud', url='/MySQLCOM/Cloud', MainID=1)
-My3 = MySQLBar(Name='Services', url='#', MainID=1)
-My4 = MySQLBar(Name='Partners', url='#', MainID=1)
-My5 = MySQLBar(Name='Customers', url='#', MainID=1)
-My6 = MySQLBar(Name='Why MySQL?', url='#', MainID=1)
-My7 = MySQLBar(Name='News & Events', url='#', MainID=1)
-My8 = MySQLBar(Name='How to Buy', url='#', MainID=1)
 
-Down1 = DownloadBar(Name='Enterprise', url='/Download', MainID=2)
-Down2 = DownloadBar(Name='Community', url='/Download/community', MainID=2)
-Down3 = DownloadBar(Name='Yum Repository', url='#', MainID=2)
-Down4 = DownloadBar(Name='APT Repository', url='#', MainID=2)
-Down5 = DownloadBar(Name='SUSE Repository', url='#', MainID=2)
-Down6 = DownloadBar(Name='Windows', url='/Download/windows.html', MainID=2)
-Down7 = DownloadBar(Name='Archives', url='#', MainID=2)
-
-Doc1 = DocumentBar(Name='MySQL Server', url='#', MainID=3)
-Doc2 = DocumentBar(Name='MySQL Enterprise', url='#', MainID=3)
-Doc3 = DocumentBar(Name='Workbench', url='#', MainID=3)
-Doc4 = DocumentBar(Name='InnoDB Cluster', url='#', MainID=3)
-Doc5 = DocumentBar(Name='MySQL NDB Cluster', url='#', MainID=3)
-Doc6 = DocumentBar(Name='Connectors', url='#', MainID=3)
-Doc7 = DocumentBar(Name='More', url='#', MainID=3)
 
 DZ1 = DZBar(Name='Forums', url='forums', MainID=4)
 DZ2 = DZBar(Name='Bugs', url='https://bugs.mysql.com/', MainID=4)
@@ -65,129 +45,6 @@ DZ5 = DZBar(Name='Planet MySQL', url='https://planet.mysql.com/', MainID=4)
 DZ6 = DZBar(Name='News and Events', url='https://www.mysql.com/news-and-events/web-seminars/', MainID=4)
 DZ7 = DZBar(Name='Community', url='https://dev.mysql.com/community/', MainID=4)
 
-# ---------------------------DOCUMENTATION---------------------------
-p1 = Product(title="MysqlServer")
-p2 = Product(title="XDevAPI")
-p3 = Product(title="MySQLNDBCluster")
-
-pm1 = ProductMysqlServer(url="https://dev.mysql.com/doc/refman/8.0/en/", name="MySQL8.0ReferenceManual",
-                         title_id=1)
-pm2 = ProductMysqlServer(url="https://dev.mysql.com/doc/refman/5.7/en/", name="MySQL 5.7 Reference Manual",
-                         title_id=1)
-pm3 = ProductMysqlServer(url="https://dev.mysql.com/doc/refman/5.6/en/", name="MySQL 5.6 Reference Manual",
-                         title_id=1)
-pm4 = ProductMysqlServer(url="https://dev.mysql.com/doc/refman/5.6/ja/", name="MySQL 5.6 Reference Manual (Japanese)",
-                         title_id=1)
-pm5 = ProductMysqlServer(url="https://dev.mysql.com/doc/refman/5.5/en/", name="MySQL 5.5 Reference Manual",
-                         title_id=1)
-
-px1 = ProductXDevAPI(url="https://dev.mysql.com/doc/dev/connector-cpp/8.0/",
-                     name="MySQL Connector/C++ X DevAPI Reference", title_id=2)
-px2 = ProductXDevAPI(url="https://dev.mysql.com/doc/dev/connector-j/8.0/", name="MySQL Connector/J X DevAPI Reference",
-                     title_id=2)
-px3 = ProductXDevAPI(url="https://dev.mysql.com/doc/dev/connector-net/8.0/",
-                     name="MySQL Connector/NET X DevAPI Reference", title_id=2)
-px4 = ProductXDevAPI(url="https://dev.mysql.com/doc/dev/connector-nodejs/8.0/",
-                     name="MySQL Connector/Node.js X DevAPI Reference", title_id=2)
-px5 = ProductXDevAPI(url="https://dev.mysql.com/doc/dev/connector-python/8.0/",
-                     name="MySQL Connector/Python X DevAPI Reference", title_id=2)
-
-pc1 = ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/ndbapi/en/", name="NDB Cluster API Developer Guide",
-                             title_id="3")
-pc2 = ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/ndb-internals/en/index.html",
-                             name="NDB Cluster Internals Manual", title_id="3")
-pc3 = ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/ndbapi/en/ndbmemcache.html",
-                             name="memcache and NDB Cluster", title_id="3")
-pc4 = ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/mysql-cluster-manager/1.4/en/",
-                             name="MySQL Cluster Manager 1.4", title_id="3")
-pc5 = ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/mysql-cluster-manager/1.3/en/",
-                             name="MySQL Cluster Manager 1.3", title_id="3")
-
-# ------------------------------Download----------------------------
-new1 = Newdownload(name='Enterprise')
-new2 = Newdownload(name='Community')
-new3 = Newdownload(name='Yum Repository')
-new4 = Newdownload(name='APT Repository')
-new5 = Newdownload(name='SUSE Repository')
-new6 = Newdownload(name='Windows')
-new7 = Newdownload(name='Archives')
-
-
-
-down1 = EnterpriseDownload(name='MySQLDatabase', MainID=1)
-down2 = EnterpriseDownload(name='MySQL Storage Engines (InnoDB, MyISAM, etc.)', MainID=1)
-down3 = EnterpriseDownload(name='MySQL Connectors (JDBC, ODBC, .Net, etc.)', MainID=1)
-down4 = EnterpriseDownload(name='MySQL Replication', MainID=1)
-down5 = EnterpriseDownload(name='MySQL Partitioning', MainID=1)
-down6 = EnterpriseDownload(name='MySQL Utilities', MainID=1)
-down7 = EnterpriseDownload(name='MySQL Workbench', MainID=1)
-down8 = EnterpriseDownload(name='MySQL Enterprise Backup', MainID=1)
-down9 = EnterpriseDownload(name='MySQL Enterprise Monitor', MainID=1)
-
-down10 = ClusterDownload(name='MySQL Cluster', MainID=1)
-down11 = ClusterDownload(name='MySQL Cluster Manager', MainID=1)
-down12 = ClusterDownload(name='Plus, everything in MySQL Enterprise Edition', MainID=1)
-
-com1 = MySQLCommunity(name='MySQL Community Server', version='(Current Generally Available Release: 8.0.15)',
-                      description='MySQL Community Server is the world most popular open source database.',
-                      com_link='#', MainID=2)
-com2 = MySQLCommunity(name='MySQL Cluster', version='(Current Generally Available Release: 7.6.9)',
-                      description='MySQL Cluster is a real-time, open source transactional database.',
-                      com_link='#', MainID=2)
-com3 = MySQLCommunity(name='MySQL Router', version='(Current Generally Available Release: 8.0.15)',
-                      description='MySQL Router is lightweight middleware that provides transparent routing between your application and any backend MySQL Servers.',
-                      com_link='#', MainID=2)
-
-win1 = Windows(name='MySQL Installer',
-               description='MySQL Installer provides an easy to use, wizard-based installation experience for all MySQL software on Windows.',
-               win_link='#', MainID=6)
-win2 = Windows(name='MySQL Connectors',
-               description='MySQL offers industry standard database driver connectivity for using MySQL with applications and tools.',
-               win_link='#', MainID=6)
-win3 = Windows(name='MySQL Workbench',
-               description='MySQL Workbench provides DBAs and developers an integrated tools environment for database design, administration, SQL development and database migration.',
-               win_link='#', MainID=6)
-win4 = Windows(name='MySQL for Excel',
-               description='MySQL for Excel enables users to import, export and edit MySQL data using Microsoft Excel. Available with MySQL Installer.',
-               win_link='#', MainID=6)
-win5 = Windows(name='MySQL Notifier',
-               description='MySQL Notifier enables developers and DBAs to easily monitor, start and stop MySQL database instances. Available with MySQL Installer.',
-               win_link='#', MainID=6)
-win6 = Windows(name='MySQL for Visual Studio',
-               description='MySQL for Visual Studio provides access to MySQL objects and data using Visual Studio. Available with MySQL Installer.',
-               win_link='#', MainID=6)
-
-# ----------------------Download----------------------------------
-
-t1 = Topic(title="General")
-t2 = Topic(title="Administrator Guides")
-t3 = Topic(title="HA/Scalability")
-
-tg1 = TopicGeneral(url="https://dev.mysql.com/doc/refman/8.0/en/server-administration.html",
-                   name="Server Administration", title_id="1")
-tg2 = TopicGeneral(url="https://dev.mysql.com/doc/refman/8.0/en/sql-syntax.html", name="SQL Syntax", title_id="General")
-tg3 = TopicGeneral(url="https://dev.mysql.com/doc/refman/8.0/en/innodb-storage-engine.html",
-                   name="InnoDB Storage Engine", title_id="1")
-tg4 = TopicGeneral(url="https://dev.mysql.com/doc/refman/8.0/en/storage-engines.html",
-                   name="Alternative Storage Engines", title_id="1")
-
-tag1 = TopicAdministrator_Guides(url="https://dev.mysql.com/doc/mysql-security-excerpt/8.0/en/index.html",
-                                 name="Security", title_id="2")
-tag2 = TopicAdministrator_Guides(url="https://dev.mysql.com/doc/mysql-secure-deployment-guide/8.0/en/index.html",
-                                 name="Secure Deployment Guide", title_id="2")
-tag3 = TopicAdministrator_Guides(url="https://dev.mysql.com/doc/mysql-startstop-excerpt/8.0/en/index.html",
-                                 name="Startup / Shutdown", title_id="2")
-tag4 = TopicAdministrator_Guides(url="https://dev.mysql.com/doc/mysql-backup-excerpt/8.0/en/index.html",
-                                 name="Backup and Recovery Overview", title_id="2")
-
-ts1 = TopicHA_Scalability(url="https://dev.mysql.com/doc/refman/8.0/en/mysql-innodb-cluster-userguide.html",
-                          name="MySQL InnoDB cluster", title_id="3")
-ts2 = TopicHA_Scalability(url="https://dev.mysql.com/doc/refman/en/ha-memcached.html", name="memcached",
-                          title_id="3")
-ts3 = TopicHA_Scalability(url="https://dev.mysql.com/doc/ndbapi/en/ndbmemcache.html", name="memcached with NDB Cluster",
-                          title_id=3)
-ts4 = TopicHA_Scalability(url="https://dev.mysql.com/doc/refman/en/innodb-memcached.html", name="memcached with InnoDB",
-                          title_id="3")
 # ---------------------------MySQL---------------------------
 IP1 = index_product(producttitle="MySQL Enterprise Edition", url='/MySQLCOM/Enterprise')
 IP2 = index_product(producttitle="Oracle MySQL cloud Service", url='/MySQLCOM/Cloud')
@@ -218,6 +75,12 @@ OEM1 = ProductForOME(name="Embedded", url="https://www.mysql.com/oem/", indexID=
 OEM2 = ProductForOME(name="Commercial License", url="https://www.mysql.com/about/legal/licensing/oem/", indexID=4)
 OEM3 = ProductForOME(name="MySQL Customers", url="https://www.mysql.com/customers/", indexID=4)
 
+HMI1 = CustomerLogo(name="YouTube", urlForimage="https://images3.alphacoders.com/948/thumb-1920-948864.jpg",
+                    url="https://www.youtube.com/", indexID=6)
+
+HMI2 = CustomerLogo(name="YouTube", urlForimage="https://images3.alphacoders.com/948/thumb-1920-948864.jpg",
+                    url="https://www.youtube.com/", indexID=6)
+
 CTR1 = CustomerLogo(name="YouTube", urlForimage="https://www.youtube.com/yts/img/yt_1200-vfl4C3T0K.png",
                     url="https://www.youtube.com/", indexID=5)
 CTR2 = CustomerLogo(name="PayPal",
@@ -234,45 +97,48 @@ CTR5 = CustomerLogo(name="twitter", urlForimage="https://www.cbronline.com/wp-co
 CTR6 = CustomerLogo(name="ebay",
                     urlForimage="data:image/png;base64,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",
                     url="https://www.ebay.com", indexID=5)
+CH1 = CinemaHongKong(name="Cinema City JP", url="http://www.cinemacity.com.hk", indexID=1)
+CH2 = CinemaHongKong(name="Cinema City Victoria", url=" http://www.cinemacity.com.hk", indexID=2)
+CH3 = CinemaHongKong(name="MCL 皇室戲院", url="http://www.mclcinema.com", indexID=3)
 
-db.session.add(M1)
-db.session.add(M2)
-db.session.add(M3)
-db.session.add(M4)
+CK1 = CinemaKowloon(name="CGV Cinemas D2 Place", url="https://cgv.com.hk/zh/", indexID=1)
+CK2 = CinemaKowloon(name="Cinema City 朗豪坊", url="http://www.cinemacity.com.hk", indexID=2)
+CK3 = CinemaKowloon(name="MCL Festival Grand Cinema", url="http://www.mclcinema.com", indexID=3)
+
+CN1 = CinemaNewTerritories(name="百老匯 荃灣", url="https://www.cinema.com.hk/tc/site/cinemainfo/TSUEN-WAN/info", indexID=1)
+CN2 = CinemaNewTerritories(name="Cinema City Candy Park", url="http://www.cinemacity.com.hk", indexID=2)
+CN3 = CinemaNewTerritories(name="MCL STAR Cinema", url="http://www.mclcinema.com", indexID=3)
+
+Mov1 = InsertMovie(name="Re:從零開始的異世界生活外傳篇章電影", url="https://wmoov.com/movie/post/49142,",
+                   urlForimage="https://i.ytimg.com/vi/p7c6nORoWYQ/hqdefault.jpg",description="外傳篇章電影之一的《Re：從零開始的異世界生活 冰結之絆》，以動畫前傳的方式講述一直生活在艾利歐魯大森林的女主角「愛蜜莉雅」與精靈「帕克」最初的相遇故事。在電影劇照中，流著淚的「愛蜜莉雅」究竟是發生了什麼事，以及「愛蜜莉雅」與「帕克」之間的羈絆是如何產生呢？ 另一篇《Re：從零開始的異世界生活 Memory Snow》故事接續第一季動畫結尾，以輕鬆幽默的番外篇方式描述男主角「昴」挑戰了一項無人知曉、某項極秘任務……「與愛蜜莉雅的約會行程預演」，可愛的「愛蜜莉雅」、「雷姆」、「拉姆」即將在大螢幕上大力賣萌，讓人心癢癢的萌力爆發劇情，鐵粉們千萬不要錯過在電影大螢幕上享受的機會!", indexID=1)
+
+Mov2 = InsertMovie(name="FF9", url="https://wmoov.com/movie/post/49142,",
+                   urlForimage="https://movie.yahoo-leisure.hk/assets/poster/f523edf02a28033a328b33d7218eef1e.jpg",description="電影為2017年電影《狂野時速8》的續集。阿當(雲迪素 飾)和莉迪(米雪露芝姬絲 飾)和兒子在郊區農場過著隱性埋名的生活，可是好景不長...", indexID=1)
+
+Pn1 = Partner(company="Cinema", url="http://www.cinemacity.com.hk", urlForimage="https://www.cinemacity.com.hk/images/CinemaCityLogo.png", indexID=1)
+
+db.session.add(Pn1)
+
+db.session.add(Mov1)
+db.session.add(Mov2)
 
 db.session.add(My1)
 db.session.add(My2)
-db.session.add(My3)
-db.session.add(My4)
-db.session.add(My5)
-db.session.add(My6)
-db.session.add(My7)
-db.session.add(My8)
 
-db.session.add(new1)
-db.session.add(new2)
-db.session.add(new3)
-db.session.add(new4)
-db.session.add(new5)
-db.session.add(new6)
-db.session.add(new7)
+db.session.add(CH1)
+db.session.add(CH2)
+db.session.add(CH3)
+db.session.add(CK1)
+db.session.add(CK2)
+db.session.add(CK3)
+db.session.add(CN1)
+db.session.add(CN2)
+db.session.add(CN3)
+
+db.session.add(HMI1)
+db.session.add(HMI2)
 
 
-db.session.add(Down1)
-db.session.add(Down2)
-db.session.add(Down3)
-db.session.add(Down4)
-db.session.add(Down5)
-db.session.add(Down6)
-db.session.add(Down7)
-
-db.session.add(Doc1)
-db.session.add(Doc2)
-db.session.add(Doc3)
-db.session.add(Doc4)
-db.session.add(Doc5)
-db.session.add(Doc6)
-db.session.add(Doc7)
 
 db.session.add(DZ1)
 db.session.add(DZ2)
@@ -281,72 +147,6 @@ db.session.add(DZ4)
 db.session.add(DZ5)
 db.session.add(DZ6)
 db.session.add(DZ7)
-
-db.session.add(p1)
-db.session.add(p2)
-db.session.add(p3)
-
-db.session.add(pm1)
-db.session.add(pm2)
-db.session.add(pm3)
-db.session.add(pm4)
-db.session.add(pm5)
-
-db.session.add(px1)
-db.session.add(px2)
-db.session.add(px3)
-db.session.add(px4)
-db.session.add(px5)
-
-db.session.add(pc1)
-db.session.add(pc2)
-db.session.add(pc3)
-db.session.add(pc4)
-db.session.add(pc5)
-
-db.session.add(down1)
-db.session.add(down2)
-db.session.add(down3)
-db.session.add(down4)
-db.session.add(down5)
-db.session.add(down6)
-db.session.add(down7)
-db.session.add(down8)
-db.session.add(down9)
-
-db.session.add(down10)
-db.session.add(down11)
-db.session.add(down12)
-
-db.session.add(com1)
-db.session.add(com2)
-db.session.add(com3)
-
-db.session.add(win1)
-db.session.add(win2)
-db.session.add(win3)
-db.session.add(win4)
-db.session.add(win5)
-db.session.add(win6)
-
-db.session.add(t1)
-db.session.add(t2)
-db.session.add(t3)
-
-db.session.add(tag1)
-db.session.add(tag2)
-db.session.add(tag3)
-db.session.add(tag4)
-
-db.session.add(tg1)
-db.session.add(tg2)
-db.session.add(tg3)
-db.session.add(tg4)
-
-db.session.add(ts1)
-db.session.add(ts2)
-db.session.add(ts3)
-db.session.add(ts4)
 
 # ---------------------------DOCUMENTATION---------------------------
 
@@ -400,27 +200,35 @@ db.session.add(ft4)
 db.session.add(ft5)
 db.session.add(ft6)
 
-fp11 = ForumsPost(subject="MySQL Enterprise Backup 3.12.4 has been released", url="/forumspost/1", topic_id="1", writer_id="1")
-fp12 = ForumsPost(subject="MySQL Enterprise Backup 4.1.3 has been released", url="/forumspost/2", topic_id="1", writer_id="2")
-fp13 = ForumsPost(subject="MySQL Enterprise Backup 8.0.15 has been released", url="/forumspost/3", topic_id="1", writer_id="3")
+fp11 = ForumsPost(subject="MySQL Enterprise Backup 3.12.4 has been released", url="/forumspost/1", topic_id="1",
+                  writer_id="1")
+fp12 = ForumsPost(subject="MySQL Enterprise Backup 4.1.3 has been released", url="/forumspost/2", topic_id="1",
+                  writer_id="2")
+fp13 = ForumsPost(subject="MySQL Enterprise Backup 8.0.15 has been released", url="/forumspost/3", topic_id="1",
+                  writer_id="3")
 
 fp21 = ForumsPost(subject="MySQL and Perl: Articles, Blogs, Docs", url="/forumspost/4", topic_id="2", writer_id="4")
-fp22 = ForumsPost(subject="DBIx::MyServer - Perl module that implements MySQL client/server protocol", url="/forumspost/5", topic_id="2", writer_id="5")
+fp22 = ForumsPost(subject="DBIx::MyServer - Perl module that implements MySQL client/server protocol",
+                  url="/forumspost/5", topic_id="2", writer_id="5")
 fp23 = ForumsPost(subject="Can't connect to mysql from MAMP Perl", url="/forumspost/6", topic_id="2", writer_id="6")
 
 fp31 = ForumsPost(subject="MySQL 8.0: X DevAPI PHP Extension", url="/forumspost/7", topic_id="3", writer_id="3")
-fp32 = ForumsPost(subject="MySQL Workbench: Plugins for PHP development", url="/forumspost/8", topic_id="3", writer_id="4")
+fp32 = ForumsPost(subject="MySQL Workbench: Plugins for PHP development", url="/forumspost/8", topic_id="3",
+                  writer_id="4")
 fp33 = ForumsPost(subject="Upgrading from MyISAM to InnoDB", url="/forumspost/9", topic_id="3", writer_id="5")
 
 fp41 = ForumsPost(subject="Ruby and MySQL: Articles, Blogs, FAQs", url="/forumspost/10", topic_id="4", writer_id="1")
 fp42 = ForumsPost(subject="Permission denied", url="/forumspost/11", topic_id="4", writer_id="2")
-fp43 = ForumsPost(subject="MySQL Evolution - From 5.6 to 8.0 -- plus Ruby on Rails", url="/forumspost/12", topic_id="4", writer_id="6")
+fp43 = ForumsPost(subject="MySQL Evolution - From 5.6 to 8.0 -- plus Ruby on Rails", url="/forumspost/12", topic_id="4",
+                  writer_id="6")
 
-fp51 = ForumsPost(subject="MySQL 8.0: InnoDB New Lock free, scalable WAL design", url="/forumspost/13", topic_id="5", writer_id="2")
+fp51 = ForumsPost(subject="MySQL 8.0: InnoDB New Lock free, scalable WAL design", url="/forumspost/13", topic_id="5",
+                  writer_id="2")
 fp52 = ForumsPost(subject="MySQL 8.0: Instant ADD COLUMN for InnoDB", url="/forumspost/14", topic_id="5", writer_id="3")
 fp53 = ForumsPost(subject="MySQL HA: InnoDB clusters", url="/forumspost/15", topic_id="5", writer_id="4")
 
-fp61 = ForumsPost(subject="Meltdown Fix: 40% performance regression for MyISAM; recommend switch to InnoDB", url="/forumspost/16", topic_id="6", writer_id="5")
+fp61 = ForumsPost(subject="Meltdown Fix: 40% performance regression for MyISAM; recommend switch to InnoDB",
+                  url="/forumspost/16", topic_id="6", writer_id="5")
 fp62 = ForumsPost(subject="MySQL: InnoDB -vs- MyISAM", url="/forumspost/17", topic_id="6", writer_id="6")
 fp63 = ForumsPost(subject="MySQL 5.6: InnoDB Read-only Performance", url="/forumspost/18", topic_id="6", writer_id="1")
 

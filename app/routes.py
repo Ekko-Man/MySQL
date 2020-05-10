@@ -5,11 +5,11 @@ from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, \
     ResetPasswordRequestForm, ResetPasswordForm, ForumsPostReplyForm, ForumsPostForm
-from app.models import User, ProductMysqlServer, ProductXDevAPI, ProductMySQLNDBCluster, EnterpriseDownload, \
-    ClusterDownload, MySQLCommunity, TopicGeneral, TopicAdministrator_Guides, TopicHA_Scalability, Windows, ForumsTopic, \
-    ForumsPost, ForumsPostContect, Mainbar, MySQLBar, DownloadBar, DocumentBar, DZBar, index_product, \
+from app.models import User, ForumsTopic, \
+    ForumsPost, ForumsPostContect, Mainbar, MySQLBar, DZBar,\
     Product_Enterprise, \
-    Product_Cluster, ProductForOME, Product_SqlClound, CustomerLogo
+    Product_Cluster, ProductForOME, Product_SqlClound, CustomerLogo, NewestMovie, CinemaHongKong, CinemaNewTerritories, \
+    CinemaKowloon, InsertMovie, Partner
 
 from app.email import send_password_reset_email
 
@@ -21,37 +21,26 @@ def before_request():
         db.session.commit()
 
 
+
+
+@app.route('/Homepage', methods=['GET'])
 @app.route('/', methods=['GET'])
-def index():
-    MysqlOptions = index_product.query.filter_by(id=1)
-    MysqlOptions2 = index_product.query.filter_by(id=2)
-    MysqlOptions3 = index_product.query.filter_by(id=3)
-    MysqlOptions4 = index_product.query.filter_by(id=4)
-    customer = CustomerLogo.query.all()
-    mainbarquery = Mainbar.query.all()
-    mysqlquery = MySQLBar.query.all()
-    return render_template('MYSQLCOM/index.html', title='Home', MysqlOptions=MysqlOptions, MysqlOptions2=MysqlOptions2,
-                           MysqlOptions3=MysqlOptions3, MysqlOptions4=MysqlOptions4, customer=customer,
-                           mainbarquery=mainbarquery, mysqlquery=mysqlquery)
-
-
-@app.route('/index', methods=['GET'])
-def indexs():
-    MysqlOptions = index_product.query.filter_by(id=1)
-    MysqlOptions2 = index_product.query.filter_by(id=2)
-    MysqlOptions3 = index_product.query.filter_by(id=3)
-    MysqlOptions4 = index_product.query.filter_by(id=4)
+def Home():
     mainbarquery = Mainbar.query.all()
     mysqlquery = MySQLBar.query.all()
     customer = CustomerLogo.query.all()
-    return render_template('MYSQLCOM/index.html', title='Home', mainbarquery=mainbarquery, mysqlquery=mysqlquery,customer=customer,MysqlOptions=MysqlOptions, MysqlOptions2=MysqlOptions2,
-                           MysqlOptions3=MysqlOptions3, MysqlOptions4=MysqlOptions4)
+    homemovieicon = NewestMovie.query.all()
+    insertmovie = InsertMovie.query.all()
+    partner = Partner.query.all()
+    return render_template('FLOVEMOVIE/Homepage.html', title='Home', mainbarquery=mainbarquery, mysqlquery=mysqlquery,
+                           customer=customer, homemovieicon=homemovieicon, insertmovie=insertmovie,partner=partner)
+
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('Home'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
@@ -61,7 +50,7 @@ def login():
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
-            next_page = url_for('index')
+            next_page = url_for('Home')
         return redirect(next_page)
     mainbarquery = Mainbar.query.all()
     return render_template('Login/login.html', title='Sign In', form=form, mainbarquery=mainbarquery)
@@ -70,13 +59,13 @@ def login():
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('Home'))
 
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('Home'))
     form = RegistrationForm()
     if form.validate_on_submit():
         user = User(username=form.username.data, email=form.email.data)
@@ -92,7 +81,7 @@ def register():
 @app.route('/reset_password_request', methods=['GET', 'POST'])
 def reset_password_request():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('Home'))
     form = ResetPasswordRequestForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -108,10 +97,10 @@ def reset_password_request():
 @app.route('/reset_password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('Home'))
     user = User.verify_reset_password_token(token)
     if not user:
-        return redirect(url_for('index'))
+        return redirect(url_for('Home'))
     form = ResetPasswordForm()
     if form.validate_on_submit():
         user.set_password(form.password.data)
@@ -154,7 +143,7 @@ def follow(username):
     user = User.query.filter_by(username=username).first()
     if user is None:
         flash('User {} not found.'.format(username))
-        return redirect(url_for('index'))
+        return redirect(url_for('Home'))
     if user == current_user:
         flash('You cannot follow yourself!')
         return redirect(url_for('user', username=username))
@@ -171,7 +160,7 @@ def unfollow(username):
     user = User.query.filter_by(username=username).first()
     if user is None:
         flash('User {} not found.'.format(username))
-        return redirect(url_for('index'))
+        return redirect(url_for('Home'))
     if user == current_user:
         flash('You cannot unfollow yourself!')
         return redirect(url_for('user', username=username))
@@ -226,55 +215,16 @@ def product():
                            docquery=docquery, mainbarquery=mainbarquery)
 
 
-@app.route('/documentation/topic')
-def topic():
-    general = TopicGeneral.query.all()
-    admin = TopicAdministrator_Guides.query.all()
-    ha = TopicHA_Scalability.query.all()
-    docquery = DocumentBar.query.all()
-    mainbarquery = Mainbar.query.all()
-    return render_template('Documentation/topic.html', title="Topic", general=general, admin=admin, ha=ha,
-                           docquery=docquery, mainbarquery=mainbarquery)
 
-
-@app.route('/Download')
-def enterprise():
-    enterquery = EnterpriseDownload.query.all()
-    clusterquery = ClusterDownload.query.all()
-    downquery = DownloadBar.query.all()
-    mainbarquery = Mainbar.query.all()
-    return render_template('Download/enterprise.html', title="Enterprise", enterquery=enterquery,
-                           clusterquery=clusterquery, downquery=downquery, mainbarquery=mainbarquery)
-
-
-@app.route('/Download/community')
-def community():
-    comquery = MySQLCommunity.query.all()
-    downquery = DownloadBar.query.all()
-    mainbarquery = Mainbar.query.all()
-    return render_template('Download/community.html', title="Community", comquery=comquery, downquery=downquery,
-                           mainbarquery=mainbarquery)
-
-
-@app.route('/Download/windows')
-def windows():
-    winquery = Windows.query.all()
-    mainbarquery = Mainbar.query.all()
-    downquery = DownloadBar.query.all()
-    return render_template('Download/windows.html', title="Windows", winquery=winquery, downquery=downquery,
-                           mainbarquery=mainbarquery)
-
-
-@app.route('/MySQLCOM/Enterprise')
-def MysqlProduct():
-    EnterpriseDropDown = Product_Enterprise.query.all()
-    ClusterDropDown = Product_Cluster.query.all()
-    OEMDropDown = ProductForOME.query.all()
-    mainbarquery = Mainbar.query.all()
+@app.route('/FLOVEMOVIE/Cinema')
+def Cinema():
+    HongKong = CinemaHongKong.query.all()
+    Kowloon = CinemaKowloon.query.all()
+    NewTerritories = CinemaNewTerritories.query.all()
     mysqlquery = MySQLBar.query.all()
-    return render_template('MySQLCOM/MySQL_Enterprise.html', title='Enterprise', EnterpriseDropDown=EnterpriseDropDown,
-                           OEMDropDown=OEMDropDown, ClusterDropDown=ClusterDropDown, mysqlquery=mysqlquery,
-                           mainbarquery=mainbarquery)
+    mainbarquery = Mainbar.query.all()
+    return render_template('FLOVEMOVIE/Cinema.html', title='Enterprise', HongKong=HongKong, Kowloon=Kowloon,
+                           NewTerritories=NewTerritories, mysqlquery=mysqlquery, mainbarquery=mainbarquery)
 
 
 @app.route('/MySQLCOM/Cloud')
@@ -286,7 +236,7 @@ def MysqlCloud():
     cloudbutton2 = Product_SqlClound.query.filter_by(id=3)
     mysqlquery = MySQLBar.query.all()
     mainbarquery = Mainbar.query.all()
-    return render_template('MySQLCOM/MySQL_Cloud.html', title='Cloud', EnterpriseDropDown=EnterpriseDropDown,
+    return render_template('FLOVEMOVIE/MoviePitcure.html', title='Cloud', EnterpriseDropDown=EnterpriseDropDown,
                            OEMDropDown=OEMDropDown, ClusterDropDown=ClusterDropDown, cloudbutton=cloudbutton,
                            cloudbutton2=cloudbutton2, mysqlquery=mysqlquery, mainbarquery=mainbarquery)
 
@@ -316,7 +266,7 @@ def forumstopic(topictype):
         supertopic = ForumsTopic.query.filter_by(name=f'{topictype}').first()
         if supertopic is None:
             flash("What are u doing? We don't have this TOPIC!!!!!  GOOD BYE")
-            return redirect(url_for('index'))
+            return redirect(url_for('Home'))
         idd = supertopic.id
         data = ForumsPost.query.filter_by(topic_id=f'{str(idd)}').all()
         writerlist = []
@@ -328,8 +278,10 @@ def forumstopic(topictype):
         if form.validate_on_submit():
             newpostid = ForumsPost.query.order_by("id desc").first()
             newpostid = newpostid.id + 1
-            post = ForumsPost(subject=form.subject.data, url=f'/forumspost/{newpostid}', topic_id=idd, postauthor=current_user)
-            postcontect = ForumsPostContect(contect=form.postcontect.data, post_id=newpostid, postcontectauthor=current_user)
+            post = ForumsPost(subject=form.subject.data, url=f'/forumspost/{newpostid}', topic_id=idd,
+                              postauthor=current_user)
+            postcontect = ForumsPostContect(contect=form.postcontect.data, post_id=newpostid,
+                                            postcontectauthor=current_user)
             db.session.add(post)
             db.session.add(postcontect)
             db.session.commit()
@@ -343,7 +295,7 @@ def forumstopic(topictype):
         supertopic = ForumsTopic.query.filter_by(name=f'{topictype}').first()
         if supertopic is None:
             flash("What are u doing? We don't have this TOPIC!!!!!  GOOD BYE")
-            return redirect(url_for('index'))
+            return redirect(url_for('Home'))
         idd = supertopic.id
         data = ForumsPost.query.filter_by(topic_id=f'{str(idd)}').all()
         writerlist = []
@@ -363,7 +315,7 @@ def forumspost(postid):
         postdata = ForumsPost.query.filter_by(id=f'{str(postid)}').first()
         if postdata is None:
             flash("What are u doing? We don't have this POST!!!!!  GOOD BYE")
-            return redirect(url_for('index'))
+            return redirect(url_for('Home'))
         topicdata = ForumsTopic.query.filter_by(id=f'{str(postdata.topic_id)}').first()
         writer = User.query.filter_by(id=f'{postdata.writer_id}').first()
         postcontect = ForumsPostContect.query.filter_by(post_id=f'{str(postid)}').all()
@@ -388,7 +340,7 @@ def forumspost(postid):
         postdata = ForumsPost.query.filter_by(id=f'{str(postid)}').first()
         if postdata is None:
             flash("What are u doing? We don't have this POST!!!!!  GOOD BYE")
-            return redirect(url_for('index'))
+            return redirect(url_for('Home'))
         topicdata = ForumsTopic.query.filter_by(id=f'{str(postdata.topic_id)}').first()
         writer = User.query.filter_by(id=f'{postdata.writer_id}').first()
         postcontect = ForumsPostContect.query.filter_by(post_id=f'{str(postid)}').all()

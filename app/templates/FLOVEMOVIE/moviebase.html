@@ -5,11 +5,18 @@
         <nav class="navbar navbar-default fixed-top navbar-light bg-light navbar-custom"
              style="background-color: #4479a1;">
             <ul class="nav navbar-nav">
-                {% for downq in downquery %}
-                <li><a class="flex-sm-fill text-sm-center nav-link" href="{{ downq.url }}">{{ downq.Name }}</a></li>
+                {% for myq in mysqlquery %}
+                    <li><a class="flex-sm-fill text-sm-center nav-link" href="{{ myq.url }}">{{ myq.Name }}</a></li>
                 {% endfor %}
+
             </ul>
         </nav>
     </div>
+{% endblock %}
 
-{% endblock subbar_content %}
+{% block sub_content %}
+    <h1>   Fuck 2</h1>
+    {% block sub2_content %}
+        {# For Homepage.html #}
+    {% endblock %}
+{% endblock %}
