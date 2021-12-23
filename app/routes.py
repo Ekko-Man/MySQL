@@ -35,11 +35,7 @@ def index():
                            mainbarquery=mainbarquery, mysqlquery=mysqlquery)
 
 
-@app.route('/index', methods=['GET'])
-def indexs():
-    mainbarquery = Mainbar.query.all()
-    mysqlquery = MySQLBar.query.all()
-    return render_template('MYSQLCOM/index.html', title='Home', mainbarquery=mainbarquery, mysqlquery=mysqlquery)
+
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -156,8 +152,7 @@ def follow(username):
     db.session.commit()
     flash('You are following {}!'.format(username))
     mainbarquery = Mainbar.query.all()
-    return redirect(url_for('user', username=username), mainbarquery=mainbarquery)
-
+    return redirect(url_for('user', username=username))
 
 @app.route('/unfollow/<username>')
 @login_required
@@ -173,7 +168,7 @@ def unfollow(username):
     db.session.commit()
     flash('You are not following {}.'.format(username))
     mainbarquery = Mainbar.query.all()
-    return redirect(url_for('user', username=username), mainbarquery=mainbarquery)
+    return redirect(url_for('user', username=username))
 
 
 @app.route('/setcookie', methods=['POST', 'GET'])

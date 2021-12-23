@@ -11,8 +11,8 @@ db.session.remove()
 db.drop_all()
 db.create_all()
 
-testUser1 = User(username='Cyrus', email='cyrus@example.com')
-testUser2 = User(username='Kitson', email='kitson@example.com')
+testUser1 = User(username='Jackson', email='cyrus@example.com')
+testUser2 = User(username='Jeffery', email='kitson@example.com')
 testUser3 = User(username='Jeff Bezos', email='jeff@example.com')
 testUser4 = User(username='Bill Gates', email='gaygay@example.com')
 testUser5 = User(username='Steve Jobs', email='apple@example.com')
@@ -26,7 +26,7 @@ db.session.add(testUser5)
 db.session.add(testUser6)
 
 # ---------------------------MainBar-------------------------------
-M1 = Mainbar(Name='MYSQL.COM', url='/index')
+M1 = Mainbar(Name='MYSQL.COM', url='/')
 M2 = Mainbar(Name='DOWNLOADS', url='/Download')
 M3 = Mainbar(Name='DOCUMENTATION', url='/documentation')
 M4 = Mainbar(Name='DEVELOPER ZONE', url='/developerzone')
@@ -34,38 +34,19 @@ M4 = Mainbar(Name='DEVELOPER ZONE', url='/developerzone')
 # ---------------------------SubBar---------------------------------
 My1 = MySQLBar(Name='Products', url='/MySQLCOM/Enterprise', MainID=1)
 My2 = MySQLBar(Name='Cloud', url='/MySQLCOM/Cloud', MainID=1)
-My3 = MySQLBar(Name='Services', url='#', MainID=1)
-My4 = MySQLBar(Name='Partners', url='#', MainID=1)
-My5 = MySQLBar(Name='Customers', url='#', MainID=1)
-My6 = MySQLBar(Name='Why MySQL?', url='#', MainID=1)
-My7 = MySQLBar(Name='News & Events', url='#', MainID=1)
-My8 = MySQLBar(Name='How to Buy', url='#', MainID=1)
+
 
 Down1 = DownloadBar(Name='Enterprise', url='/Download', MainID=2)
 Down2 = DownloadBar(Name='Community', url='/Download/community', MainID=2)
-Down3 = DownloadBar(Name='Yum Repository', url='#', MainID=2)
-Down4 = DownloadBar(Name='APT Repository', url='#', MainID=2)
-Down5 = DownloadBar(Name='SUSE Repository', url='#', MainID=2)
-Down6 = DownloadBar(Name='Windows', url='/Download/windows.html', MainID=2)
-Down7 = DownloadBar(Name='Archives', url='#', MainID=2)
 
 Doc1 = DocumentBar(Name='MySQL Server', url='#', MainID=3)
 Doc2 = DocumentBar(Name='MySQL Enterprise', url='#', MainID=3)
-Doc3 = DocumentBar(Name='Workbench', url='#', MainID=3)
-Doc4 = DocumentBar(Name='InnoDB Cluster', url='#', MainID=3)
-Doc5 = DocumentBar(Name='MySQL NDB Cluster', url='#', MainID=3)
-Doc6 = DocumentBar(Name='Connectors', url='#', MainID=3)
-Doc7 = DocumentBar(Name='More', url='#', MainID=3)
+
 
 DZ1 = DZBar(Name='Forums', url='forums', MainID=4)
-DZ2 = DZBar(Name='Bugs', url='https://bugs.mysql.com/', MainID=4)
-DZ3 = DZBar(Name='Worklog', url='https://dev.mysql.com/worklog/', MainID=4)
-DZ4 = DZBar(Name='Labs', url='https://labs.mysql.com/', MainID=4)
-DZ5 = DZBar(Name='Planet MySQL', url='https://planet.mysql.com/', MainID=4)
-DZ6 = DZBar(Name='News and Events', url='https://www.mysql.com/news-and-events/web-seminars/', MainID=4)
-DZ7 = DZBar(Name='Community', url='https://dev.mysql.com/community/', MainID=4)
 
-# ---------------------------DOCUMENTATION---------------------------
+
+# ---------------------------DOCUMENTATION Product---------------------------
 p1 = Product(title="MysqlServer")
 p2 = Product(title="XDevAPI")
 p3 = Product(title="MySQLNDBCluster")
@@ -104,16 +85,14 @@ pc5 = ProductMySQLNDBCluster(url="https://dev.mysql.com/doc/mysql-cluster-manage
                              name="MySQL Cluster Manager 1.3", title_id="3")
 
 # ------------------------------Download----------------------------
+
+#---Download Bar---------
 new1 = Newdownload(name='Enterprise')
 new2 = Newdownload(name='Community')
-new3 = Newdownload(name='Yum Repository')
-new4 = Newdownload(name='APT Repository')
-new5 = Newdownload(name='SUSE Repository')
 new6 = Newdownload(name='Windows')
-new7 = Newdownload(name='Archives')
+new5 = Newdownload(name='Linux')
 
-
-
+#download items of enterprise ediiton
 down1 = EnterpriseDownload(name='MySQLDatabase', MainID=1)
 down2 = EnterpriseDownload(name='MySQL Storage Engines (InnoDB, MyISAM, etc.)', MainID=1)
 down3 = EnterpriseDownload(name='MySQL Connectors (JDBC, ODBC, .Net, etc.)', MainID=1)
@@ -124,10 +103,12 @@ down7 = EnterpriseDownload(name='MySQL Workbench', MainID=1)
 down8 = EnterpriseDownload(name='MySQL Enterprise Backup', MainID=1)
 down9 = EnterpriseDownload(name='MySQL Enterprise Monitor', MainID=1)
 
+#cluster download
 down10 = ClusterDownload(name='MySQL Cluster', MainID=1)
 down11 = ClusterDownload(name='MySQL Cluster Manager', MainID=1)
 down12 = ClusterDownload(name='Plus, everything in MySQL Enterprise Edition', MainID=1)
 
+#community download
 com1 = MySQLCommunity(name='MySQL Community Server', version='(Current Generally Available Release: 8.0.15)',
                       description='MySQL Community Server is the world most popular open source database.',
                       com_link='#', MainID=2)
@@ -137,6 +118,8 @@ com2 = MySQLCommunity(name='MySQL Cluster', version='(Current Generally Availabl
 com3 = MySQLCommunity(name='MySQL Router', version='(Current Generally Available Release: 8.0.15)',
                       description='MySQL Router is lightweight middleware that provides transparent routing between your application and any backend MySQL Servers.',
                       com_link='#', MainID=2)
+
+#windows download this will be for new page demo!
 
 win1 = Windows(name='MySQL Installer',
                description='MySQL Installer provides an easy to use, wizard-based installation experience for all MySQL software on Windows.',
@@ -157,7 +140,7 @@ win6 = Windows(name='MySQL for Visual Studio',
                description='MySQL for Visual Studio provides access to MySQL objects and data using Visual Studio. Available with MySQL Installer.',
                win_link='#', MainID=6)
 
-# ----------------------Download----------------------------------
+# ----------------------Document Topic----------------------------------
 
 t1 = Topic(title="General")
 t2 = Topic(title="Administrator Guides")
@@ -188,7 +171,7 @@ ts3 = TopicHA_Scalability(url="https://dev.mysql.com/doc/ndbapi/en/ndbmemcache.h
                           title_id=3)
 ts4 = TopicHA_Scalability(url="https://dev.mysql.com/doc/refman/en/innodb-memcached.html", name="memcached with InnoDB",
                           title_id="3")
-# ---------------------------MySQL---------------------------
+# ---------------------------Community Download---------------------------
 IP1 = index_product(producttitle="MySQL Enterprise Edition", url='/MySQLCOM/Enterprise')
 IP2 = index_product(producttitle="Oracle MySQL cloud Service", url='/MySQLCOM/Cloud')
 IP3 = index_product(producttitle="MySQL Cluster CGE", url='https://www.mysql.com/products/cluster/')
@@ -242,45 +225,45 @@ db.session.add(M4)
 
 db.session.add(My1)
 db.session.add(My2)
-db.session.add(My3)
-db.session.add(My4)
-db.session.add(My5)
-db.session.add(My6)
-db.session.add(My7)
-db.session.add(My8)
+# db.session.add(My3)
+# db.session.add(My4)
+# db.session.add(My5)
+# db.session.add(My6)
+# db.session.add(My7)
+# db.session.add(My8)
 
 db.session.add(new1)
 db.session.add(new2)
-db.session.add(new3)
-db.session.add(new4)
+# db.session.add(new3)
+# db.session.add(new4)
 db.session.add(new5)
 db.session.add(new6)
-db.session.add(new7)
+# db.session.add(new7)
 
 
 db.session.add(Down1)
 db.session.add(Down2)
-db.session.add(Down3)
-db.session.add(Down4)
-db.session.add(Down5)
-db.session.add(Down6)
-db.session.add(Down7)
+# db.session.add(Down3)
+# db.session.add(Down4)
+# db.session.add(Down5)
+# db.session.add(Down6)
+# db.session.add(Down7)
 
 db.session.add(Doc1)
 db.session.add(Doc2)
-db.session.add(Doc3)
-db.session.add(Doc4)
-db.session.add(Doc5)
-db.session.add(Doc6)
-db.session.add(Doc7)
+# db.session.add(Doc3)
+# db.session.add(Doc4)
+# db.session.add(Doc5)
+# db.session.add(Doc6)
+# db.session.add(Doc7)
 
 db.session.add(DZ1)
-db.session.add(DZ2)
-db.session.add(DZ3)
-db.session.add(DZ4)
-db.session.add(DZ5)
-db.session.add(DZ6)
-db.session.add(DZ7)
+# db.session.add(DZ2)
+# db.session.add(DZ3)
+# db.session.add(DZ4)
+# db.session.add(DZ5)
+# db.session.add(DZ6)
+# db.session.add(DZ7)
 
 db.session.add(p1)
 db.session.add(p2)
@@ -443,9 +426,7 @@ Changes in MySQL Enterprise Backup 3.12.4 (2019-02-15)
 
 Functionality Added or Changed 
 """, post_id="1", writer_id="1")
-fpc2 = ForumsPostContect(contect="""Plx,
-subscribe pewdiepie !!!
-""", post_id="1", writer_id="2")
+
 fpc3 = ForumsPostContect(contect="""Dear MySQL users,
 
 MySQL Enterprise Backup v4.1.3, a new version of the MySQL backup tool, is
@@ -666,8 +647,7 @@ For earlier versions of MySQL 8.0, use the MySQL Enterprise Backup
 version with the same version number as the server. For MySQL server 
 5.7, please use MySQL Enterprise Backup 4.1 and for MySQL Server 5.6 
 and 5.5, please use MySQL Enterprise Backup 3.12.""", post_id="18", writer_id="1")
-fpc21 = ForumsPostContect(contect="""I am so rich!""", post_id="1", writer_id="5")
-fpc22 = ForumsPostContect(contect="""I am so poor""", post_id="2", writer_id="6")
+
 
 db.session.add(fp11)
 db.session.add(fp12)
@@ -694,7 +674,6 @@ db.session.add(fp62)
 db.session.add(fp63)
 
 db.session.add(fpc1)
-db.session.add(fpc2)
 db.session.add(fpc3)
 db.session.add(fpc4)
 db.session.add(fpc5)
@@ -717,8 +696,7 @@ db.session.add(fpc18)
 db.session.add(fpc19)
 db.session.add(fpc20)
 
-db.session.add(fpc21)
-db.session.add(fpc22)
+
 # ---------------------------DeveloperZone---------------------------
 
 
