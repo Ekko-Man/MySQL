@@ -78,34 +78,88 @@ def load_user(id):
 
 class ForumsTopic(db.Model):
     __tablename__ = 'forums_topic'
-    id = db.Column(db.Integer, primary_key=True, index=True)
-    name = db.Column(db.String(80), index=True)
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80))
     type = db.Column(db.String(50))
     description = db.Column(db.String(150))
-    url = db.Column(db.String(140), index=True)
+    url = db.Column(db.String(140))
 
 
 class ForumsPost(db.Model):
     __tablename__ = 'forums_post'
-    id = db.Column(db.Integer, primary_key=True, index=True)
-    subject = db.Column(db.String(180), index=True)
-    url = db.Column(db.String(140), index=True)
+    id = db.Column(db.Integer, primary_key=True)
+    subject = db.Column(db.String(180))
+    url = db.Column(db.String(140))
     topic_id = db.Column(db.Integer, db.ForeignKey('forums_topic.id'))
     writer_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 
 class ForumsPostContect(db.Model):
     __tablename__ = 'forums_post_contect'
-    id = db.Column(db.Integer, primary_key=True, index=True)
+    id = db.Column(db.Integer, primary_key=True)
     contect = db.Column(db.String(300))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     post_id = db.Column(db.Integer, db.ForeignKey('forums_post.id'))
     writer_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 
+# ---------------------------Forums---------------------------
+
+# ---------------------------DOCUMENTATION---------------------------
+
+class Product(db.Model):
+    title_id = db.Column(db.Integer, primary_key=True, nullable=False, unique=True)
+    title = db.Column(db.String(200), nullable=False)
 
 
+class Topic(db.Model):
+    title_id = db.Column(db.Integer, primary_key=True, nullable=False, unique=True)
+    title = db.Column(db.String(200), nullable=False)
 
+
+class ProductMysqlServer(db.Model):
+    product_id = db.Column(db.Integer, primary_key=True, nullable=False, unique=True)
+    url = db.Column(db.String(140), nullable=False)
+    name = db.Column(db.String(80), nullable=False)
+    title_id = db.Column(db.Integer, db.ForeignKey('product.title_id'), nullable=False)
+
+
+class ProductXDevAPI(db.Model):
+    product_id = db.Column(db.Integer, primary_key=True, nullable=False, unique=True)
+    url = db.Column(db.String(140), nullable=False)
+    name = db.Column(db.String(80), nullable=False)
+    title_id = db.Column(db.Integer, db.ForeignKey('product.title_id'), nullable=False)
+
+
+class ProductMySQLNDBCluster(db.Model):
+    product_id = db.Column(db.Integer, primary_key=True, nullable=False)
+    url = db.Column(db.String(140), nullable=False)
+    name = db.Column(db.String(80), nullable=False)
+    title_id = db.Column(db.Integer, db.ForeignKey('product.title_id'), nullable=False)
+
+
+class TopicGeneral(db.Model):
+    doc_id = db.Column(db.Integer, primary_key=True, nullable=False, unique=True)
+    url = db.Column(db.String(140), nullable=False)
+    name = db.Column(db.String(80), nullable=False)
+    title_id = db.Column(db.Integer, db.ForeignKey('topic.title_id'), nullable=False)
+
+
+class TopicAdministrator_Guides(db.Model):
+    doc_id = db.Column(db.Integer, primary_key=True, unique=True)
+    url = db.Column(db.String(140), nullable=False)
+    name = db.Column(db.String(80), nullable=False)
+    title_id = db.Column(db.Integer, db.ForeignKey('topic.title_id'), nullable=False)
+
+
+class TopicHA_Scalability(db.Model):
+    doc_id = db.Column(db.Integer, primary_key=True, nullable=False)
+    url = db.Column(db.String(140), nullable=False)
+    name = db.Column(db.String(80), nullable=False)
+    title_id = db.Column(db.Integer, db.ForeignKey('topic.title_id'), nullable=False)
+
+
+# ---------------------------DOCUMENTATION---------------------------
 
 # ---------------------------NavBar---------------------------
 
@@ -124,6 +178,21 @@ class MySQLBar(db.Model):
     MainID = db.Column(db.Integer, db.ForeignKey('Main_bar.id'), nullable=False)
 
 
+class DownloadBar(db.Model):
+    __tablename__ = 'Download_Bar'
+    id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False)
+    Name = db.Column(db.String(80), nullable=False)
+    url = db.Column(db.String(140), nullable=False)
+    MainID = db.Column(db.Integer, db.ForeignKey('Main_bar.id'), nullable=False)
+
+
+class DocumentBar(db.Model):
+    id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False)
+    Name = db.Column(db.String(80), nullable=False)
+    url = db.Column(db.String(140), nullable=False)
+    MainID = db.Column(db.Integer, db.ForeignKey('Main_bar.id'), nullable=False)
+
+
 class DZBar(db.Model):
     id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False)
     Name = db.Column(db.String(80), nullable=False)
@@ -131,11 +200,68 @@ class DZBar(db.Model):
     MainID = db.Column(db.Integer, db.ForeignKey('Main_bar.id'), nullable=False)
 
 
+# ---------------------------Download---------------------------
+class Newdownload(db.Model):
+    __tablename__ = 'New_download'
+    id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False)
+    name = db.Column(db.String(200), nullable=False)
 
 
+class EnterpriseDownload(db.Model):
+    id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False)
+    name = db.Column(db.String(50), nullable=False)
+    MainID = db.Column(db.Integer, db.ForeignKey('New_download.id'), nullable=False)
 
 
-# ---------------------------FLOVEMOVIE---------------------------
+class ClusterDownload(db.Model):
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    name = db.Column(db.String(50), nullable=False)
+    MainID = db.Column(db.Integer, db.ForeignKey('New_download.id'), nullable=False)
+
+
+class MySQLCommunity(db.Model):
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    name = db.Column(db.String(50), nullable=False)
+    version = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.String(200), nullable=False)
+    com_link = db.Column(db.String(200), nullable=False)
+    MainID = db.Column(db.Integer, db.ForeignKey('New_download.id'), nullable=False)
+
+
+class Windows(db.Model):
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    name = db.Column(db.String(50), nullable=False)
+    description = db.Column(db.String(200), nullable=False)
+    win_link = db.Column(db.String(200), nullable=False)
+    MainID = db.Column(db.Integer, db.ForeignKey('New_download.id'), nullable=False)
+
+
+# ---------------------------Download---------------------------
+
+
+class Language(db.Model):
+    id = db.Column(db.Integer, primary_key=True, unique=True)
+    name = db.Column(db.String(50), nullable=False)
+    MainID = db.Column(db.Integer, db.ForeignKey('Download_Bar.id'), nullable=False)
+
+
+# class Downloads(db.Model):
+#    Dow_id = db.Column(db.Integer, primary_key=True)
+#    name = db.Column(db.String(50))
+#
+#
+# class Documentation(db.Model):
+#    Doc_id = db.Column(db.Integer, primary_key=True)
+#    name = db.column(db.String(50))
+#    pr_id = db.Column(db.Integer, db.ForeignKey("product.title_id"))
+#    top_id = db.Column(db.Integer, db.ForeignKey("topic.title_id"))
+#
+# class Developer_zone(db.Model):
+#    Dev_id=db.Column(db.Integer,primary_key=True)
+#    name=db.column(db.String(50))
+
+
+# ---------------------------MySql---------------------------
 
 
 class index_product(db.Model):
@@ -172,14 +298,6 @@ class ProductForOME(db.Model):
     indexID = db.Column(db.Integer, db.ForeignKey(index_product.id))
 
 
-class NewestMovie(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
-    url = db.Column(db.String(140))
-    urlForimage = db.Column(db.String(140))
-    indexID = db.Column(db.Integer, db.ForeignKey(index_product.id))
-
-
 class CustomerLogo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
@@ -187,46 +305,4 @@ class CustomerLogo(db.Model):
     url = db.Column(db.String(140))
     indexID = db.Column(db.Integer, db.ForeignKey(index_product.id))
 
-
-class CinemaHongKong(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
-    url = db.Column(db.String(140))
-    indexID = db.Column(db.Integer, db.ForeignKey(index_product.id))
-
-
-class CinemaKowloon(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
-    url = db.Column(db.String(140))
-    indexID = db.Column(db.Integer, db.ForeignKey(index_product.id))
-
-
-class CinemaNewTerritories(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
-    url = db.Column(db.String(140))
-    indexID = db.Column(db.Integer, db.ForeignKey(index_product.id))
-
-
-class InsertMovie(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
-    url = db.Column(db.String(140))
-    urlForimage = db.Column(db.String(140))
-    description = db.Column(db.String(1000))
-    indexID = db.Column(db.Integer, db.ForeignKey(index_product.id))
-
-class Partner(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    company = db.Column(db.String(50))
-    url = db.Column(db.String(140))
-    urlForimage = db.Column(db.String(140))
-    indexID = db.Column(db.Integer, db.ForeignKey(index_product.id))
-
-class BestMoviePicture(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    Moviename = db.Column(db.String(50))
-    urlForimage = db.Column(db.String(140))
-    indexID = db.Column(db.Integer, db.ForeignKey(index_product.id))
-
+# ---------------------------Download---------------------------

@@ -1,0 +1,10 @@
+{% extends 'Download/Download_base.html' %}
+{% block app_content %}
+    <h1>MySQL on Windows</h1>
+    MySQL provides you with a suite of tools for developing and managing business critical applications on Windows.
+    <hr/>
+    {% for windownquery in winquery %}
+        <h3><a href="{{ windownquery.win_link }}">{{ windownquery.name }}</a></h3>
+        {{ windownquery.description }}
+    {% endfor %}
+{% endblock %}

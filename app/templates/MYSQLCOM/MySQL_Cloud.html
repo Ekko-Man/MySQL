@@ -1,9 +1,19 @@
-{% extends "FLOVEMOVIE/moviebase.html" %}
+{% extends "MYSQLCOM/MYSQL_base.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
 
-
+    <div class="btn-group" role="group">
+        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+            MySQL Enterprise
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            {% for enterprise in EnterpriseDropDown %}
+                <li class="dropdown-item"><a href="{{ enterprise.url }}">{{ enterprise.name }}</a></li>
+            {% endfor %}
+        </div>
+    </div>
 
 
     <div class="btn-group" role="group">
@@ -54,7 +64,24 @@
         <div class="card-header">
             Oracle MySQL Cloud Service delivers:
         </div>
-
+        <div class="card-body">
+            <h5 class="card-title">MySQL Enterprise Edition</h5>
+            <p class="card-text">MySQL Cloud Service provides all the benefits of MySQL Enterprise Edition to deliver
+                the highest levels of MySQL performance, security and uptime..</p>
+            <h5 class="card-title">Easy to Use</h5>
+            <p class="card-text">MySQL Cloud Service provides a simple and user-friendly, web-based console to manage
+                your MySQL Cloud instances. A REST API and command line tool are also available to administrators..</p>
+            <h5 class="card-title">Self-service Provisioning</h5>
+            <p class="card-text">Create preconfigured MySQL databases optimized for performance, and cloud tooling
+                automates database instance lifecycle management.</p>
+            <h5> class="card-title" Elastic Scalability </h5>
+            <p class="card-text"> Automated scaling enables users to elastically scale compute and storage resources as
+                well as MySQL replicas.</p>
+            <h5 class="card-title">High Availability</h5>
+            <p class="card-text"> MySQL Replication and MySQL Replication monitoring improve application uptime and
+                minimize service disruptions.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
     </div>
 
 {% endblock %}

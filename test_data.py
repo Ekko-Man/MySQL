@@ -11,10 +11,8 @@ db.session.remove()
 db.drop_all()
 db.create_all()
 
-testUser1 = User(username='Jackson', email='cyrus@example.com')
-testUser2 = User(username='Jeffery', email='kitson@example.com')
 testUser3 = User(username='Jeff Bezos', email='jeff@example.com')
-testUser4 = User(username='Bill Gates', email='gaygay@example.com')
+testUser4 = User(username='Bill Gates', email='hi@example.com')
 testUser5 = User(username='Steve Jobs', email='apple@example.com')
 testUser6 = User(username='Thomas Edison', email='edison@example.com')
 

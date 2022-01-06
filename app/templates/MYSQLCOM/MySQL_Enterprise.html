@@ -1,0 +1,91 @@
+{% extends "MYSQLCOM/MYSQL_base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+
+    <div class="btn-group" role="group">
+        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+            MySQL Enterprise
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            {% for enterprise in EnterpriseDropDown %}
+                <li class="dropdown-item"><a href="{{ enterprise.url }}">{{ enterprise.name }}</a></li>
+            {% endfor %}
+        </div>
+    </div>
+
+
+    <div class="btn-group" role="group">
+        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+            MySQL Cluster CGE
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            {% for o in ClusterDropDown %}
+                <li class="dropdown-item"><a href="{{ o.url }}">{{ o.name }}</a></li>
+            {% endfor %}
+        </div>
+
+
+    </div>
+
+    <div class="btn-group" role="group">
+        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+            MySQL for OEM/ISV
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            {% for o in OEMDropDown %}
+                <li class="dropdown-item"><a href="{{ o.url }}">{{ o.name }}</a></li>
+            {% endfor %}
+        </div>
+    </div>
+
+    <h2>MySQL Enterprise Edition</h2>
+
+    <p> MySQL Enterprise Edition includes the most comprehensive set of advanced features, management tools and
+        technical
+        support to achieve the highest levels of MySQL scalability, security, reliability, and uptime. It reduces the
+        risk,
+        cost, and complexity in developing, deploying, and managing business-critical MySQL applications.</p>
+
+    <hr>
+       <div class="card w-75">
+        <div class="card-body">
+            <h5 class="card-title">MySQL Document Store</h5>
+            <p class="card-text">MySQL Document Store gives users maximum flexibility developing SQL and NoSQL,
+                schema-free document database applications. This eliminates the need for a separate database for NoSQL
+                data.</p>
+            <a href="https://www.mysql.com/products/enterprise/document_store.html" class="btn btn-primary">Learn More
+                »</a>
+        </div>
+    </div>
+
+    <div class="card w-75">
+        <div class="card-body">
+            <h5 class="card-title">MySQL Enterprise Transparent Data Encryption (TDE)</h5>
+            <p class="card-text">MySQL Enterprise Transparent Data Encryption (TDE) enables data-at-rest encryption by
+                encrypting the physical files of the database. Data is encrypted automatically, in real time, prior to
+                writing to storage and decrypted when read from storage.</p>
+            <a href="https://www.mysql.com/products/enterprise/tde.html" class="btn btn-primary">Learn More »</a>
+        </div>
+
+    </div>
+
+    <div class="card w-75">
+        <div class="card-body">
+            <h5 class="card-title">Oracle MySQL Cloud Service</h5>
+            <p class="card-text">Oracle MySQL Cloud Service is built on MySQL Enterprise Edition and powered by Oracle
+                Cloud, providing an enterprise-grade MySQL database service. It delivers the best in class management
+                tools, self service provisioning, elastic scalability and multi-layer security.</p>
+            <a href="https://www.mysql.com/cloud/" class="btn btn-primary">Learn More »</a>
+        </div>
+    </div>
+
+
+
+
+
+
+{% endblock %}

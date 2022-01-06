@@ -1,0 +1,49 @@
+{% extends 'Download/Download_base.html' %}
+{% block app_content %}
+
+    <h2>MySQL Downloads</h2>
+
+    <h4>Oracle MySQL Cloud Service</h4>
+    Oracle MySQL Cloud Service is built on MySQL Enterprise Edition and powered by Oracle Cloud, providing an
+    enterprise-grade MySQL database service.
+    <hr>
+    <h4>MySQL Enterprise Edition</h4>
+    MySQL Enterprise Edition includes the most comprehensive set of advanced features and management tools for MySQL.
+    <ul class="list-group col-lg-6 col-md-6 col-sm-6">
+        {% for enter in enterquery %}
+            <li class="list-group-item">{{ enter.name }}</li>
+        {% endfor %}
+    </ul>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <hr>
+    <h4>MySQL Cluster CGE</h4>
+    MySQL Cluster is a real-time open source transactional database designed for fast, always-on access to data under
+    high throughput conditions.
+    <ul class="list-group col-lg-6 col-md-6 col-sm-6">
+        {% for cluster in clusterquery %}
+            <li class="list-group-item">{{ cluster.name }}</li>
+        {% endfor %}
+    </ul>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <hr>
+    <h4>MySQL Community Edition</h4>
+    <a href="Download/community">Community Download »</a>
+{% endblock %}
